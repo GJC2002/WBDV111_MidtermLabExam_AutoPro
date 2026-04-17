@@ -2,6 +2,7 @@
 Team 4k Grippers
 
 Group/Members: Gerard James Thomas G. Cruz(Leader), Basty L. Rico, Ricardo Jr I. Manzano, Jhon Charl M. Garcia
+
 Course/Section: BSIT 1-Y2-1
 
 # Project Description: This business is a retail and automotive/car services that offer and sell car gears and accessories such as branded mags and tires for cars that can also be customized, steel bumpers that are used for offroad, light accessories and car seats. They also cater car services such as the periodic maintenance like change oil, pre-cleaning, mechanical, transmission, and under chassis. It has a physical store located in San Isidro, Cainta, Rizal and it also cater and serve products nationwide. There main customer are from 18 years old and above, their customer includes families, regular people employed or customer, professionals and even politicians and celebrities. They want a website because compared to the social media, customers can only see the latest products and unlike in the website, customer can see not only the latest product but also the previous models of that product, as they can select the type of product they want to check or look for.
