@@ -1,5 +1,6 @@
 # WBDV111_MidtermLabExam_Team_4k__Grippers
 Team 4k Grippers
+
 Group/Members: Gerard James Thomas G. Cruz(Leader), Basty L. Rico, Ricardo Jr I. Manzano, Jhon Charl M. Garcia
 Course/Section: BSIT 1-Y2-1
 
