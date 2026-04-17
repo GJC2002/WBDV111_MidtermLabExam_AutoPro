@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Pro All Terrain & Street Lifestyle - Services</title>
+    <link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+<style>
+.error_message{
+   color: red;
+   margin-top: 0.3125rem;
+}
+form {
+   max-width: 31.25rem;
+   margin: 0 auto;
+   padding: 1.25rem;
+   background-color: whitesmoke;
+   border-radius: 0.50rem;
+   box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+   line-height: 2.0;
+}
+h1{
+   text-align: center;
+   font-family: "Bungee", sans-serif;
+}
+.footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    padding: 0.625rem;
+    margin-top: 2rem;
+    color: white;
+}
+.footer-item {
+    padding: 0.3125rem;
+    margin: 0.3125rem;
+}
+.social-media{
+  margin-right: 0.9375rem;
+}
+p{
+  font-family: "Bungee", sans-serif;   
+}
+</style>
+<body>
+    <div class="nav">
+     <ul>
+        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Contact.html">Contact</a></li>    
+    </ul>
+    </div>
+
+    <br>
+    <h1> Book Your Appointment</h1>
+    <br>
+    <br>
+    
+    <div class="form">
+        <form name="RegForm" onsubmit="return validateform()" onreset="resetErrors()">
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="Name" placeholder="Enter FullName" size="30"/>
+                <span id="name-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="address">Adrress:</label>
+                <input type="text" name="Address" id="address" placeholder="Enter Address" size="30"/>
+                <span id="address-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="EMail" placeholder="Enter Email" size="30"/>
+                <span id="email-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="contact_num">Phone Number:</label>
+                <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30"/>
+                <span id="contact_num-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="services">Select services:</label>
+                <select name="Services" id="services">
+                    <option value="--select--">--Select--</option>
+                    <option value="wheels">Wheels</option>
+                    <option value="tires">Tires</option>
+                    <option value="overland gear">Overland Gear</option>
+                    <option value="4x4 accsessories">4x4 Accessories</option>
+                    <option value="periodic maintenance">Periodic Maintenance</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="change oil">Change Oil</option>
+                    <option value="obd scanning">OBD Scanning</option>
+                    <option value="camping">Camping</option>
+                    <option value="merchandise">Merchandise</option>
+                </select>
+                <span id="services-error" class="error_message"></span>
+            </p>
+
+            <p>
+               <label for="schedule">Book Schedule:</label>
+               <input type="datetime-local" id="schedule" name="Schedule"/>
+               <span id="schedule-error" class="error_message"></span>
+            </p>
+
+            <p>
+               <input type="checkbox" id="agree" name="Agree"/>
+               <label for="agree">I agree to the above information.</label>
+               <span id="agree-error" class="error_message"></span>
+           </p>
+
+            <p>
+                <input type="submit" value="Send" name="Submit"/>
+            </p>
+
+        </form>
+    </div>
+
+    <footer class="footer">
+            <div class="footer-item left">
+             © 2024 Autopro All Terrain & Street Lifestyle
+            </div>
+
+            <div class="footer-item center">
+            <a href="Contact.html" style="text-decoration: none; color: inherit;">Contact Us</a>
+            </div>
+
+            <div class="footer-item right">
+    
+            <a href="https://www.facebook.com/autoprolifestyle" target="_blank">
+                <i class="social-media"><img src="./images/fb_icon.png" alt="AutoPro FB" height="40" width="40"></i>
+            </a>
+
+            <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank">
+                <i class="social-media"><img src="./images/Ig_icon.png" alt="AutoPro IG" height="40" width="40"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank">
+                <i class="social-media"><img src="./images/tiktok.jpg" alt="AutoPro Tiktok" height="40" width="40"></i>
+            </a>
+
+            </div>
+    </footer>
+
+    <script>
+    function validateform (){
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const email = document.getElementById("email").value;
+        const contact_num = document.getElementById("contact_num").value;
+        const services = document.getElementById("services").value;
+        const schedule = document.getElementById("schedule").value;
+        const agree = document.getElementById("agree").checked;
+
+        const nameERR = document.getElementById("name-error");
+        const addressERR = document.getElementById("address-error");
+        const emailERR = document.getElementById("email-error");
+        const contact_num_ERR = document.getElementById("contact_num-error");
+        const servicesERR = document.getElementById("services-error");
+        const scheduleERR = document.getElementById("schedule-error");
+        const agreeErr = document.getElementById("agree-error");
+
+        nameERR.textContent = "";
+        addressERR.textContent = "";
+        emailERR.textContent = "";
+        contact_num_ERR.textContent = "";
+        servicesERR.textContent = "";
+        scheduleERR.textContent = "";
+        agreeErr.textContent = "";
+
+        let inputValid = true;
+
+        if(name === "" || /\d/.test(name)) {
+            nameERR.textContent = "Please Enter Your Name.";
+            inputValid = false;
+        }
+        if(address === "") {
+            addressERR.textContent = "Please Enter Your Address."
+            inputValid = false;
+        }
+        if(email === "" || !email.includes("@")) {
+            emailERR.textContent = "Please Enter Your Email."
+            inputValid = false;
+        }
+        const phonePattern = /^\d{11}$/;
+        if(contact_num === "" || !phonePattern.test(contact_num)) {
+           contact_num_ERR.textContent = "Please Enter Your Phone Number";
+            inputValid = false;
+        }
+        if(services === "--select--") {
+            servicesERR.textContent = "Please Select Your Service.";
+            inputValid = false;
+        }
+        if(schedule === "") {
+            scheduleERR.textContent = "Please select Your Schedule.";
+            inputValid = false;
+        }
+        if(!agree) {
+                agreeErr.textContent = "Please agree to the above information.";
+                isValid = false;
+        }
+        if(inputValid) {
+            alert("We are processing your request. We will notify you in your email.");
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function resetErrors() {
+        document.getElementById("name-error").textContent = "";
+            document.getElementById("address-error").textContent = "";
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("contact number-error").textContent = "";
+            document.getElementById("services-error").textContent = "";
+            document.getElementById("schedule-error").textContent = "";
+            document.getElementById("agree-error").textContent = "";
+    }
+</script>
+
+</body>
+</html>

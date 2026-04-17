@@ -1,0 +1,1424 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: lightgrey;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+.nav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.nav ul {
+  list-style: none;
+  background-color: black;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav li {
+  display: inline-block;
+}
+
+.nav ul img {
+  max-width: 200px;
+  height: auto;
+  margin: 0.625rem;
+  border-radius: 50%;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  font-family: "Bangers", system-ui;
+  padding: 1.875rem;
+  font-size: 1.5625rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav a:hover {
+  background-color: grey;
+}
+
+
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/Hero_Section\ wallpaper.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image img {
+  display: none;
+}
+
+.hero-text {
+  text-align: center;
+  color: white;
+  font-family: "Bungee", sans-serif;
+  padding: 2rem;
+  width: 100%;
+}
+
+.hero-text h1 {
+  font-size: 3.125rem;
+  margin: 1rem 0;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 0.625rem 1.5625rem;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+}
+
+
+.container {
+  width: 100%;
+  overflow: auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container div {
+  width: 33.33%;
+  text-align: center;
+  padding: 0.625rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  flex: 1 1 50%;
+  padding: 1rem;
+}
+
+
+
+.flex-product {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0.625rem;
+  width: 100%;
+}
+
+.flex-product div {
+  padding: 0.625rem;
+}
+
+.card {
+  box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
+  text-align: center;
+  background-color: ghostwhite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem 0 rgba(23, 23, 193, 0.4);
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+
+.home-feature,
+.home-brand,
+.home-branch,
+.home-services {
+  width: 100%;
+  display: grid;
+  font-family: "Bungee", sans-serif;
+  line-height: 2;
+  gap: 1rem;
+}
+
+.home-feature {
+  background-color: orange;
+}
+
+.home-feature > h1,
+.home-feature > p {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.home-brand {
+  background-color: #333333;
+  text-align: center;
+  color: white;
+}
+
+.home-brand > h1 {
+  text-align: center;
+  padding: 1rem;
+}
+
+.home-branch {
+  background-color: lightskyblue;
+  text-align: center;
+}
+
+.home-branch > h1 {
+  text-align: center;
+  padding: 1rem;
+}
+
+.home-services {
+  background-color: white;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.home-services > h1 {
+  text-align: center;
+  padding: 1rem;
+}
+
+.home-text-feature,
+.home-brand-logo,
+.home-branch-logo,
+.home-services-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.home-text-feature img,
+.home-brand-logo img,
+.home-branch-logo img,
+.home-services-logo img {
+  max-width: 200px;
+  height: auto;
+}
+
+.home-services button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 0.625rem 1.5625rem;
+  color: white;
+  background-color: black;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.home-services button:hover {
+  background-color: #555;
+}
+
+
+.footer-fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  z-index: 100;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: black;
+  padding: 1rem;
+  margin-top: 3rem;
+  color: white;
+  font-family: "Bungee", sans-serif;
+  gap: 1rem;
+}
+
+.footer-item {
+  padding: 0.5rem;
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+.social-media {
+  margin-right: 0.9375rem;
+  display: inline-block;
+}
+
+.social-media img {
+  max-width: 30px;
+  height: auto;
+}
+
+
+.form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+form p {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+form label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="datetime-local"],
+form select,
+form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input[type="submit"] {
+  background-color: grey;
+  color: white;
+  padding: 0.875rem;
+  margin: 1rem 0;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #555;
+}
+
+.error_message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+
+.companylogo {
+  margin-top: 0.625rem;
+  max-width: 200px;
+  height: auto;
+  border-radius: 50%;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container button {
+  border: none;
+  outline: 0;
+  padding: 0.625rem;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.125rem;
+  transition: opacity 0.3s ease;
+}
+
+.container button:hover {
+  opacity: 0.7;
+}
+
+
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    padding-bottom: 100px;
+  }
+
+  
+  .nav ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav li {
+    display: block;
+    width: 100%;
+  }
+
+  .nav a {
+    display: block;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #555;
+  }
+
+  .nav ul img {
+    max-width: 120px;
+    margin: 0.5rem auto;
+  }
+
+  
+  .hero-image {
+    min-height: 250px;
+    padding: 1rem 0;
+  }
+
+  .hero-text {
+    padding: 1rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .hero-text p {
+    font-size: 0.875rem;
+    margin: 0.5rem 0;
+  }
+
+  .hero-text button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  
+  .container,
+  .container div {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .column {
+    flex: 1 1 100%;
+    padding: 0.5rem;
+  }
+
+
+  .flex-product {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .flex-product div {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .card {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  
+  .home-feature,
+  .home-brand,
+  .home-branch,
+  .home-services {
+    padding: 1rem;
+  }
+
+  .home-feature > h1,
+  .home-feature > p,
+  .home-brand > h1,
+  .home-branch > h1,
+  .home-services > h1 {
+    padding: 0.5rem;
+  }
+
+  .home-text-feature,
+  .home-brand-logo,
+  .home-branch-logo,
+  .home-services-logo {
+    flex-direction: column;
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .home-text-feature img,
+  .home-brand-logo img,
+  .home-branch-logo img,
+  .home-services-logo img {
+    max-width: 150px;
+  }
+
+  .home-services button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    width: 90%;
+  }
+
+  
+  .footer {
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .footer-item {
+    width: 100%;
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #555;
+  }
+
+  .footer-item:last-child {
+    border-bottom: none;
+  }
+
+  .social-media {
+    margin: 0 0.5rem;
+  }
+
+  
+  .form {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  form p {
+    margin: 0.75rem 0;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="tel"],
+  form input[type="datetime-local"],
+  form select,
+  form textarea {
+    padding: 0.625rem;
+    font-size: 16px;
+  }
+
+  form textarea {
+    min-height: 100px;
+  }
+
+  input[type="submit"] {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    margin: 0.75rem 0;
+  }
+
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .companylogo {
+    max-width: 100px;
+  }
+}
+
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+  .nav a {
+    padding: 1.25rem;
+    font-size: 1.125rem;
+  }
+
+  .nav ul img {
+    max-width: 180px;
+  }
+
+  
+  .hero-image {
+    min-height: 350px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  
+  .container div {
+    width: 50%;
+    padding: 0.75rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .column {
+    flex: 1 1 100%;
+  }
+
+  
+  .flex-product {
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 48%;
+    margin: 1%;
+  }
+
+  /* Home Sections */
+  .home-text-feature,
+  .home-brand-logo,
+  .home-branch-logo,
+  .home-services-logo {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+
+  .home-text-feature img,
+  .home-brand-logo img,
+  .home-branch-logo img,
+  .home-services-logo img {
+    max-width: 180px;
+  }
+
+  /* Footer */
+  .footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .footer-item {
+    flex: 0 1 auto;
+  }
+
+  /* Forms */
+  .form {
+    max-width: 90%;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.375rem;
+  }
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .nav a {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .hero-image {
+    min-height: 450px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-text p {
+    font-size: 1.125rem;
+  }
+
+  .container div {
+    width: 50%;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+  .column {
+    flex: 1 1 50%;
+  }
+
+  .card {
+    width: 30%;
+    margin: 1%;
+  }
+
+  .home-text-feature,
+  .home-brand-logo,
+  .home-branch-logo,
+  .home-services-logo {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+@media (min-width: 1024px) {
+  .nav a {
+    height: 1.875rem;
+    width: auto;
+    padding: 1.875rem;
+    font-size: 1.5625rem;
+  }
+
+  .nav ul img {
+    max-width: 200px;
+  }
+
+  .hero-image {
+    min-height: 500px;
+  }
+
+  .hero-text h1 {
+    font-size: 3.125rem;
+  }
+
+  .hero-text p {
+    font-size: 1.25rem;
+  }
+
+  .container div {
+    width: 33.33%;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+  .column {
+    flex: 1 1 50%;
+  }
+
+ 
+  .card {
+    margin: 0.625rem;
+  }
+
+  .home-text-feature,
+  .home-brand-logo,
+  .home-branch-logo,
+  .home-services-logo {
+    padding: 2.5rem;
+  }
+
+  .footer {
+    padding: 1rem;
+    justify-content: space-around;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .form {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+  }
+}
+
+.nav a{
+  text-decoration: none;
+  color: white;
+  display:inline-block;
+  font-family: "Bangers", system-ui;
+  height: 1.875rem;
+  width: 7.5rem;
+  padding: 1.875rem;
+  font-size: 1.5625rem;
+}
+.nav a:hover{
+  background-color: grey;
+}
+body{
+  margin: 0;
+  padding: 0;
+ background-color: lightgrey;
+}
+h1{
+  font-family: sans-serif;
+}
+a{
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+input[type=submit]{
+background-color: grey;
+  color: white;
+  padding: 0.875rem;
+  margin: 0.50rem 0;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.flex-product{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.625rem;
+}
+
+.flex-product div{
+  padding: 0.625rem;
+}
+
+.card {
+  box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
+  width: 15%;
+  text-align: center;
+  background-color: ghostwhite;
+}
+.container {
+  padding: 0.625rem;
+}
+.container button{
+  border: none;
+  outline: 0;
+  padding: 0.625rem;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.125rem;
+}
+
+.container button:hover{
+  opacity: 0.7;
+}
+.companylogo{
+  margin-top: 1.25rem;
+  max-width: 100%;
+  height: auto;
+}
+.footer-fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  text-align: center;
+}
+.footer {
+    display: flex;
+    justify-content: space-around; 
+    background-color: black;
+    padding: 0.625rem;
+    margin-top: 5rem;
+    color: white;
+    font-family: "Bungee", sans-serif;
+}
+.footer-item {
+    padding: 0.3125rem;
+    margin: 0.3125rem;
+}
+.social-media{
+  margin-right: 0.9375rem;
+}
+.hero-image{
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/Hero_Section\ wallpaper.jpg);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+width: 100%;
+height: 300px;
+min-height: 300px;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  display: none;
+}
+.hero-text{
+  text-align: center;
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  color: white;
+  font-family: "Bungee", sans-serif;
+  padding: 2rem 1rem;
+}
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 0.625rem 1.5625rem;
+  color: white;
+  background-color: green;
+  text-align: justify;
+  cursor: pointer;
+  top: auto;
+  transform: none;
+  position: relative;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+.home-feature{
+  background-color: orange;
+  gap: 0;
+  display: grid;
+  font-family: "Bungee", sans-serif;
+  line-height: 2.0;
+}
+.home-text-feature{
+  font-family: "Bungee", sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  padding: 2.5rem;
+}
+.home-brand{
+  background-color: #333333;
+  gap: 0;
+  display: grid;
+  font-family: "Bungee", sans-serif;
+  line-height: 2.0;
+  text-align: center;
+  color: white;
+}
+.home-brand-logo{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  padding: 2.5rem;
+}
+.home-branch{
+  background-color: lightskyblue;
+  gap: 0;
+  display: grid;
+  font-family: "Bungee", sans-serif;
+  line-height: 2.0;
+  text-align: center;
+}
+.home-branch-logo{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  padding: 2.5rem;
+}
+.home-services{
+  background-color: white;
+  gap: 0;
+  display: grid;
+  font-family: "Bungee", sans-serif;
+  line-height: 2.0;
+  text-align: center;
+  height: 43.75rem;
+}
+.home-services-logo{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  padding: 2.5rem;
+}
+.home-services button{
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 0.625rem 1.5625rem;
+  color: white;
+  background-color: black;
+  text-align: justify;
+  cursor: pointer;
+  top: auto;
+  transform: none;
+  position: relative;
+}
+.home-services button:hover{
+  background-color: #555;
+  color: white;
+}
+
+
+
+
+@media (max-width: 480px) {
+  /* Navigation */
+  .nav a {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0.875rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .nav li {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .nav ul img {
+    max-width: 150px;
+    height: auto;
+    margin: 0.5rem auto;
+    display: block;
+  }
+  
+  /* Hero Section */
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+  .hero-text h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-text p {
+    font-size: 0.875rem !important;
+  }
+  
+  .hero-text button {
+    position: relative;
+    top: auto !important;
+    transform: none !important;
+    display: inline-block;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    margin-top: 1rem;
+  }
+  
+  /* Products/Cards */
+  .flex-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  
+  .card {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: visible;
+  }
+  
+  .container div {
+    width: 100% !important;
+    padding: 0.5rem;
+  }
+  
+  /* Home Sections */
+  .home-feature,
+  .home-brand,
+  .home-branch,
+  .home-services {
+    height: auto !important;
+  }
+  
+  .home-text-feature,
+  .home-brand-logo,
+  .home-branch-logo,
+  .home-services-logo {
+    padding: 1rem !important;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-text-feature img,
+  .home-brand-logo img,
+  .home-branch-logo img,
+  .home-services-logo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+  }
+  
+  .home-text-feature h2,
+  .home-brand-logo h2,
+  .home-branch-logo h2,
+  .home-services-logo h2 {
+    font-size: 1.25rem;
+  }
+  
+  .home-text-feature p,
+  .home-brand-logo p,
+  .home-branch-logo p,
+  .home-services-logo p {
+    font-size: 0.9rem;
+  }
+  
+  .home-services button {
+    position: relative;
+    top: auto !important;
+    transform: none !important;
+    display: inline-block;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    margin-top: 1rem;
+  }
+  
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    margin-top: 2rem !important;
+    padding: 1rem !important;
+  }
+  
+  .footer-item {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+  }
+  
+  /* General */
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav a {
+    padding: 1rem;
+    font-size: 1.125rem;
+    height: auto;
+  }
+  
+  .nav li {
+    display: block;
+    width: 100%;
+    margin: 0.25rem 0;
+  }
+  
+  .nav ul img {
+    max-width: 180px;
+    height: auto;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem !important;
+  }
+  
+  .hero-text p {
+    font-size: 1rem !important;
+  }
+  
+  .hero-text button {
+    position: relative;
+    top: auto !important;
+    transform: none !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .flex-product {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    width: 48% !important;
+    margin: 0.5rem;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .container div {
+    width: 48% !important;
+    padding: 0.5rem;
+  }
+  
+  .home-text-feature,
+  .home-brand-logo,
+  .home-branch-logo,
+  .home-services-logo {
+    padding: 1.5rem !important;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .home-text-feature img,
+  .home-brand-logo img,
+  .home-branch-logo img,
+  .home-services-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .home-services {
+    height: auto !important;
+  }
+  
+  .home-services button {
+    position: relative;
+    top: auto !important;
+    transform: none !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem !important;
+  }
+  
+  .footer-item {
+    margin: 0.5rem;
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav li {
+    display: inline-block;
+    margin: 0;
+  }
+  
+  .nav a {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    height: 1.875rem;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+  }
+  
+  .flex-product {
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 30% !important;
+    margin: 0.5rem;
+  }
+  
+  .container {
+    display: inline-flex;
+    width: 100%;
+  }
+  
+  .container div {
+    width: 33% !important;
+  }
+  
+  .home-text-feature,
+  .home-brand-logo,
+  .home-branch-logo,
+  .home-services-logo {
+    padding: 2rem !important;
+  }
+  
+  .footer {
+    margin-top: 5rem !important;
+  }
+}
+
+
+@media (min-width: 1025px) {
+  .nav li {
+    display: inline-block;
+  }
+  
+  .nav a {
+    height: 1.875rem;
+    width: 7.5rem;
+    padding: 1.875rem;
+    font-size: 1.5625rem;
+  }
+  
+  .card {
+    width: 15% !important;
+  }
+  
+  .container {
+    display: inline-flex;
+    width: 100%;
+  }
+  
+  .container div {
+    width: 33% !important;
+  }
+}
+

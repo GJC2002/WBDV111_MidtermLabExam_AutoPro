@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Pro All Terrain & Street Lifestyle - Contact</title>
+    <link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+<script>
+   function validateform (){
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const email = document.getElementById("email").value;
+        const contact_num = document.getElementById("contact_num").value;
+        const subject = document.getElementById("subject").value;
+        const agree = document.getElementById("agree").checked;
+
+        const nameERR = document.getElementById("name-error");
+        const addressERR = document.getElementById("address-error");
+        const emailERR = document.getElementById("email-error");
+        const contact_num_ERR = document.getElementById("contact_num-error");
+        const subjectERR = document.getElementById("subject-error");
+        const agreeErr = document.getElementById("agree-error");
+
+        nameERR.textContent = "";
+        addressERR.textContent = "";
+        emailERR.textContent = "";
+        contact_num_ERR.textContent = "";
+        subjectERR.textContent = "";
+        agreeErr.textContent = "";
+
+        let inputValid = true;
+
+        if(name === "" || /\d/.test(name)) {
+            nameERR.textContent = "Please Enter Your Name.";
+            inputValid = false;
+        }
+        if(address === "") {
+            addressERR.textContent = "Please Enter Your Address."
+            inputValid = false;
+        }
+        if(email === "" || !email.includes("@")) {
+            emailERR.textContent = "Please Enter Your Email."
+            inputValid = false;
+        }
+        const phonePattern = /^\d{11}$/;
+        if(contact_num === "" || !phonePattern.test(contact_num)) {
+           contact_num_ERR.textContent = "Please Enter Your Phone Number";
+            inputValid = false;
+        }
+        if(subject === "") {
+            subjectERR.textContent = "Please Enter Your Subject";
+            inputValid = false;
+        }
+        if(!agree) {
+                agreeErr.textContent = "Please agree to the above information.";
+                isValid = false;
+        }
+        if(inputValid) {
+            alert("We are processing your request. We will notify you in your email.");
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function resetErrors() {
+        document.getElementById("name-error").textContent = "";
+            document.getElementById("address-error").textContent = "";
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("contact number-error").textContent = "";
+            document.getElementById("subject-error").textContent = "";
+            document.getElementById("agree-error").textContent = "";
+    }
+</script>
+<style>
+    h1{
+        font-family: "Bungee", sans-serif;
+    }
+
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
+  padding: 0.625rem;
+  min-height: 18.75rem;
+}
+form {
+   max-width: 31.25rem;
+   margin: 0 auto;
+   padding: 1.25rem;
+   background-color: whitesmoke;
+   border-radius: 0.50rem;
+   box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+   line-height: 2.0;
+   margin-left: 0.625rem;
+}
+textarea {
+    width: 80%;
+    padding: 1.25rem;
+    margin: 0.3125rem 0;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+.error_message{
+   color: red;
+   margin-top: 0.3125rem;
+}
+p{
+   font-family: "Bungee", sans-serif;
+}
+.footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    padding: 0.625rem;
+    margin-top: 2rem;
+    color: white;
+}
+.footer-item {
+    padding: 0.3125rem;
+    margin: 0.3125rem;
+}
+
+</style>
+<body>
+    <div class="nav">
+        <ul>
+        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">                                       
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Contact.html">Contact</a></li>    
+        </ul>
+    </div>
+    
+    <div class="row">
+      <div class="column">
+        <h1 style="white-space: pre-wrap;">   Contact Us</h1>
+        <p style="white-space: pre-wrap;"> <strong>     Telephone: <a href="tel:+6309150615024" style="text-decoration: none; color: inherit;">+6309150615024</a> / <a href="tel:+630917673052" style="text-decoration: none; color: inherit;">+630917673052</a></strong></p>        
+        <p style="white-space: pre-wrap;"> <strong><a href="mailto:tri_rodrigo@yahoo.com" style="text-decoration: none; color: inherit;">     Email: tri_rodrigo@yahoo.com</a></strong></p><br>
+        
+        
+         <form name="RegForm" onsubmit="return validateform()" onreset="resetErrors()">
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="Name" placeholder="Enter FullName" size="30"/>
+                <span id="name-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="address">Adrress:</label>
+                <input type="text" name="Address" id="address" placeholder="Enter Address" size="30"/>
+                <span id="address-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="EMail" placeholder="Enter Email" size="30"/>
+                <span id="email-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="contact_num">Phone Number:</label>
+                <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30"/>
+                <span id="contact_num-error" class="error_message"></span>
+            </p>
+
+            <p>
+                <label for="subject">Subject</label>
+                <input type="text" name="Subject" id="subject" placeholder="Enter Subject" size="30">
+                <span id="subject-error" class="error_message"></span>
+            </p>
+
+            <p>
+               <label for="comment">Message:</label>
+               <br>
+               <textarea name="Comment" id="comment"></textarea>
+            </p>
+
+            <p>
+               <input type="checkbox" id="agree" name="Agree"/>
+               <label for="agree">I agree to the above information.</label>
+               <span id="agree-error" class="error_message"></span>
+           </p>
+
+            <p>
+                <input type="submit" value="Send" name="Submit"/>
+            </p>
+
+        </form>
+        </div>
+        
+   
+        <div class="column">
+            <h1 style="white-space: pre-wrap;">Our Store</h1>
+            <img src="./images/autopro_branch_pic.jpg" alt="Auto Pro Branch" height="200" width="200">
+            <p style="white-space: pre-wrap;"><strong>Location: Lot 3 Felix Avenue, Cainta, Philippines, 1900</strong></p>
+        </div>
+    </div>
+  
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+   
+        
+        <footer class="footer">
+            <div class="footer-item left">
+             © 2024 Autopro All Terrain & Street Lifestyle
+            </div>
+
+            <div class="footer-item center">
+            <a href="Contact.html" style="text-decoration: none; color: inherit;">Contact Us</a>
+            </div>
+
+            <div class="footer-item right">
+    
+            <a href="https://www.facebook.com/autoprolifestyle" target="_blank">
+                <i class="social-media"><img src="./images/fb_icon.png" alt="AutoPro FB" height="40" width="40"></i>
+            </a>
+
+            <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank">
+                <i class="social-media"><img src="./images/Ig_icon.png" alt="AutoPro IG" height="40" width="40"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank">
+                <i class="social-media"><img src="./images/tiktok.jpg" alt="AutoPro Tiktok" height="40" width="40"></i>
+            </a>
+
+            </div>
+        </footer>
+    
+    
+</body>
+</html>
