@@ -20,11 +20,56 @@ h1, h2{
     font-family: "Bungee", sans-serif;
 } 
 
-
 h3{
     color: green;
     font-family: "Bungee", sans-serif;
 
+}
+.card {
+  box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
+  width: 20%;
+  text-align: center;
+  background-color: ghostwhite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem 0 rgba(23, 23, 193, 0.3);
+}
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  padding: 0.5rem;
+  overflow-y: auto;
+}
+.card h3 {
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+}
+.card button {
+  margin-bottom: 0.5rem;
+}
+ul li {
+  text-align: left;
+  line-height: 1.5;
 }
 .footer {
     display: flex;
@@ -41,21 +86,63 @@ h3{
 .social-media{
   margin-right: 0.9375rem;
 }
+@media (max-width: 1024px) {
+    .card {
+        width: 38%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 47%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 70%;
+    }
+    .flex-product {
+        padding: 0.625rem;
+    }
+}
+@media (max-width: 900px) {
+    .nav ul {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
 
 </style>
 
 </head>
 <body>
     <div class="nav">
-     <ul>
-        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html">Contact</a></li>    
+        <li><a href="Contact.html">Contact</a></li>
     </ul>
-    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</aside>
   
   <br>
   <h1 style="text-align: center;">Lubricants</h1>
@@ -66,31 +153,43 @@ h3{
 
     <div class="card">
         <img src="./images/5w-40 lubricant.jpg" alt="5w-40" height="100" width="200">
-    <div class="container">
+    <div class="container" onsubmit="return validateoption('dubprolube5w40')" onreset="resetoptions('dubprolube5w40')">
         <h2>Dub PRO LUBE - 5w 40</h2>
         <p>Fully Synthetic Oil 5W-40</p>
+        <label for="quantity-dubprolube5w40">Quantity:</label>
+        <input type="number" id="quantity-dubprolube5w40" name="quantity" min="0" value="0">
+        <span id="quantity-error-dubprolube5w40" class="error_message"></span>
+        <br>
         <h3>PHP 625.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('dubprolube5w40')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/10W-40 lubricant.jpg" alt="10W-40" height="100" width="200">
-    <div class="container">
+    <div class="container" onsubmit="return validateoption('dubprolube10w40')" onreset="resetoptions('dubprolube10w40')">
         <h2>Dub PRO LUBE - 10w 40</h2>
         <p>Semi Synthetic Oil 10W-40</p>
+        <label for="quantity-dubprolube10w40">Quantity:</label>
+        <input type="number" id="quantity-dubprolube10w40" name="quantity" min="0" value="0">
+        <span id="quantity-error-dubprolube10w40" class="error_message"></span>
+        <br>
         <h3>PHP 530.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('dubprolube10w40')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/HKS - lubricant.jpg" alt="HKS" height="100" width="200">
-    <div class="container">
+    <div class="container" onsubmit="return validateoption('hks5w30')" onreset="resetoptions('hks5w30')">
         <h2>HKS - 5W <br>30</h2>
         <p>5W-30 Super Oil</p>
+        <label for="quantity-hks5w30">Quantity:</label>
+        <input type="number" id="quantity-hks5w30" name="quantity" min="0" value="0">
+        <span id="quantity-error-hks5w30" class="error_message"></span>
+        <br>
         <h3>PHP 2,400.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('hks5w30')">Buy now</button>
     </div>
     </div>
 
@@ -121,7 +220,62 @@ h3{
 
             </div>
     </footer>
+  <script>
+    function validateoption(productId) {
+    const quantityEl = document.getElementById(`quantity-${productId}`);
+    const quantityErr = document.getElementById(`quantity-error-${productId}`);
 
+    if (quantityErr) {
+        quantityErr.textContent = "";
+    }
+
+    let optionValid = true;
+
+    if (quantityEl && quantityErr) {
+        const quantity = Number(quantityEl.value);
+        if (!Number.isInteger(quantity) || quantity < 1) {
+            quantityErr.textContent = "Quantity must be 1 or more.";
+            optionValid = false;
+        }
+    }
+
+    if (optionValid) {
+        alert("We have processed your order! Thank you for shopping with us.");
+
+        if(quantityEl) {
+            quantityEl.value = "0";
+        }
+        return true;
+    }
+    return false;
+}
+
+function resetoptions(productId) {
+    const quantityErr = document.getElementById(`quantity-error-${productId}`);
+
+    if (quantityErr) {
+        quantityErr.textContent = "";
+    }
+}
+   
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const navToggle = document.getElementById('navToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    navToggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    });
+
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+  </script>
 
    
 </body>

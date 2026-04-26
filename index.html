@@ -34,6 +34,7 @@ body{
     margin: 0rem;
     padding: 0rem;
 }
+
 div.container{
   width:100%;
   overflow:auto;
@@ -43,21 +44,46 @@ div.container div{
   width:33%;  
   text-align: center;
 }
+h1, h2{
+    font-family: "Bungee", sans-serif;
+}
+@media (max-width: 900px) {
+    .nav ul {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
 
 
 </style>
 
 <body>
 <div class="nav">
-     <ul>
-        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html">Contact</a></li>    
+        <li><a href="Contact.html">Contact</a></li>
     </ul>
-    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</aside>
     
     <div class="hero-image">
         <img src="images/Hero_Section wallpaper.jpg" alt="Hero_Section" height="610" width="1513">
@@ -115,7 +141,7 @@ div.container div{
 
     <div class="home-brand">
      <h1>Brands We Offer</h1>
-     <p>We offer a carefully selected range of reliable, high-performance brands to meet all your off-road, 4x4, and automotive needs. 
+     <p>We offer a carefully selected range of reliable, high-performance brands to meet all your off-road, 4x4, and automotive needs. <br>
         Whether you're looking for durable tires, race-ready wheels, or advanced suspension systems, our partners are recognized for 
         their quality and innovation.</p>
         <div class="home-brand-logo">
@@ -126,11 +152,11 @@ div.container div{
 <div class="home-branch">
     <h1>Visit Our Store</h1>
     <p>Explore premium auto accessories, professional service, and great value all in one place. 
-       Whether you're enhancing your vehicle or just browsing, our team is ready to assist every step of the way. 
+       Whether you're enhancing your vehicle or just browsing, our team is ready to assist every step of the way. <br>
        Stop in and find out what sets us apart from the rest!</p>
        <div class="home-branch-logo">
       <img src="./images/autopro_branch_pic.jpg" alt="Auto Pro Branch" height="600" width="800">
-        <p>
+        <p style="font-family: 'Bungee', sans-serif;">
         AutoPro All Terrain & Street Lifestyle <br>
         Location: Lot 3 Felix Avenue, Cainta, Philippines, 1900
       </p>
@@ -143,10 +169,10 @@ div.container div{
     <img src="./images/home-services.jpg" alt="Services" height="300" width="500">
     <p>We offer expert installation and routine vehicle maintenance to keep every vehicle running at 
      peak performance—whether you're on the road, off the trail, or at the campsite.</p>
+     </div>
      <a href="Services.html">
      <button>Book Now</button>
      </a>
-     </div>
 </div>
 
 
@@ -177,5 +203,24 @@ div.container div{
             </div>
         </footer>
 
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const navToggle = document.getElementById('navToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    navToggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    });
+
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+</script>
 </body>
 </html>

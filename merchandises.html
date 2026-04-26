@@ -16,6 +16,10 @@
 
 </head>
 <style>
+.error_message{
+   color: red;
+   margin-top: 0.3125rem;
+}
 h1, h2{
  font-family: "Bungee", sans-serif;
 }
@@ -23,17 +27,58 @@ h3{
     color: green;
     font-family: "Bungee", sans-serif;
 }
+.flex-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1rem;
+}
 .card {
   box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
-  width: 15%;
+  width: 20%;
   text-align: center;
   background-color: ghostwhite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
-p{
-    line-height: 1.5;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem 0 rgba(23, 23, 193, 0.3);
+}
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  padding: 0.5rem;
+  overflow-y: auto;
+}
+.card h3 {
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+}
+.card button {
+  margin-bottom: 0.5rem;
 }
 ul li {
   text-align: left;
+  line-height: 1.5;
 }
 .footer {
     display: flex;
@@ -50,18 +95,60 @@ ul li {
 .social-media{
   margin-right: 0.9375rem;
 }
+@media (max-width: 1024px) {
+    .card {
+        width: 38%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 47%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 70%;
+    }
+    .flex-product {
+        padding: 0.625rem;
+    }
+}
+@media (max-width: 900px) {
+    .nav ul {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
 </style>
 <body>
     <div class="nav">
-     <ul>
-        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html">Contact</a></li>    
+        <li><a href="Contact.html">Contact</a></li>
     </ul>
-    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</aside>
       
       <br>
       <h1 style="text-align: center;">Merchandises</h1>
@@ -72,37 +159,89 @@ ul li {
 
     <div class="card">
         <img src="./images/Fox+Warn+Shirt.jpg" alt="Fox/Warn Shirt" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('foxwarnshirt')" onreset="resetoptions('foxwarnshirt')">
         <h2>FOX/WARN SHIRT</h2>
+        <label for="size-foxwarnshirt">Size:</label>
+        <select id="size-foxwarnshirt" name="size">
+            <option value="--select size--">Select Size</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+        <span id="size-error-foxwarnshirt" class="error_message"></span>
+        <label for="quantity-foxwarnshirt">Quantity:</label>
+        <input type="number" id="quantity-foxwarnshirt" name="quantity" min="0" value="0">
+        <span id="quantity-error-foxwarnshirt" class="error_message"></span>
+        <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('foxwarnshirt')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/Shirt+BM.jpg" alt="Black Mamba Shirt" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('blackmambashirt')" onreset="resetoptions('blackmambashirt')">
         <h2>BLACK MAMBA SHIRT</h2> 
+        <label for="size-blackmambashirt">Size:</label>
+        <select id="size-blackmambashirt" name="size">
+            <option value="--select size--">Select Size</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            </select>
+        <span id="size-error-blackmambashirt" class="error_message"></span>
+        <label for="quantity-blackmambashirt">Quantity:</label>
+        <input type="number" id="quantity-blackmambashirt" name="quantity" min="0" value="0">
+        <span id="quantity-error-blackmambashirt" class="error_message"></span>
+        <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('blackmambashirt')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/TJM+Shirt.jpg" alt="TJM Shirt" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmshirt')" onreset="resetoptions('tjmshirt')">
         <h2>TJM SHIRT</h2>
+        <label for="size-tjmshirt">Size:</label>
+        <select id="size-tjmshirt" name="size">
+            <option value="--select size--">Select Size</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+        <span id="size-error-tjmshirt" class="error_message"></span>
+        <label for="quantity-tjmshirt">Quantity:</label>
+        <input type="number" id="quantity-tjmshirt" name="quantity" min="0" value="0">
+        <span id="quantity-error-tjmshirt" class="error_message"></span>
+        <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmshirt')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
        <img src="./images/Shirt+Explorer.jpg" alt="Explorer Shirt" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('explorershirt')" onreset="resetoptions('explorershirt')">
         <h2>EXPLORER SHIRT</h2>
+        <label for="size-explorershirt">Size:</label>
+        <select id="size-explorershirt" name="size">
+            <option value="--select size--">Select Size</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+        <span id="size-error-explorershirt" class="error_message"></span>
+        <label for="quantity-explorershirt">Quantity:</label>
+        <input type="number" id="quantity-explorershirt" name="quantity" min="0" value="0">
+        <span id="quantity-error-explorershirt" class="error_message"></span>
+        <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('explorershirt')">Buy now</button>
     </div>
     </div>
 
@@ -117,37 +256,70 @@ ul li {
     
      <div class="card">
         <img src="./images/Shirt+AMP.jpg" alt="AMP Shirt" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('ampshirt')" onreset="resetoptions('ampshirt')">
         <h2>AMP SHIRT</h2>
+        <label for="size-ampshirt">Size:</label>
+        <select id="size-ampshirt" name="size">
+            <option value="--select size--">Select Size</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+        <span id="size-error-ampshirt" class="error_message"></span>
+        <label for="quantity-ampshirt">Quantity:</label>
+        <input type="number" id="quantity-ampshirt" name="quantity" min="0" value="0">
+        <span id="quantity-error-ampshirt" class="error_message"></span>
+        <br>
         <h3>PHP450.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('ampshirt')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/Umbrella+Fox+warn.jpg" alt="UMBRELLA" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('umbrella')" onreset="resetoptions('umbrella')">
         <h2>UMBRELLA</h2>
+        <label for="brand-umbrella">Brand:</label>
+        <select id="brand-umbrella" name="brand">
+            <option value="--select brand--">Select Brand</option>
+            <option value="fox">Fox/Warn</option>
+            <option value="tjm">TJM</option>
+            <option value="amp">AMP</option>
+        </select>
+        <span id="brand-error-umbrella" class="error_message"></span>
+        <label for="quantity-umbrella">Quantity:</label>
+        <input type="number" id="quantity-umbrella" name="quantity" min="0" value="0">
+        <span id="quantity-error-umbrella" class="error_message"></span>
+        <br>
         <h3>PHP 350.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('umbrella')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/Cap+BA+B.jpg" alt="BODY ARMOR 4X4 - TRUCKERS CAP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('bodyarmor4x4')" onreset="resetoptions('bodyarmor4x4')">
         <h2>BODY ARMOR 4X4 - TRUCKERS CAP</h2>
+        <label for="quantity-bodyarmor4x4">Quantity:</label>
+        <input type="number" id="quantity-bodyarmor4x4" name="quantity" min="0" value="0">
+        <span id="quantity-error-bodyarmor4x4" class="error_message"></span>
+        <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('bodyarmor4x4')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/Cap+Bulldog+B.jpg" alt="BULLDOG - TRUCKERS CAP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('bulldogcap')" onreset="resetoptions('bulldogcap')">
         <h2>BULLDOG - TRUCKERS CAP</h2>
+        <label for="quantity-bulldogcap">Quantity:</label>
+        <input type="number" id="quantity-bulldogcap" name="quantity" min="0" value="0">
+        <span id="quantity-error-bulldogcap" class="error_message"></span>
+        <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('bulldogcap')">Buy now</button>
     </div>
     </div>
 
@@ -162,28 +334,40 @@ ul li {
 
      <div class="card">
         <img src="./images/Cap+DL+B.jpg" alt="DIRTY LIFE - TRUCKERS CAP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('dirtylifecap')" onreset="resetoptions('dirtylifecap')">
         <h2>DIRTY LIFE - TRUCKERS CAP</h2>
+        <label for="quantity-dirtylifecap">Quantity:</label>
+        <input type="number" id="quantity-dirtylifecap" name="quantity" min="0" value="0">
+        <span id="quantity-error-dirtylifecap" class="error_message"></span>
+        <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('dirtylifecap')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/Cap+DPO+B.jpg" alt="DPO - TRUCKERS CAP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('dpo cap')" onreset="resetoptions('dpo cap')">
         <h2>DPO - TRUCKERS CAP</h2>
+        <label for="quantity-dpo cap">Quantity:</label>
+        <input type="number" id="quantity-dpo cap" name="quantity" min="0" value="0">
+        <span id="quantity-error-dpo cap" class="error_message"></span>
+        <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('dpo cap')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/Cap+Raffa+B.jpg" alt="RAFFA - TRUCKERS CAP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('raffa cap')" onreset="resetoptions('raffa cap')">
         <h2>RAFFA - TRUCKERS CAP</h2>
+        <label for="quantity-raffa cap">Quantity:</label>
+        <input type="number" id="quantity-raffa cap" name="quantity" min="0" value="0">
+        <span id="quantity-error-raffa cap" class="error_message"></span>
+        <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('raffa cap')">Buy now</button>
     </div>
     </div>
 
@@ -214,7 +398,99 @@ ul li {
 
             </div>
      </footer>
+<script>
+  function validateoption(productID){
+   const sizeEl = document.getElementById(`size-${productID}`);
+   const sizeErr = document.getElementById(`size-error-${productID}`);
+   const quantityEl = document.getElementById(`quantity-${productID}`);
+   const brandEl = document.getElementById(`brand-${productID}`);
+   const brandErr = document.getElementById(`brand-error-${productID}`);
+   const quantityErr = document.getElementById(`quantity-error-${productID}`);
+   if (sizeErr) {
+    sizeErr.textContent = "";
+   }
+   if (brandErr) {
+    brandErr.textContent = "";
+   }
+   if (quantityErr) {
+    quantityErr.textContent = "";
+   }
 
+  let optionValid = true;
+
+if(sizeEl && sizeErr) {
+    const size = sizeEl.value;
+    if(size ==="--select size--" || size.trim() === "") {
+        sizeErr.textContent = "Please select a size.";
+        optionValid = false;
+    }
+}
+
+if(brandEl && brandErr) {
+    const brand = brandEl.value;
+    if(brand === "--select brand--" || brand.trim() === "") {
+        brandErr.textContent = "Please select a brand.";
+        optionValid = false;
+    }
+}
+
+if(quantityEl && quantityErr) {
+    const quantity = Number(quantityEl.value);
+    if(!Number.isInteger(quantity) || quantity < 1) {
+        quantityErr.textContent = "Quantity must be 1 or more.";
+        optionValid = false;
+    }
+}
+
+if(optionValid) {
+    alert("We have processed your order! Thank you for shopping with us.");
+
+    if(sizeEl) {
+        sizeEl.value = "--select size--";
+    }
+    if(brandEl) {
+        brandEl.value = "--select brand--";
+    }
+    if(quantityEl) {
+        quantityEl.value = "0";
+    }
+    return true;
+}
+return false;
+}
+function resetoptions(productID) {
+    const sizeErr = document.getElementById(`size-error-${productID}`);
+    const brandErr = document.getElementById(`brand-error-${productID}`);
+    const quantityErr = document.getElementById(`quantity-error-${productID}`);
+    if (sizeErr) {
+        sizeErr.textContent = "";
+    }
+    if (brandErr) {
+        brandErr.textContent = "";
+    }
+    if (quantityErr) {
+        quantityErr.textContent = "";
+    }
+
+}
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const navToggle = document.getElementById('navToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    } 
+
+    navToggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    });
+
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+</script>
 
 
 </body>

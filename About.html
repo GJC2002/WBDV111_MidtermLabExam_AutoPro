@@ -45,7 +45,7 @@ h1{
     justify-content: space-around; 
     background-color: black;
     padding: 0.625rem;
-    margin-top: 2rem;
+    margin-top: 0.001rem;
     color: white;
 }
 .footer-item {
@@ -55,28 +55,53 @@ h1{
 .social-media{
   margin-right: 0.9375rem;
 }
+@media (max-width: 900px) {
+    .nav ul {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
+
 </style>
 <body>
     <div class="nav">
+    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
     <ul>
-        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html">Contact</a></li>    
+        <li><a href="Contact.html">Contact</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
 </div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</aside>
+    
 <br>
 <h1>About Us</h1>
 
 <div class="container">
-   <div><img src="./images/logo_about.jpg" alt="About Logo" height="400" width="500">
+   <div>
+    <img src="./images/logo_about.jpg" alt="About Logo" height="400" width="500">
 </div>
 <div class="text-block">
-    <p>AutoPro All-Terrain | Street Lifestyle is an automotive lifestyle brand specializing in rims, tires, performance upgrades, and 4x4 accessories.</p>
-    <p>We offer a curated selection of overland gear, camping equipment, and vehicle enhancement solutions. Our services include professional installation and periodic vehicle maintenance so every vehicle performs at its best.</p>
-    <p>Whether on the road, the trail, or at the campsite, AutoPro combines performance and adventure with products and expertise for drivers who live the all-terrain and street lifestyle.</p>
+    <p>AutoPro All-Terrain | Street Lifestyle is an automotive lifestyle brand specializing in rims, tires, performance upgrades, and 4x4 accessories.
+    We offer a curated selection of overland gear, camping equipment, and vehicle enhancement solutions. Our services include professional installation and periodic vehicle maintenance so every vehicle performs at its best. <br>
+    Whether on the road, the trail, or at the campsite, AutoPro combines performance and adventure with products and expertise for drivers who live the all-terrain and street lifestyle.</p>
 </div>
 </div>
 
@@ -105,6 +130,25 @@ h1{
 
             </div>
     </footer>
+    <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const navToggle = document.getElementById('navToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    navToggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    });
+
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+</script>
 
 </body>
 </html>

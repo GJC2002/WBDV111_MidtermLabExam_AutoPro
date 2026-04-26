@@ -24,12 +24,45 @@ h3{
 }
 .card {
   box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
-  width: 25%;
+  width: 20%;
   text-align: center;
   background-color: ghostwhite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
-p{
-    line-height: 1.5;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem 0 rgba(23, 23, 193, 0.3);
+}
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  padding: 0.5rem;
+  overflow-y: auto;
+}
+.card h3 {
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+}
+.card button {
+  margin-bottom: 0.5rem;
 }
 ul li {
   text-align: left;
@@ -50,19 +83,61 @@ ul li {
 .social-media{
   margin-right: 0.9375rem;
 }
+@media (max-width: 1024px) {
+    .card {
+        width: 38%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 47%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 70%;
+    }
+    .flex-product {
+        padding: 0.625rem;
+    }
+}
+@media (max-width: 900px) {
+    .nav ul {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
 </style>
 <body>
-
-    <div class="nav">
-     <ul>
-        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+<div class="nav">
+    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html">Contact</a></li>    
+        <li><a href="Contact.html">Contact</a></li>
     </ul>
-    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</aside>
+
     
       <br>
       <h1 style="text-align: center;">Offroad Accessories</h1>
@@ -74,31 +149,83 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Wedgetail.jpg" alt="TJM - SNORKEL AIRTECH WEDGE TAIL" height="100" width="200">
-    <div class="container">    
+    <div class="container" onsubmit="return validateoption('tjmsnorkelairtechwedgetrail')" onreset="resetoptions('tjmsnorkelairtechwedgetrail')">    
         <h2>TJM - SNORKEL AIRTECH WEDGE TAIL</h2>
         <p>TJM snorkels are custom-designed for each vehicle, providing dust-free air intake, better fuel efficiency, and reduced air filter clogging by drawing cooler air from roof level. Unlike generic snorkels, TJM designs complement your vehicle's shape for optimal performance and style.</p>
-         <h3>PHP 25,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <label for="model-tjmsnorkelairtechwedgetrail">Car Model:</label>
+        <select id="model-tjmsnorkelairtechwedgetrail" name="model-tjmsnorkelairtechwedgetrail">
+            <option value="--select car model--">--select car model--</option>
+            <option value="nissan navara - np300">Nissan Navara - NP300</option>
+            <option value="toyota hilux - revo">Toyota Hilux - Revo</option>
+            <option value="chevrolet colorado">Chevrolet Colorado</option>
+            <option value="ford ranger raptor">Ford Ranger Raptor</option>
+            <option value="mitsubishi strada/triton mq 2015+">Mitsubishi Strada/Triton MQ 2015+</option>
+            <option value="mitsubishi strada/triton ml/mn 2006+">Mitsubishi Strada/Triton ML/MN 2006+</option>
+        </select>
+        <span id="model-error-tjmsnorkelairtechwedgetrail" class="error_message"></span>
+        <label for="quantity-tjmsnorkelairtechwedgetrail">Quantity:</label>
+        <input type="number" id="quantity-tjmsnorkelairtechwedgetrail" name="quantity-tjmsnorkelairtechwedgetrail" min="0" value="0">
+        <span id="quantity-error-tjmsnorkelairtechwedgetrail" class="error_message"></span>
+        <br>
+        <h3>PHP 25,000.00</h3>
+        <button type="button" onclick="validateoption('tjmsnorkelairtechwedgetrail')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/TJM+Airtec.jpg" alt="TJM - SNORKEL AIRTEC AIR RAM" height="100" width="200">
-    <div class="container">
+    <div class="container" onsubmit="return validateoption('tjmsnorkelairtecairram')" onreset="resetoptions('tjmsnorkelairtecairram')">
         <h2>TJM - SNORKEL AIRTEC AIR RAM</h2>
         <p>TJM snorkels are custom-designed for each vehicle, providing dust-free air intake, better fuel efficiency, and reduced air filter clogging by drawing cooler air from roof level. Unlike generic snorkels, TJM designs complement your vehicle's shape for optimal performance and style.</p>
+        <label for="model-tjmsnorkelairtecairram">Car Model:</label>
+        <select id="model-tjmsnorkelairtecairram" name="model-tjmsnorkelairtecairram">
+            <option value="--select car model--">--select car model--</option>
+            <option value="nissan patrol - gu 3.0ltr">Nissan Patrol - GU 3.0LTR</option>
+            <option value="toyota hilux vigo/fortuner 2005+">Toyota Hilux Vigo/Fortuner 2005+</option>
+            <option value="toyota fj cruiser">Toyota FJ Cruiser</option>
+            <option value="toyota land cruiser - series 80">Toyota Land Cruiser - Series 80</option>
+            <option value="suszuki jimny jb43">Suzuki Jimny JB43</option>
+            <option value="toyota fortuner 2015+">Toyota Fortuner 2015+</option>
+            <option value="ford everest 2015+">Ford Everest 2015+</option>
+            <option value="jeep wrangler/rubicon - jk">Jeep Wrangler/Rubicon - JK</option>
+            <option value="nissan patrol - gq">Nissan Patrol - GQ</option>
+            <option value="mitsubishi montero/pajero sport 2016 + gen 3">Mitsubishi Montero/Pajero Sport 2016 + Gen 3</option>
+        </select>
+        <span id="model-error-tjmsnorkelairtecairram" class="error_message"></span>
+        <label for="quantity-tjmsnorkelairtecairram">Quantity:</label>
+        <input type="number" id="quantity-tjmsnorkelairtecairram" name="quantity-tjmsnorkelairtecairram" min="0" value="0">
+        <span id="quantity-error-tjmsnorkelairtecairram" class="error_message"></span>
+        <br>
         <h3>PHP 22,500.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmsnorkelairtecairram')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/TJM+Narva+Light1.jpg" alt="TJM - NARVA ULTIMA LED" height="100" width="200">
-    <div class="container">     
+    <div class="container" onsubmit="return validateoption('tjmnarvaultimaleed')" onreset="resetoptions('tjmnarvaultimaleed')">     
         <h2>TJM - NARVA ULTIMA LED</h2>
         <p>High-powered LED driving light with 16,500 lumens. 215mm diameter fits most bull bars while providing exceptional beam penetration and light volume for safe 4WD and transportation driving.</p>
+        <label for="description-tjmnarvaultimaleed">Description:</label>
+        <select name="description-tjmnarvaultimaleed" id="description-tjmnarvaultimaleed">
+            <option value="--select description--">--select description--</option>
+            <option value="narva ultima 180 led driving lamp kit with wiring harness">Narva Ultima 180 LED Driving Lamp Kit with Wiring Harness</option>
+            <option value="narva ultima 215 led driving lamp kit with wiring harness">Narva Ultima 215 LED Driving Lamp Kit with Wiring Harness</option>
+        </select>
+        <span id="description-error-tjmnarvaultimaleed" class="error_message"></span>
+        <label for="size-tjmnarvaultimaleed">Size:</label>
+        <select name="size-tjmnarvaultimaleed" id="size-tjmnarvaultimaleed">
+            <option value="--select size--">--select size--</option>
+            <option value="7">7"</option>
+            <option value="9">9"</option>
+        </select>
+        <span id="size-error-tjmnarvaultimaleed" class="error_message"></span>
+        <label for="quantity-tjmnarvaultimaleed">Quantity:</label>
+        <input type="number" id="quantity-tjmnarvaultimaleed" name="quantity-tjmnarvaultimaleed" min="0" value="0">
+        <span id="quantity-error-tjmnarvaultimaleed" class="error_message"></span>
+        <br>
         <h3>PHP 68,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmnarvaultimaleed')">Buy now</button>
     </div>
     </div>
 
@@ -113,17 +240,29 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Leaf+Spring.jpg" alt="TJM - LEAF SPRING" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmleafspring')" onreset="resetoptions('tjmleafspring')">
         <h2>TJM - LEAF SPRING</h2>
         <p>TJM XGS leaf springs enhance load-carrying capacity, towing safety, ride comfort, and stability. Made from high-grade spring steel for superior off-road flexibility, offering better traction through increased wheel travel and ground clearance.</p>
+        <label for="model-tjmleafspring">Car Model:</label>
+        <select id="model-tjmleafspring" name="model-tjmleafspring">
+            <option value="--select car model--">--select car model--</option>
+            <option value="toyota land cruiser">Toyota Land Cruiser</option>
+            <option value="toyota hilux">Toyota Hilux</option>
+            <option value="mitsubishi triton">Mitsubishi Triton</option>
+        </select>
+        <span id="model-error-tjmleafspring" class="error_message"></span>
+        <label for="quantity-tjmleafspring">Quantity:</label>
+        <input type="number" id="quantity-tjmleafspring" name="quantity-tjmleafspring" min="0" value="0">
+        <span id="quantity-error-tjmleafspring" class="error_message"></span>
+        <br>
         <h3>PHP 40,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmleafspring')">Buy now</button>
     </div>
     </div>
 
      <div class="card">
         <img src="./images/EXHAUST+2.jpg" alt="TJM - EXHAUST SYSTEM CATBACK" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmexhaustsystemcatback')" onreset="resetoptions('tjmexhaustsystemcatback')">
         <h2>TJM - EXHAUST SYSTEM CATBACK</h2>
         <ul>
             <li>Yellow Carbon Fiber muffler tip</li>
@@ -131,19 +270,45 @@ ul li {
             <li>Increase turbo torque response by exhaust output performance</li>
             <li> Bolt-on with original flange, no modification required!</li>
         </ul>
+        <label for="model-tjmexhaustsystemcatback">Car Model:</label>
+        <select id="model-tjmexhaustsystemcatback" name="model-tjmexhaustsystemcatback">
+            <option value="--select car model--">--select car model--</option>
+            <option value="ford ranger raptor">Ford Ranger Raptor</option>
+            <option value="toyota hilux - revo">Toyota Hilux - Revo</option>
+            <option value="toyota fortuner">Toyota Fortuner</option>
+            <option value="ford ranger - t6/t7">Ford Ranger - T6/T7</option>
+            <option value="nissan navara np300">Nissan Navara NP300</option>
+        </select>
+        <span id="model-error-tjmexhaustsystemcatback" class="error_message"></span>
+        <label for="quantity-tjmexhaustsystemcatback">Quantity:</label>
+        <input type="number" id="quantity-tjmexhaustsystemcatback" name="quantity-tjmexhaustsystemcatback" min="0" value="0">
+        <span id="quantity-error-tjmexhaustsystemcatback" class="error_message"></span>
+        <br>
         <h3>PHP 35,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmexhaustsystemcatback')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/TJM+UVP.jpg" alt="TJM - UVP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmuvp')" onreset="resetoptions('tjmuvp')">
         <h2>TJM - UVP</h2>
         <p>TJM under-body guards offer uncompromised protection and add a tough look to your vehicle. Our under-body guards are shot blasted, 
            immersed in zinc phosphate and black powdercoat for corrosion resistance and durability.</p>
+        <label for="model-tjmuvp">Car Model:</label>
+        <select id="model-tjmuvp" name="model-tjmuvp">
+            <option value="--select car model--">--select car model--</option>
+            <option value="isuzu dmax">Isuzu Dmax</option>
+            <option value="toyota hilux">Toyota Hilux</option>
+            <option value="mitsubishi triton">Mitsubishi Triton</option>
+        </select>
+        <span id="model-error-tjmuvp" class="error_message"></span>
+        <label for="quantity-tjmuvp">Quantity:</label>
+        <input type="number" id="quantity-tjmuvp" name="quantity-tjmuvp" min="0" value="0">
+        <span id="quantity-error-tjmuvp" class="error_message"></span>
+        <br>
         <h3>PHP 17,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmuvp')">Buy now</button>
     </div>
     </div>
 
@@ -158,31 +323,69 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Wedge+Tail+Head+B.jpg" alt="TJM - SNORKEL HEAD WEDGE TAIL" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmsnorkelheadwedgetrail')" onreset="resetoptions('tjmsnorkelheadwedgetrail')">
         <h2>TJM - SNORKEL HEAD WEDGE TAIL</h2>
         <p>Australian-designed wedge-tail snorkel kit made from UV-resistant polyethylene. Provides optimal air volume to your engine with minimal vehicle modifications. Winner of "Best Aftermarket Product Award" in 4x4 Australia Magazine.</p>
+        <label for="model-tjmsnorkelheadwedgetrail">Car Model:</label>
+        <select id="model-tjmsnorkelheadwedgetrail" name="model-tjmsnorkelheadwedgetrail">
+            <option value="--select car model--">--select car model--</option>
+            <option value="nissan navara - np300">Nissan Navara - NP300</option>
+            <option value="toyota hilux - revo">Toyota Hilux - Revo</option>
+            <option value="chevrolet colorado">Chevrolet Colorado</option>
+            <option value="ford ranger raptor">Ford Ranger Raptor</option>
+            <option value="mitsubishi strada/triton mq 2015+">Mitsubishi Strada/Triton MQ 2015+</option>
+            <option value="mitsubishi strada/triton ml/mn 2006+">Mitsubishi Strada/Triton ML/MN 2006+</option>
+        </select>
+        <span id="model-error-tjmsnorkelheadwedgetrail" class="error_message"></span>
+        <label for="quantity-tjmsnorkelheadwedgetrail">Quantity:</label>
+        <input type="number" id="quantity-tjmsnorkelheadwedgetrail" name="quantity-tjmsnorkelheadwedgetrail" min="0" value="0">
+        <span id="quantity-error-tjmsnorkelheadwedgetrail" class="error_message"></span>
+        <br>
         <h3>PHP 6,500.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmsnorkelheadwedgetrail')">Buy now</button>
     </div>
     </div>
 
-    <diV class="card">
+    <div class="card">
         <img src="./images/TJM+Extention+Strap.jpg" alt="TJM - WINCH EXTENSION STRAP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmwinchextensionstrap')" onreset="resetoptions('tjmwinchextensionstrap')">
         <h2>TJM - WINCH EXTENSION STRAP</h2>
         <p>Designed for extra winching length when anchor points are out of reach. Features reinforced eyelets, dual neoprene protective sleeves, and clear break-strength markings. Easier to store and handle than wire cable.</p>
+        <label for="quantity-tjmwinchextensionstrap">Quantity:</label>
+        <input type="number" id="quantity-tjmwinchextensionstrap" name="quantity-tjmwinchextensionstrap" min="0" value="0">
+        <span id="quantity-error-tjmwinchextensionstrap" class="error_message"></span>
+        <br>
         <h3>PHP 8,000.00</h3> 
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmwinchextensionstrap')">Buy now</button>
     </div>
     </div>
 
     <div class="card">  
         <img src="./images/TJM+XGS+Roamer.jpg" alt="XGS ROAMER" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('xgsroamer')" onreset="resetoptions('xgsroamer')">
         <h2>XGS ROAMER</h2>
         <p>Heavy-duty twin-tube shock absorbers with nitrogen-charged 18mm piston rod and 35-40mm piston bore. Multi-stage velocity-controlled valving adapts dynamically to terrain changes for superior damping and durability.</p>
+        <label for="model-xgsroamer">Car Model:</label>
+        <select id="model-xgsroamer" name="model-xgsroamer">
+            <option value="--select car model--">--select car model--</option>
+            <option value="toyota innova">Toyota Innova</option>
+            <option value="toyota hilux">Toyota Hilux</option>
+            <option value="mitsubishi triton">Mitsubishi Triton</option>
+            <option value="toyota fortuner">Toyota Fortuner</option>
+            <option value="toyota fj cruiser">Toyota FJ Cruiser</option>
+            <option value="toyota tamarraw">Toyota Tamaraw</option>
+            <option value="mitsubishi montero">Mitsubishi Montero</option>
+            <option value="nissan np300">Nissan NP300</option>
+            <option value="nissan patrol gq">Nissan Patrol GQ</option>
+            <option value="ford ranger">Ford Ranger</option>
+        </select>
+        <span id="model-error-xgsroamer" class="error_message"></span>
+        <label for="quantity-xgsroamer">Quantity:</label>
+        <input type="number" id="quantity-xgsroamer" name="quantity-xgsroamer" min="0" value="0">
+        <span id="quantity-error-xgsroamer" class="error_message"></span>
+        <br>
         <h3>PHP 42,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('xgsroamer')">Buy now</button>
     </div>
     </div>
 
@@ -197,30 +400,74 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+XGS+Rugged.jpg" alt="XGS RUGGED" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('xgsrugged')" onreset="resetoptions('xgsrugged')">
         <h2>XGS RUGGED</h2>
         <p>Innovative mono-tube construction delivers superior ride quality and performance for heavy loads on any terrain. Pushes the boundaries of 4x4 driving capabilities.</p>
+        <label for="model-xgsrugged">Car Model:</label>
+        <select id="model-xgsrugged" name="model-xgsrugged">
+            <option value="--select car model--">--select car model--</option>
+            <option value="mazda bt50">Mazda BT50</option>
+            <option value="toyota hilux">Toyota Hilux</option>
+            <option value="mitsubishi triton">Mitsubishi Triton</option>
+            <option value="toyota fortuner">Toyota Fortuner</option>
+            <option value="toyota fj cruiser">Toyota FJ Cruiser</option>
+            <option value="toyota hilux grs">Toyota Hilux GRS</option>
+            <option value="mitsubishi montero">Mitsubishi Montero</option>
+            <option value="toyota prado 120">Toyota Prado 120</option>
+            <option value="nissan patrol gq">Nissan Patrol GQ</option>
+            <option value="ford ranger">Ford Ranger</option>
+            <option value="ford next gen ranger">Ford Next Gen Ranger</option>
+            <option value="ford everest">Ford Everest</option>
+        </select>
+        <span id="model-error-xgsrugged" class="error_message"></span>
+        <label for="quantity-xgsrugged">Quantity:</label>
+        <input type="number" id="quantity-xgsrugged" name="quantity-xgsrugged" min="0" value="0">
+        <span id="quantity-error-xgsrugged" class="error_message"></span>
+        <br>
         <h3>PHP 64,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('xgsrugged')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/TJM+Panhard.jpg" alt="TJM - PANHARD ROD" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmpanhardrod')" onreset="resetoptions('tjmpanhardrod')">
         <h2>TJM - PANHARD ROD</h2>
         <p>Adjustable Panhard rods prevent axle shifting when lifting coil spring 4WD vehicles. Eliminates forward/backward and side-to-side movement by allowing precise positioning for your suspension lift height.</p>
+            <label for="model-tjmpanhardrod">Car Model:</label>
+        <select id="model-tjmpanhardrod" name="model-tjmpanhardrod">
+            <option value="--select car model--">--select car model--</option>
+            <option value="toyota landcruiser 80">Toyota Land Cruiser 80</option>
+            <option value="nissan patrol gq">Nissan Patrol GQ</option>
+        </select>
+        <span id="model-error-tjmpanhardrod" class="error_message"></span>
+        <label for="area-tjmpanhardrod">Area:</label>
+        <select id="area-tjmpanhardrod" name="area-tjmpanhardrod">
+            <option value="--select area--">--select area--</option>
+            <option value="front">Front</option>
+            <option value="rear">Rear</option>
+        </select>
+        <span id="area-error-tjmpanhardrod" class="error_message"></span>
+        <label for="quantity-tjmpanhardrod">Quantity:</label>
+        <input type="number" id="quantity-tjmpanhardrod" name="quantity-tjmpanhardrod" min="0" value="0">
+        <span id="quantity-error-tjmpanhardrod" class="error_message"></span>
+        <br>
         <h3>PHP 20,666.67</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmpanhardrod')">Buy now</button>
     </div>
     </div>
 
-    <diV class="card">
+    <div class="card">
         <img src="./images/TJM+Mud+Guard.jpg" alt="TJM - MUD FLAP" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmmudflap')" onreset="resetoptions('tjmmudflap')">
         <h2>TJM - MUD FLAP</h2>
+        <p>Protect your vehicle from mud and debris with our high-quality mud flaps. Designed for durability and performance in harsh conditions.</p>
+        <label for="quantity-tjmmudflap">Quantity:</label>
+        <input type="number" id="quantity-tjmmudflap" name="quantity-tjmmudflap" min="0" value="0">
+        <span id="quantity-error-tjmmudflap" class="error_message"></span>
+        <br>
         <h3>PHP 1,500.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmmudflap')">Buy now</button>
     </div>
     </div>
 
@@ -235,32 +482,87 @@ ul li {
 
     <div class="card">
        <img src="./images/TJM+New+shocks.jpg" alt="TJM - SILVER EDITION XGS SHOCKS" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmsilverelectionxgsshocks')" onreset="resetoptions('tjmsilverelectionxgsshocks')">
         <h2>TJM - SILVER EDITION XGS SHOCKS</h2>
         <p>Complete suspension upgrade package with Australian-engineered components. Transforms your drive with quality suspension that enhances both on-road comfort and off-road capability.</p>
+        <label for="model-tjmsilverelectionxgsshocks">Car Model:</label>
+        <select id="model-tjmsilverelectionxgsshocks" name="model-tjmsilverelectionxgsshocks">
+            <option value="--select car model--">--select car model--</option>
+            <option value="toyota hilux revo/vigo">Toyota Hilux Revo/Vigo</option>
+            <option value="isuzu dmax">Isuzu D-Max</option>
+            <option value="toyota fortuner">Toyota Fortuner</option>
+            <option value="mitsubishi montero/triton">Mitsubishi Montero/Triton</option>
+            <option value="ford ranger">Ford Ranger</option>
+            <option value="ford everest 2015+">Ford Everest 2015+</option>
+        </select>
+        <span id="model-error-tjmsilverelectionxgsshocks" class="error_message"></span>
+        <label for="quantity-tjmsilverelectionxgsshocks">Quantity:</label>
+        <input type="number" id="quantity-tjmsilverelectionxgsshocks" name="quantity-tjmsilverelectionxgsshocks" min="0" value="0">
+        <span id="quantity-error-tjmsilverelectionxgsshocks" class="error_message"></span>
+        <br>
         <h3>PHP 40,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmsilverelectionxgsshocks')">Buy now</button>
     </div>
     </div>
 
 
     <div class="card">
         <img src="./images/TJM+Coil+Springs.jpg" alt="TJM - XGS Series 4000 COIL SPRING" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmcoilspring')" onreset="resetoptions('tjmcoilspring')">
         <h2>TJM - XGS Series 4000 COIL SPRING</h2>
         <p>TJM XGS Suspension enhances on-road comfort and off-road capability. Twin-tube shock absorbers with multi-stage velocity-controlled valving adapt to terrain, while thick walls ensure long-lasting performance.</p>
+        <label for="model-tjmcoilspring">Car Model:</label>
+        <select id="model-tjmcoilspring" name="model-tjmcoilspring">
+            <option value="--select car model--">--select car model--</option>
+            <option value="toyota hilux/fortuner/prado 150/fj cruiser">Toyota Hilux/Fortuner/Prado 150/FJ Cruiser</option>
+            <option value="isuzu mux">Isuzu Mux</option>
+            <option value="mazda bt50">Mazda BT50</option>
+            <option value="mitsubishi montero/triton/pajero sport/strada mq/mn type a">Mitsubishi Montero/Triton/Pajero Sport/Strada MQ/MN Type A</option>
+            <option value="mitsubishi montero/pajero sport type a">Mitsubishi Montero/Pajero Sport Type A</option>
+            <option value="ford ranger">Ford Ranger</option>
+            <option value="ford everest">Ford Everest</option>
+            <option value="jeep rubicon/wrangler - jk">Jeep Rubicon/Wrangler - JK</option>
+            <option value="suzuki jimny">Suzuki Jimny</option>
+            <option value="chevrolet trailblazer type a">Chevrolet Trailblazer Type A</option>
+            <option value="land rover defender - 90/110/130 linear 80 kg">Land Rover Defender - 90/110/130 Linear 80 kg</option>
+            <option value="land rover defender - 90/110/130 progressive 100 kg">Land Rover Defender - 90/110/130 Progressive 100 kg</option>
+        </select>
+        <span id="model-error-tjmcoilspring" class="error_message"></span>
+        <label for="quantity-tjmcoilspring">Quantity:</label>
+        <input type="number" id="quantity-tjmcoilspring" name="quantity-tjmcoilspring" min="0" value="0">
+        <span id="quantity-error-tjmcoilspring" class="error_message"></span>
+        <br>
         <h3>PHP 14,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmcoilspring')">Buy now</button>
     </div>
     </div>
 
     <div class="card">
         <img src="./images/TJM+Front+Bumper.jpg" alt="TJM - OUTBACK BULL BAR" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmoutbackbullbar')" onreset="resetoptions('tjmoutbackbullbar')">
         <h2>TJM - OUTBACK BULL BAR</h2>
         <p>Exceptional frontal protection with full wrap cato straps and 63mm pipework. Features steel winch-mount, integrated recovery points, LED fog/combination lights, reinforced jack points, dual aerial mounts, and driving light mounting points. No plastic construction - pure Aussie toughness.</p>
+        <label for="model-tjmoutbackbullbar">Car Model:</label>
+        <select id="model-tjmoutbackbullbar" name="model-tjmoutbackbullbar">
+            <option value="--select car model--">--select car model--</option>
+            <option value="toyota hilux">Toyota Hilux</option>
+            <option value="isuzu dmax">Isuzu D-Max</option>
+            <option value="ford everest">Ford Everest</option>
+            <option value="ford ranger T6">Ford Ranger T6</option>
+            <option value="nissan navara np300">Nissan Navara NP300</option>
+            <option value="nissan patrol - y62 royal">Nissan Patrol - Y62 Royal</option>
+            <option value="toyota land cruiser prado - 120 series">Toyota Land Cruiser Prado - 120 Series</option>
+            <option value="toyota land cruiser - series 200 2016">Toyota Land Cruiser Prado - 200 Series 2016</option>
+            <option value="toyota fj cruiser">Toyota FJ Cruiser</option>
+            <option value="toyota land cruiser - series 76/78/79 rebirth">Toyota Land Cruiser - Series 76/78/79 Rebirth</option>
+        </select>
+        <span id="model-error-tjmoutbackbullbar" class="error_message"></span>
+        <label for="quantity-tjmoutbackbullbar">Quantity:</label>
+        <input type="number" id="quantity-tjmoutbackbullbar" name="quantity-tjmoutbackbullbar" min="0" value="0">
+        <span id="quantity-error-tjmoutbackbullbar" class="error_message"></span>
+        <br>
         <h3>PHP 70,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmoutbackbullbar')">Buy now</button>
     </div>
     </div>
 
@@ -275,12 +577,23 @@ ul li {
 
     <div class="card">
        <img src="./images/TJM+Awning.jpg" alt="TJM - AWNING" height="100" width="200">
-        <div class="container">
+        <div class="container" onsubmit="return validateoption('tjmaxning')" onreset="resetoptions('tjmaxning')">
         <h2>TJM - AWNING</h2>
         <p>A TJM awning gives you instant comfort and protection from the elements wherever you pull up. 
            Swift to set up in under 30 seconds and simple to pack away.</p>
+           <label for="size-tjmaxning">Size:</label>
+        <select id="size-tjmaxning" name="size-tjmaxning">
+            <option value="--select size--">--select size--</option>
+            <option value="1.4m x 2m">1.4m x 2m</option>
+            <option value="2m x 2.5m">2m x 2.5m</option>
+        </select>
+        <span id="size-error-tjmaxning" class="error_message"></span>
+            <label for="quantity-tjmaxning">Quantity:</label>
+        <input type="number" id="quantity-tjmaxning" name="quantity-tjmaxning" min="0" value="0">
+        <span id="quantity-error-tjmaxning" class="error_message"></span>
+        <br>
         <h3>PHP 15,000.00</h3>
-        <button type="button" onclick="alert('Buy Now!')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmaxning')">Buy now</button>
     </div>
     </div>
 
@@ -311,8 +624,191 @@ ul li {
 
             </div>
     </footer>
+<script>
+function validateoption(ProductID) {
+    const modelEl = document.getElementById(`model-${ProductID}`);
+    const sizeEl = document.getElementById(`size-${ProductID}`);
+    const quantityEl = document.getElementById(`quantity-${ProductID}`);
+    const descriptionEl = document.getElementById(`description-${ProductID}`);
+    const arealEl = document.getElementById(`area-${ProductID}`);
+    const partEl = document.getElementById(`part-${ProductID}`);
+    const modelErr = document.getElementById(`model-error-${ProductID}`);
+    const sizeErr = document.getElementById(`size-error-${ProductID}`);
+    const quantityErr = document.getElementById(`quantity-error-${ProductID}`);
+    const descriptionErr = document.getElementById(`description-error-${ProductID}`);
+    const areaErr = document.getElementById(`area-error-${ProductID}`);
+    const partErr = document.getElementById(`part-error-${ProductID}`);
 
+    if(modelErr) {
+        modelErr.textContent = "";
+    }
+    if(sizeErr) {
+        sizeErr.textContent = "";
+    }
+    if(quantityErr) {
+        quantityErr.textContent = "";
+    }
+    if(descriptionErr) {
+        descriptionErr.textContent = "";
+    }
+    if(areaErr) {
+        areaErr.textContent = "";
+    }
+    if(partErr) {
+        partErr.textContent = "";
+    }
 
+    let optionValid = true;
+
+    if(modelEl) {
+        const model = modelEl.value;
+        if(model === "--select car model--" || model.trim() === "") {
+            if(modelErr) {
+                modelErr.textContent = "Please select a car model.";
+                optionValid = false;
+            }
+        }
+    }
+
+    if(sizeEl) {
+        const size = sizeEl.value;
+        if(size === "--select size--" || size.trim() === "") {
+            if(sizeErr) {
+                sizeErr.textContent = "Please select a size.";
+                optionValid = false;
+            }
+        }
+    }
+
+    if(quantityEl) {
+        const quantity = Number(quantityEl.value);
+        if (!Number.isInteger(quantity) || quantity < 1) {
+            if(quantityErr) {
+                quantityErr.textContent = "Quantity must be 1 or more.";
+                optionValid = false;
+            }
+        }
+    }
+
+    if(descriptionEl) {
+        const description = descriptionEl.value;
+        if(description === "--select description--" || description.trim() === "") {
+            if(descriptionErr) {
+                descriptionErr.textContent = "Please enter a description.";
+                optionValid = false;
+            }
+        }
+    }
+
+    if(arealEl) {
+        const area = arealEl.value;
+        if(area === "--select area--" || area.trim() === "") {
+            if(areaErr) {
+                areaErr.textContent = "Please select an area.";
+                optionValid = false;
+            }
+        }
+    }
+
+    if(partEl) {
+        const part = partEl.value;
+        if(part === "--select part--" || part.trim() === "") {
+            if(partErr) {
+                partErr.textContent = "Please select a part.";
+                optionValid = false;
+            }
+        }
+    }
+
+    if(optionValid) {
+        alert("We have processed your order! Thank you for shopping with us.");
+        if(modelEl) {
+            modelEl.value = "--select car model--";
+        }
+        if(sizeEl) {
+            sizeEl.value = "--select size--";
+        }
+        if(quantityEl) {
+            quantityEl.value = "0";
+        }
+        if(descriptionEl) {
+            descriptionEl.value = "--select description--";
+        }
+        if(arealEl) {
+            arealEl.value = "--select area--";
+        }
+        if(partEl) {
+            partEl.value = "--select part--";
+        }
+        return true;
+    }
+    return false;
+}
+
+function resetoptions(ProductID) {
+    const modelErr = document.getElementById(`model-error-${ProductID}`);
+    const sizeErr = document.getElementById(`size-error-${ProductID}`);
+    const quantityErr = document.getElementById(`quantity-error-${ProductID}`);
+    const descriptionErr = document.getElementById(`description-error-${ProductID}`);
+    const areaErr = document.getElementById(`area-error-${ProductID}`);
+    const partErr = document.getElementById(`part-error-${ProductID}`);
+
+    if(modelErr) {
+        modelErr.textContent = "";
+    }
+    if(sizeErr) {
+        sizeErr.textContent = "";
+    }
+    if(quantityErr) {
+        quantityErr.textContent = "";
+    }
+    if(descriptionErr) {
+        descriptionErr.textContent = "";
+    }
+    if(areaErr) {
+        areaErr.textContent = "";
+    }
+    if(partErr) {
+        partErr.textContent = "";
+    }
+}
+    const areaErr = document.getElementById(`area-error-${ProductID}`);
+    const partErr = document.getElementById(`part-error-${ProductID}`);
+
+    if(modelErr) {
+        modelErr.textContent = "";
+    }
+    if(sizeErr) {
+        sizeErr.textContent = "";
+    }
+    if(quantityErr) {
+        quantityErr.textContent = "";   
+    }
+    if(descriptionErr) {
+        descriptionErr.textContent = "";
+    }
+    if(areaErr) {
+        areaErr.textContent = "";
+    }
+    if(partErr) {
+        partErr.textContent = "";       
+    }
+   
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const navToggle = document.getElementById('navToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+        navToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            sidebarOverlay.classList.add('active');
+        });
+        sidebarClose.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    </script>
 
 </body>
 </html>

@@ -14,72 +14,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 </head>
-<script>
-   function validateform (){
-        const name = document.getElementById("name").value;
-        const address = document.getElementById("address").value;
-        const email = document.getElementById("email").value;
-        const contact_num = document.getElementById("contact_num").value;
-        const subject = document.getElementById("subject").value;
-        const agree = document.getElementById("agree").checked;
-
-        const nameERR = document.getElementById("name-error");
-        const addressERR = document.getElementById("address-error");
-        const emailERR = document.getElementById("email-error");
-        const contact_num_ERR = document.getElementById("contact_num-error");
-        const subjectERR = document.getElementById("subject-error");
-        const agreeErr = document.getElementById("agree-error");
-
-        nameERR.textContent = "";
-        addressERR.textContent = "";
-        emailERR.textContent = "";
-        contact_num_ERR.textContent = "";
-        subjectERR.textContent = "";
-        agreeErr.textContent = "";
-
-        let inputValid = true;
-
-        if(name === "" || /\d/.test(name)) {
-            nameERR.textContent = "Please Enter Your Name.";
-            inputValid = false;
-        }
-        if(address === "") {
-            addressERR.textContent = "Please Enter Your Address."
-            inputValid = false;
-        }
-        if(email === "" || !email.includes("@")) {
-            emailERR.textContent = "Please Enter Your Email."
-            inputValid = false;
-        }
-        const phonePattern = /^\d{11}$/;
-        if(contact_num === "" || !phonePattern.test(contact_num)) {
-           contact_num_ERR.textContent = "Please Enter Your Phone Number";
-            inputValid = false;
-        }
-        if(subject === "") {
-            subjectERR.textContent = "Please Enter Your Subject";
-            inputValid = false;
-        }
-        if(!agree) {
-                agreeErr.textContent = "Please agree to the above information.";
-                isValid = false;
-        }
-        if(inputValid) {
-            alert("We are processing your request. We will notify you in your email.");
-            return true;
-        } else {
-            return false;
-        }
-    }
-    function resetErrors() {
-        document.getElementById("name-error").textContent = "";
-            document.getElementById("address-error").textContent = "";
-            document.getElementById("email-error").textContent = "";
-            document.getElementById("contact number-error").textContent = "";
-            document.getElementById("subject-error").textContent = "";
-            document.getElementById("agree-error").textContent = "";
-    }
-</script>
 <style>
     h1{
         font-family: "Bungee", sans-serif;
@@ -131,19 +65,41 @@ p{
     padding: 0.3125rem;
     margin: 0.3125rem;
 }
+@media (max-width: 900px) {
+    .nav ul {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
 
 </style>
 <body>
-    <div class="nav">
-        <ul>
-        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">                                       
+     <div class="nav">
+    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html">Contact</a></li>    
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
         </ul>
-    </div>
+    </nav>
+</aside>
     
     <div class="row">
       <div class="column">
@@ -188,12 +144,6 @@ p{
                <br>
                <textarea name="Comment" id="comment"></textarea>
             </p>
-
-            <p>
-               <input type="checkbox" id="agree" name="Agree"/>
-               <label for="agree">I agree to the above information.</label>
-               <span id="agree-error" class="error_message"></span>
-           </p>
 
             <p>
                 <input type="submit" value="Send" name="Submit"/>
@@ -242,7 +192,85 @@ p{
 
             </div>
         </footer>
-    
+    <script>
+   function validateform (){
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const email = document.getElementById("email").value;
+        const contact_num = document.getElementById("contact_num").value;
+        const subject = document.getElementById("subject").value;
+       
+
+        const nameERR = document.getElementById("name-error");
+        const addressERR = document.getElementById("address-error");
+        const emailERR = document.getElementById("email-error");
+        const contact_num_ERR = document.getElementById("contact_num-error");
+        const subjectERR = document.getElementById("subject-error");
+
+
+        nameERR.textContent = "";
+        addressERR.textContent = "";
+        emailERR.textContent = "";
+        contact_num_ERR.textContent = "";
+        subjectERR.textContent = "";
+       
+
+        let inputValid = true;
+
+        if(name === "" || /\d/.test(name)) {
+            nameERR.textContent = "Please Enter Your Name.";
+            inputValid = false;
+        }
+        if(address === "") {
+            addressERR.textContent = "Please Enter Your Address."
+            inputValid = false;
+        }
+        if(email === "" || !email.includes("@")) {
+            emailERR.textContent = "Please Enter Your Email."
+            inputValid = false;
+        }
+        const phonePattern = /^\d{11}$/;
+        if(contact_num === "" || !phonePattern.test(contact_num)) {
+           contact_num_ERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
+            inputValid = false;
+        }
+        if(subject === "") {
+            subjectERR.textContent = "Please Enter Your Subject";
+            inputValid = false;
+        }
+        if(inputValid) {
+            alert("We are processing your request. We will notify you in your email.");
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function resetErrors() {
+        document.getElementById("name-error").textContent = "";
+            document.getElementById("address-error").textContent = "";
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("contact number-error").textContent = "";
+            document.getElementById("subject-error").textContent = "";
+           
+    }
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const navToggle = document.getElementById('navToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    navToggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    });
+
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+</script>
     
 </body>
 </html>
