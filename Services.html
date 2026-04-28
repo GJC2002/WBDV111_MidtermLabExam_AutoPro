@@ -93,15 +93,15 @@ p{
     <div class="form">
         <form name="RegForm" onsubmit="return validateform()" onreset="resetErrors()">
             <p>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="Name" placeholder="Enter FullName" size="30"/>
-                <span id="name-error" class="error_message"></span>
+                <label for="fname">FirstName:</label>
+                <input type="text" id="fname" name="FName" placeholder="Enter First Name" size="30" oninput="filterNameInput(event)"/>
+                <span id="fname-error" class="error_message"></span>
             </p>
 
             <p>
-                <label for="address">Adrress:</label>
-                <input type="text" name="Address" id="address" placeholder="Enter Address" size="30"/>
-                <span id="address-error" class="error_message"></span>
+                <label for="lname">LastName:</label>
+                <input type="text" id="lname" name="LName" placeholder="Enter Last Name" size="30" oninput="filterNameInput(event)"/>
+                <span id="lname-error" class="error_message"></span>
             </p>
 
             <p>
@@ -112,7 +112,7 @@ p{
 
             <p>
                 <label for="contact_num">Phone Number:</label>
-                <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30"/>
+                <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30" inputmode="numeric" pattern="\d*" maxlength="11" oninput="filterNumberInput(event)"/>
                 <span id="contact_num-error" class="error_message"></span>
             </p>
 
@@ -174,25 +174,31 @@ p{
     </footer>
 
     <script>
+    function filterNameInput(event) {
+        event.target.value = event.target.value.replace(/\d/g, '');
+    }
+    function filterNumberInput(event) {
+        event.target.value = event.target.value.replace(/[^0-9]/g, '');
+    }
     function validateform (){
-        const name = document.getElementById("name").value;
-        const address = document.getElementById("address").value;
+        const fname = document.getElementById("fname").value;
+        const lname = document.getElementById("lname").value;
         const email = document.getElementById("email").value;
         const contact_num = document.getElementById("contact_num").value;
         const services = document.getElementById("services").value;
         const schedule = document.getElementById("schedule").value;
 
 
-        const nameERR = document.getElementById("name-error");
-        const addressERR = document.getElementById("address-error");
+        const fnameERR = document.getElementById("fname-error");
+        const lnameERR = document.getElementById("lname-error");
         const emailERR = document.getElementById("email-error");
         const contact_num_ERR = document.getElementById("contact_num-error");
         const servicesERR = document.getElementById("services-error");
         const scheduleERR = document.getElementById("schedule-error");
   
 
-        nameERR.textContent = "";
-        addressERR.textContent = "";
+        fnameERR.textContent = "";
+        lnameERR.textContent = "";
         emailERR.textContent = "";
         contact_num_ERR.textContent = "";
         servicesERR.textContent = "";
@@ -201,16 +207,16 @@ p{
 
         let inputValid = true;
 
-        if(name === "" || /\d/.test(name)) {
-            nameERR.textContent = "Please Enter Your Name.";
+        if(fname === "" || /\d/.test(fname)) {
+            fnameERR.textContent = "Please Enter Your First Name.";
             inputValid = false;
         }
-        if(address === "") {
-            addressERR.textContent = "Please Enter Your Address."
+        if(lname === "" || /\d/.test(lname)) {
+            lnameERR.textContent = "Please Enter Your Last Name.";
             inputValid = false;
         }
-        if(email === "" || !email.includes("@")) {
-            emailERR.textContent = "Please Enter Your Email."
+        if(email === "" || !email.includes("@") || !email.includes(".")) {
+            emailERR.textContent = "Please Enter Your Valid Email Address."
             inputValid = false;
         }
         const phonePattern = /^\d{11}$/;
@@ -222,8 +228,8 @@ p{
             servicesERR.textContent = "Please Select Your Service.";
             inputValid = false;
         }
-        if(schedule === "") {
-            scheduleERR.textContent = "Please select Your Schedule.";
+        if(schedule === "" || !validateScheduleValue(schedule)) {
+            scheduleERR.textContent = "Please select a valid schedule between 08:00 am and 05:30 pm.";
             inputValid = false;
         }
         if(inputValid) {
@@ -234,13 +240,102 @@ p{
         }
     }
     function resetErrors() {
-        document.getElementById("name-error").textContent = "";
-        document.getElementById("address-error").textContent = "";
+        document.getElementById("fname-error").textContent = "";
+        document.getElementById("lname-error").textContent = "";
         document.getElementById("email-error").textContent = "";
         document.getElementById("contact_num-error").textContent = "";
         document.getElementById("services-error").textContent = "";
         document.getElementById("schedule-error").textContent = "";
     }
+    function formatToLocalDateTime(value) {
+        const year = value.getFullYear();
+        const month = String(value.getMonth() + 1).padStart(2, '0');
+        const day = String(value.getDate()).padStart(2, '0');
+        const hour = String(value.getHours()).padStart(2, '0');
+        const minute = String(value.getMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day}T${hour}:${minute}`;
+    }
+    function getScheduleMin() {
+        const now = new Date();
+        const earliestToday = new Date(now);
+        earliestToday.setHours(8, 0, 0, 0);
+        const latestToday = new Date(now);
+        latestToday.setHours(17, 30, 0, 0);
+
+        let nextAvailable = new Date(now);
+        if (nextAvailable < earliestToday) {
+            nextAvailable = earliestToday;
+        } else {
+            const currentMinutes = nextAvailable.getMinutes();
+            const currentSeconds = nextAvailable.getSeconds();
+            nextAvailable.setSeconds(0, 0);
+            if (currentSeconds > 0) {
+                nextAvailable.setMinutes(currentMinutes + 1);
+            }
+        }
+
+        if (nextAvailable > latestToday) {
+            nextAvailable = new Date(now);
+            nextAvailable.setDate(now.getDate() + 1);
+            nextAvailable.setHours(8, 0, 0, 0);
+            nextAvailable.setMinutes(0, 0, 0, 0);
+        }
+
+        return formatToLocalDateTime(nextAvailable);
+    }
+    function parseLocalDateTime(value) {
+        const [datePart, timePart] = value.split('T');
+        const [year, month, day] = datePart.split('-').map(Number);
+        const [hour, minute] = timePart.split(':').map(Number);
+        return new Date(year, month - 1, day, hour, minute, 0, 0);
+    }
+    function validateScheduleValue(value) {
+        if (!value) return false;
+        const selected = parseLocalDateTime(value);
+        const now = new Date();
+        if (selected < now) return false;
+
+        const hour = selected.getHours();
+        const minute = selected.getMinutes();
+        if (hour < 8 || hour > 17 || (hour === 17 && minute > 30)) return false;
+        return true;
+    }
+    function normalizeScheduleValue() {
+        const schedule = document.getElementById("schedule");
+        if (!schedule.value) return;
+
+        let selected = parseLocalDateTime(schedule.value);
+        const now = new Date();
+        if (selected < now) {
+            schedule.value = getScheduleMin();
+            return;
+        }
+
+        const hour = selected.getHours();
+        const minute = selected.getMinutes();
+        if (hour < 8) {
+            selected.setHours(8, 0, 0, 0);
+        } else if (hour > 17 || (hour === 17 && minute > 30)) {
+            selected.setHours(17, 30, 0, 0);
+        }
+
+        schedule.value = formatToLocalDateTime(selected);
+    }
+    function applyScheduleConstraints() {
+        const schedule = document.getElementById("schedule");
+        schedule.min = getScheduleMin();
+        schedule.addEventListener("input", () => {
+            normalizeScheduleValue();
+            if (schedule.value && !validateScheduleValue(schedule.value)) {
+                schedule.setCustomValidity("Please choose a booking time between 08:00 and 17:30.");
+            } else {
+                schedule.setCustomValidity("");
+            }
+        });
+        schedule.addEventListener("blur", normalizeScheduleValue);
+        schedule.addEventListener("change", normalizeScheduleValue);
+    }
+    applyScheduleConstraints();
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     const navToggle = document.getElementById('navToggle');

@@ -110,15 +110,15 @@ p{
         
          <form name="RegForm" onsubmit="return validateform()" onreset="resetErrors()">
             <p>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="Name" placeholder="Enter FullName" size="30"/>
-                <span id="name-error" class="error_message"></span>
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="First Name" placeholder="Enter First Name" size="30" oninput="filterNameInput(event)"/>
+                <span id="fname-error" class="error_message"></span>
             </p>
 
             <p>
-                <label for="address">Adrress:</label>
-                <input type="text" name="Address" id="address" placeholder="Enter Address" size="30"/>
-                <span id="address-error" class="error_message"></span>
+                <label for="lname">Last Name:</label>
+                <input type="text" name="Last Name" id="lname" placeholder="Enter Last Name" size="30" oninput="filterNameInput(event)"/>
+                <span id="lname-error" class="error_message"></span>
             </p>
 
             <p>
@@ -129,7 +129,7 @@ p{
 
             <p>
                 <label for="contact_num">Phone Number:</label>
-                <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30"/>
+                <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30" inputmode="numeric" pattern="\d*" maxlength="11" oninput="filterNumberInput(event)"/>
                 <span id="contact_num-error" class="error_message"></span>
             </p>
 
@@ -143,6 +143,7 @@ p{
                <label for="comment">Message:</label>
                <br>
                <textarea name="Comment" id="comment"></textarea>
+               <span id="comment-error" class="error_message"></span>
             </p>
 
             <p>
@@ -157,6 +158,7 @@ p{
             <h1 style="white-space: pre-wrap;">Our Store</h1>
             <img src="./images/autopro_branch_pic.jpg" alt="Auto Pro Branch" height="200" width="200">
             <p style="white-space: pre-wrap;"><strong>Location: Lot 3 Felix Avenue, Cainta, Philippines, 1900</strong></p>
+            <p style="white-space: pre-wrap;"><strong>Business Hours: 8:00 AM - 6:00 PM</strong></p>
         </div>
     </div>
   
@@ -193,40 +195,47 @@ p{
             </div>
         </footer>
     <script>
+    function filterNameInput(event) {
+        event.target.value = event.target.value.replace(/\d/g, '');
+    }
+    function filterNumberInput(event) {
+        event.target.value = event.target.value.replace(/[^0-9]/g, '');
+    }
    function validateform (){
-        const name = document.getElementById("name").value;
-        const address = document.getElementById("address").value;
+        const fname = document.getElementById("fname").value;
+        const lname = document.getElementById("lname").value;
         const email = document.getElementById("email").value;
         const contact_num = document.getElementById("contact_num").value;
         const subject = document.getElementById("subject").value;
+        const comment = document.getElementById("comment").value;
        
 
-        const nameERR = document.getElementById("name-error");
-        const addressERR = document.getElementById("address-error");
+        const fnameERR = document.getElementById("fname-error");
+        const lnameERR = document.getElementById("lname-error");
         const emailERR = document.getElementById("email-error");
         const contact_num_ERR = document.getElementById("contact_num-error");
         const subjectERR = document.getElementById("subject-error");
+        const commentERR = document.getElementById("comment-error");
 
 
-        nameERR.textContent = "";
-        addressERR.textContent = "";
+        fnameERR.textContent = "";
+        lnameERR.textContent = "";
         emailERR.textContent = "";
         contact_num_ERR.textContent = "";
         subjectERR.textContent = "";
-       
+        commentERR.textContent = "";
 
         let inputValid = true;
 
-        if(name === "" || /\d/.test(name)) {
-            nameERR.textContent = "Please Enter Your Name.";
+        if(fname === "" || /\d/.test(fname)) {
+            fnameERR.textContent = "Please Enter Your First Name.";
+        }
+        if(lname === "" || /\d/.test(lname)) {
+            lnameERR.textContent = "Please Enter Your Last Name.";
             inputValid = false;
         }
-        if(address === "") {
-            addressERR.textContent = "Please Enter Your Address."
-            inputValid = false;
-        }
-        if(email === "" || !email.includes("@")) {
-            emailERR.textContent = "Please Enter Your Email."
+        if(email === "" || !email.includes("@") || !email.includes(".")) {
+            emailERR.textContent = "Please Enter Your Valid Email Address."
             inputValid = false;
         }
         const phonePattern = /^\d{11}$/;
@@ -238,6 +247,10 @@ p{
             subjectERR.textContent = "Please Enter Your Subject";
             inputValid = false;
         }
+        if(comment === "") {
+            commentERR.textContent = "Please Enter Your Message";
+            inputValid = false;
+        }
         if(inputValid) {
             alert("We are processing your request. We will notify you in your email.");
             return true;
@@ -246,12 +259,12 @@ p{
         }
     }
     function resetErrors() {
-        document.getElementById("name-error").textContent = "";
-            document.getElementById("address-error").textContent = "";
-            document.getElementById("email-error").textContent = "";
-            document.getElementById("contact number-error").textContent = "";
-            document.getElementById("subject-error").textContent = "";
-           
+        document.getElementById("fname-error").textContent = "";
+        document.getElementById("lname-error").textContent = "";
+        document.getElementById("email-error").textContent = "";
+        document.getElementById("contact_num-error").textContent = "";
+        document.getElementById("subject-error").textContent = "";
+        document.getElementById("comment-error").textContent = "";
     }
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
