@@ -16,14 +16,29 @@
 </head>
 
 <style>
-div.container{
-  width:100%;
-  overflow:auto;
-  display: inline-flex;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
 }
-div.container div{
-  width:33%;  
+.container div {
   text-align: center;
+}
+.container img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.container div {
+  transition: transform 0.3s ease;
+}
+
+.container div:hover {
+  transform: scale(1.05);
 }
 p{
     text-align: center;
@@ -56,6 +71,9 @@ p{
 }
 .social-media{
   margin-right: 0.9375rem;
+}
+.nav-toggle {
+  display: none;
 }
 @media (max-width: 900px) {
     .nav ul {
@@ -139,7 +157,8 @@ p{
         <h2>Lubricants</h2>
 
     </div>
-    </div>
+
+ </div>
 
     <footer class="footer">
             <div class="footer-item left">
