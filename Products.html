@@ -16,65 +16,54 @@
 </head>
 
 <style>
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  width: 100%;
-}
-.container div {
-  text-align: center;
-}
-.container img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-.container div {
-  transition: transform 0.3s ease;
+
+  h1 {
+    font-family: "Bungee", sans-serif;
+    text-align: center; /* This centers the text */
+    margin: 50px 0 20px 0; /* Adds space above and below */
+    width: 100%;
 }
 
-.container div:hover {
-  transform: scale(1.05);
-}
-p{
-    text-align: center;
-}
-h1, h2{
-    text-align: center;
-    font-family: "Bungee", sans-serif;
-}
-p{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bolder;
-}
-.footer {
+    .product-grid {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    background-color: black;
-    padding: 0.625rem;
-    margin-top: 2rem;
-    color: white;
+flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.footer-item {
-    padding: 0.3125rem;
-    margin: 0.3125rem;
-    flex: 1 1 220px;
-    min-width: 180px;
+
+.product-item {
+    flex: 0 1 250px;
     text-align: center;
+    transition: transform 0.3s ease;
 }
-.social-media{
-  margin-right: 0.9375rem;
+
+.product-item:hover {
+    transform: scale(1.05);
 }
-.nav-toggle {
-  display: none;
+
+.product-item img {
+    width: 100%;
+    max-width: 180px; 
+    height: auto;
+    margin: 0 auto;
 }
+
+.product-item h2 {
+    font-family: "Bungee", sans-serif;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    color: black;
+    text-transform: uppercase;
+}
+
+.product-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
 @media (max-width: 900px) {
     .nav ul {
         display: none;
@@ -117,48 +106,45 @@ p{
       <br>
 
 
-    <div class="container">
+  
 
-    <div>
+<div class="product-grid">
+    <div class="product-item">
         <a href="wheels.html">
-        <img src="./images/Wheels.jpg" alt="Wheels" height="200" width="200">
+            <img src="./images/Wheels.jpg" alt="Wheels">
+            <h2>Wheels</h2>
         </a>
-        <h2>Wheels</h2>
     </div>
 
-    <div>
+    <div class="product-item">
         <a href="Tires.html">
-        <img src="./images/Tires.jpg" alt="Tires" height="200" width="200">
+            <img src="./images/Tires.jpg" alt="Tires">
+            <h2>Tires</h2>
         </a>
-        <h2>Tires</h2>
     </div>
 
-    <div>
+    <div class="product-item">
         <a href="offroad.html">
-        <img src="./images/Offroad Accesories.jpg" alt="Offroad Accesories" height="200" width="200">
+            <img src="./images/Offroad Accesories.jpg" alt="Offroad Accessories">
+            <h2>Offroad Accessories</h2>
         </a>
-        <h2>Offroad Accesories</h2>
-    </div>
     </div>
 
-    <div class="container">
-
-    <diV>
+    <div class="product-item">
         <a href="merchandises.html">
-            <img src="./images/Merchandise.jpg" alt="Merchandise" height="200" width="200">
+            <img src="./images/Merchandise.jpg" alt="Merchandise">
+            <h2>Merchandise</h2>
         </a>
-        <h2>Merchandises</h2>
-    </diV>
-
-    <diV>
-        <a href="Lubricants.html">
-            <img src="./images/Lubricants.jpg"  alt="Lubricants" height="200" width="200">
-        </a>
-        <h2>Lubricants</h2>
-
     </div>
 
- </div>
+    <div class="product-item">
+        <a href="Lubricants.html">
+            <img src="./images/Lubricants.jpg" alt="Lubricants">
+            <h2>Lubricants</h2>
+        </a>
+    </div>
+</div>
+
 
     <footer class="footer">
             <div class="footer-item left">
