@@ -18,6 +18,13 @@
 .error_message{
    color: red;
    margin-top: 0.3125rem;
+   font-family: "Bungee", sans-serif;
+}
+.service-option {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    cursor: pointer;
 }
 form {
    max-width: 31.25rem;
@@ -93,13 +100,13 @@ p{
     <div class="form">
         <form name="RegForm" onsubmit="return validateform()" onreset="resetErrors()">
             <p>
-                <label for="fname">First Name:</label>
+                <label for="fname">FirstName:</label>
                 <input type="text" id="fname" name="FName" placeholder="Enter First Name" size="30" oninput="filterNameInput(event)"/>
                 <span id="fname-error" class="error_message"></span>
             </p>
 
             <p>
-                <label for="lname">Last Name:</label>
+                <label for="lname">LastName:</label>
                 <input type="text" id="lname" name="LName" placeholder="Enter Last Name" size="30" oninput="filterNameInput(event)"/>
                 <span id="lname-error" class="error_message"></span>
             </p>
@@ -117,21 +124,55 @@ p{
             </p>
 
             <p>
-                <label for="services">Select services:</label>
-                <select name="Services" id="services">
-                    <option value="--select--">--Select--</option>
-                    <option value="wheels">Wheels</option>
-                    <option value="tires">Tires</option>
-                    <option value="overland gear">Overland Gear</option>
-                    <option value="4x4 accsessories">4x4 Accessories</option>
-                    <option value="periodic maintenance">Periodic Maintenance</option>
-                    <option value="mechanical">Mechanical</option>
-                    <option value="change oil">Change Oil</option>
-                    <option value="obd scanning">OBD Scanning</option>
-                    <option value="camping">Camping</option>
-                    <option value="merchandise">Merchandise</option>
-                </select>
-                <span id="services-error" class="error_message"></span>
+                <label>Select services:</label>
+            </p>
+            <p style="font-family: Arial, Helvetica, sans-serif;">
+                <label class="service-option">
+                  <input type="checkbox" name="services" value="wheels"> Wheels
+                </label><br>
+
+                <label class="service-option">
+                  <input type="checkbox" name="services" value="tires"> Tires
+                </label><br>
+
+                <label class="service-option">
+                 <input type="checkbox" name="services" value="overland gear"> Overland Gear
+                </label><br>
+
+                <label class="service-option">
+                  <input type="checkbox" name="services" value="4x4 accessories"> 4x4 Accessories
+                </label><br>
+
+                <label class="service-option">
+                  <input type="checkbox" name="services" value="periodic maintenance"> Periodic Maintenance
+                </label><br>
+
+                <label class="service-option">
+                 <input type="checkbox" name="services" value="mechanical"> Mechanical
+                </label><br>
+
+                <label class="service-option">
+                 <input type="checkbox" name="services" value="change oil"> Change Oil
+                </label><br>
+
+                <label class="service-option">
+                 <input type="checkbox" name="services" value="obd scanning"> OBD Scanning
+                </label><br>
+
+                <label class="service-option">
+                 <input type="checkbox" name="services" value="camping"> Camping
+                </label><br>
+
+                <label class="service-option">
+                 <input type="checkbox" name="services" value="merchandise"> Merchandise
+                </label><br>
+
+                <label class="service-option">
+                    <input type="checkbox" id="others-checkbox" name="services" value="others"> Others
+                    <input type="text" id="others-text" name="services-other" placeholder="Please specify other services">
+                </label>
+
+              <span id="services-error" class="error_message"></span>
             </p>
 
             <p>
@@ -185,7 +226,9 @@ p{
         const lname = document.getElementById("lname").value;
         const email = document.getElementById("email").value;
         const contact_num = document.getElementById("contact_num").value;
-        const services = document.getElementById("services").value;
+        const services = document.querySelectorAll('input[name="services"]:checked');
+        const othersCheckbox = document.getElementById("others-checkbox");
+        const othersText = document.getElementById("others-text");
         const schedule = document.getElementById("schedule").value;
 
 
@@ -204,7 +247,7 @@ p{
         servicesERR.textContent = "";
         scheduleERR.textContent = "";
 
-
+     
         let inputValid = true;
 
         if(fname === "" || /\d/.test(fname)) {
@@ -224,8 +267,12 @@ p{
             contact_num_ERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
             inputValid = false;
         }
-        if(services === "--select--") {
-            servicesERR.textContent = "Please Select Your Service.";
+        if(services.length === 0) {
+            servicesERR.textContent = "Please Select at least one Service.";
+            inputValid = false;
+        } 
+         else if(othersCheckbox.checked && othersText.value.trim() === "") {
+            servicesERR.textContent = "Please specify the 'others' service.";
             inputValid = false;
         }
         if(schedule === "" || !validateScheduleValue(schedule)) {
@@ -239,6 +286,17 @@ p{
             return false;
         }
     }
+    const othersCheckbox = document.getElementById("others-checkbox");
+    const othersText = document.getElementById("others-text");
+
+    othersText.disabled = true;
+
+    othersCheckbox.addEventListener("change", () => {
+    othersText.disabled = !othersCheckbox.checked;
+    if (!othersCheckbox.checked) {
+        othersText.value = "";
+    }
+});
     function resetErrors() {
         document.getElementById("fname-error").textContent = "";
         document.getElementById("lname-error").textContent = "";
@@ -295,6 +353,8 @@ p{
         const now = new Date();
         if (selected < now) return false;
 
+        if (selected.getDay() === 0) return false;
+
         const hour = selected.getHours();
         const minute = selected.getMinutes();
         if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) return false;
@@ -310,7 +370,10 @@ p{
             schedule.value = getScheduleMin();
             return;
         }
-
+        if (selected.getDay() === 0) {
+        selected.setDate(selected.getDate() + 1);
+        selected.setHours(10, 0, 0, 0);
+        }
         const hour = selected.getHours();
         const minute = selected.getMinutes();
         if (hour < 10) {
