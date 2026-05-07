@@ -19,14 +19,6 @@
   margin: 20px;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-around; 
-    background-color: black;
-    padding: 0.625rem;
-    margin-top: 0.10rem;
-    color: white;
-}
 .home-brand-logo img{
     object-fit: fill;
 }
@@ -34,9 +26,7 @@
 p{
  font-size: 1.25rem;
 }
-.social-media{
-  margin-right: 0.9375rem;
-}
+
 body{
     margin: 0rem;
     padding: 0rem;
@@ -44,24 +34,139 @@ body{
 
 div.container{
   width:100%;
-  overflow:auto;
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
 }
+
 div.container div{
   width:33%;  
   text-align: center;
 }
+
 h1, h2{
     font-family: "Bungee", sans-serif;
+}
+
+
+.footer{
+    background: linear-gradient(to right, #000000, #111111);
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding: 50px 8%;
+    gap: 40px;
+
+    border-top: 2px solid #222;
+    margin-top: 0;
+}
+
+.footer-left h2{
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.footer-left p{
+    color: #999;
+    font-size: 1rem;
+}
+
+.footer-center{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-center a{
+    color: white;
+    text-decoration: none;
+
+    font-family: "Bangers", system-ui;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+.footer-center a:hover{
+    color: orange;
+    transform: translateY(-3px);
+}
+
+.footer-right{
+    display: flex;
+    gap: 25px;
+}
+
+.social-media{
+    color: white;
+    font-size: 2rem;
+
+    transition: 0.3s ease;
+}
+
+.social-media:hover{
+    color: orange;
+    transform: scale(1.2) rotate(5deg);
+}
+
+.footer-bottom{
+    background-color: #0a0a0a;
+    color: #777;
+
+    text-align: center;
+
+    padding: 18px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+
+
+.home-services{
+    padding: 80px 20px;
+    height: auto;
 }
 
 @media (max-width: 900px) {
     .nav ul {
         display: none;
     }
+
     .nav-toggle {
         display: block;
     }
+}
+
+
+
+@media (max-width: 768px){
+
+    .footer{
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .footer-center{
+        justify-content: center;
+    }
+
+    .footer-right{
+        justify-content: center;
+    }
+
+    div.container div{
+        width: 100%;
+    }
+
 }
 
 
@@ -183,30 +288,43 @@ h1, h2{
 
 
   <footer class="footer">
-            <div class="footer-item left">
-             © 2024 Autopro All Terrain & Street Lifestyle
-            </div>
 
-            <div class="footer-item center">
-            <a href="Contact.html" style="text-decoration: none; color: inherit;">Contact Us</a>
-            </div>
+    <div class="footer-left">
+        <h2>AUTOPRO</h2>
+        <p>All Terrain & Street Lifestyle</p>
+    </div>
 
-            <div class="footer-item right">
-    
-            <a href="https://www.facebook.com/autoprolifestyle" target="_blank">
-                <i class="social-media"><img src="./images/fb_icon.png" alt="AutoPro FB" height="40" width="40"></i>
-            </a>
+    <div class="footer-center">
+        <a href="index.html">Home</a>
+        <a href="Products.html">Products</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+    </div>
 
-            <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank">
-                <i class="social-media"><img src="./images/Ig_icon.png" alt="AutoPro IG" height="40" width="40"></i>
-            </a>
+    <div class="footer-right">
 
-            <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank">
-                <i class="social-media"><img src="./images/tiktok.jpg" alt="AutoPro Tiktok" height="40" width="40"></i>
-            </a>
+        <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
+            <i class="fa-brands fa-square-facebook"></i>
+        </a>
 
-            </div>
-        </footer>
+        <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+
+    </div>
+
+</footer>
+
+<div class="footer-bottom">
+    © 2024 AUTOPRO ALL TERRAIN & STREET LIFESTYLE
+</div>
+
+
+<script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
 
 <script>
     const sidebar = document.getElementById('sidebar');
