@@ -1,246 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Pro All Terrain & Street Lifestyle - About</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Pro All Terrain & Street Lifestyle - About</title>
+  <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 
+  <style>
+    h1 {
+      font-family: "Bungee", sans-serif;
+      text-align: center;
+      animation: fadeSlide 1.2s ease forwards;
+      margin-top: 20px;
+      color: #222;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-</head>
-<style>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-}
+    .container div {
+      margin: 0.625rem;
+      padding: 1.25rem;
+      font-size: 1.25rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
 
-.container div {
-  margin: 0.625rem;
-  padding: 1.25rem;
-  font-size: 1.25rem;
-}
+    .container div.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.text-block {
-  max-width: 38rem;
-}
-p{
-    line-height: 2.0;
-}
-h1{
-    font-family: "Bungee", sans-serif;
-    text-align: center;
-}
+    .container img {
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      max-width: 100%;
+      height: auto;
+    }
 
+    .container img:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
 
-.footer{
-    background: linear-gradient(to right, #000000, #111111);
-    color: white;
+    .text-block {
+      max-width: 38rem;
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      border-left: 4px solid orange;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    .text-block:hover {
+      background: rgba(255,165,0,0.15);
+      transform: scale(1.02);
+    }
 
-    padding: 50px 8%;
-    gap: 40px;
+    p {
+      line-height: 1.8;
+    }
 
-    border-top: 2px solid #222;
-    margin-top: 40px;
-}
+    .cta-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: orange;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
 
-.footer-left h2{
-    font-size: 2rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-}
+    .cta-btn:hover {
+      background: #ff6600;
+      color: white;
+      box-shadow: 0 0 15px orange;
+      transform: scale(1.05);
+    }
+    /* Footer styles */
+    .footer {
+      background: linear-gradient(to right, #000000, #111111);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 50px 8%;
+      gap: 40px;
+      border-top: 2px solid #222;
+      margin-top: 40px;
+    }
 
-.footer-left p{
-    color: #999;
-    font-size: 1rem;
-}
+    .footer-left h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
 
-.footer-center{
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
+    .footer-left p {
+      color: #999;
+      font-size: 1rem;
+    }
 
-.footer-center a{
-    color: white;
-    text-decoration: none;
+    .footer-center {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-    font-family: "Bangers", system-ui;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+    .footer-center a {
+      color: white;
+      text-decoration: none;
+      font-family: "Bangers", system-ui;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+    }
 
-    transition: 0.3s ease;
-}
+    .footer-center a:hover {
+      color: orange;
+      transform: translateY(-3px);
+    }
 
-.footer-center a:hover{
-    color: orange;
-    transform: translateY(-3px);
-}
+    .footer-right {
+      display: flex;
+      gap: 25px;
+    }
 
-.footer-right{
-    display: flex;
-    gap: 25px;
-}
+    .social-media {
+      color: white;
+      font-size: 2rem;
+      transition: 0.3s ease;
+    }
 
-.social-media{
-    color: white;
-    font-size: 2rem;
+    .social-media:hover {
+      color: orange;
+      transform: scale(1.2) rotate(5deg);
+    }
 
-    transition: 0.3s ease;
-}
+    .footer-bottom {
+      background-color: #0a0a0a;
+      color: #777;
+      text-align: center;
+      padding: 18px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
 
-.social-media:hover{
-    color: orange;
-    transform: scale(1.2) rotate(5deg);
-}
-
-.footer-bottom{
-    background-color: #0a0a0a;
-    color: #777;
-
-    text-align: center;
-
-    padding: 18px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-
-
-@media (max-width: 768px){
-
-    .footer{
+    /* Mobile responsiveness */
+    @media (max-width: 768px){
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .text-block {
+        border-left: none;
+        border-top: 4px solid orange;
+      }
+      .cta-btn {
+        width: 80%;
+      }
+      .footer {
         flex-direction: column;
         text-align: center;
         padding: 40px 20px;
-    }
-
-    .footer-center{
+      }
+      .footer-center {
         justify-content: center;
-    }
-
-    .footer-right{
+      }
+      .footer-right {
         justify-content: center;
+      }
     }
+  </style>
+</head>
 
-}
-
-</style>
 <body>
-    <div class="nav">
+  <!-- Navigation -->
+  <div class="nav">
     <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
     <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Products.html">Products</a></li>
+      <li><a href="Services.html">Services</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
-</div>
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<aside class="sidebar" id="sidebar">
-    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="Products.html">Products</a></li>
-            <li><a href="Services.html">Services</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-        </ul>
+      </ul>
     </nav>
-</aside>
-    
-<br>
-<h1>About Us</h1>
+  </aside>
+      
+  <br>
+  <h1>About Us</h1>
 
-<div class="container">
-   <div>
-    <img src="./images/logo_about.jpg" alt="About Logo" height="450" width="550">
-</div>
-<div class="text-block">
-   <p>AutoPro All-Terrain | Street Lifestyle is an automotive lifestyle brand specializing in rims, tires, performance upgrades, and 4x4 accessories.
-   We offer a curated selection of overland gear, camping equipment, and vehicle enhancement solutions.
-   Our services include professional installation and periodic vehicle maintenance so every vehicle performs at its best. <br>
-   Whether on the road, the trail, or at the campsite, AutoPro combines performance and adventure with products and expertise for drivers who live the all-terrain and street lifestyle.</p>
-</div>
-</div>
+  <div class="container">
+    <div>
+      <img src="./images/logo_about.jpg" alt="About Logo" height="450" width="550">
+    </div>
+    <div class="text-block">
+      <p>AutoPro All-Terrain | Street Lifestyle is an automotive lifestyle brand specializing in rims, tires, performance upgrades, and 4x4 accessories.
+      We offer a curated selection of overland gear, camping equipment, and vehicle enhancement solutions.
+      Our services include professional installation and periodic vehicle maintenance so every vehicle performs at its best. <br>
+      Whether on the road, the trail, or at the campsite, AutoPro combines performance and adventure with products and expertise for drivers who live the all-terrain and street lifestyle.</p>
+      <a href="Products.html" class="cta-btn">Explore Products</a>
+    </div>
+  </div>
 
- <footer class="footer">
-
+  <footer class="footer">
     <div class="footer-left">
-        <h2>AUTOPRO</h2>
-        <p>All Terrain & Street Lifestyle</p>
+      <h2>AUTOPRO</h2>
+      <p>All Terrain & Street Lifestyle</p>
     </div>
-
     <div class="footer-center">
-        <a href="index.html">Home</a>
-        <a href="Products.html">Products</a>
-        <a href="Services.html">Services</a>
-        <a href="Contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="Products.html">Products</a>
+      <a href="Services.html">Services</a>
+      <a href="Contact.html">Contact</a>
     </div>
-
     <div class="footer-right">
-
-        <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
-            <i class="fa-brands fa-square-facebook"></i>
-        </a>
-
-        <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
-            <i class="fa-brands fa-tiktok"></i>
-        </a>
-
+      <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
+        <i class="fa-brands fa-square-facebook"></i>
+      </a>
+      <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
     </div>
+  </footer>
 
-</footer>
-
-<div class="footer-bottom">
+  <div class="footer-bottom">
     © 2024 AUTOPRO ALL TERRAIN & STREET LIFESTYLE
-</div>
+  </div>
 
+  <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
 
-<script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
-
-
-    <script>
+  <script>
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     const navToggle = document.getElementById('navToggle');
     const sidebarClose = document.getElementById('sidebarClose');
 
     function closeSidebar() {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
+      sidebar.classList.remove('active');
+      sidebarOverlay.classList.remove('active');
     }
 
     navToggle.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        sidebarOverlay.classList.add('active');
+      sidebar.classList.add('active');
+      sidebarOverlay.classList.add('active');
     });
 
     sidebarClose.addEventListener('click', closeSidebar);
     sidebarOverlay.addEventListener('click', closeSidebar);
-</script>
 
+    // Scroll animation for About section
+    const items = document.querySelectorAll('.container div');
+    window.addEventListener('scroll', () => {
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100) {
+          item.classList.add('visible');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
