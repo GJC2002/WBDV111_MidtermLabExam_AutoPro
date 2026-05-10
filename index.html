@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Pro All Terrain & Street Lifestyle - Home</title>
+
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
 <style>
+
 .visit-our-store{
-  margin: 20px;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .home-brand-logo img{
@@ -24,7 +25,7 @@
 }
 
 p{
- font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 body{
@@ -33,17 +34,20 @@ body{
 }
 
 div.container{
-  width:100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
 }
 
 div.container div{
-  width:33%;  
-  text-align: center;
+    width:33%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2{
@@ -51,18 +55,118 @@ h1, h2{
 }
 
 
+
+.home-text-feature{
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transition: 0.4s ease;
+    overflow: hidden;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+.home-text-feature:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+.home-text-feature img{
+    width: 220px;
+    max-width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: 0.4s ease;
+}
+
+.home-text-feature img:hover{
+    transform: scale(1.05);
+}
+
+.home-text-feature p{
+    text-align: center;
+    line-height: 1.8;
+    flex: 1;
+}
+
+
+
+.home-branch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    background: linear-gradient(135deg, #2b2b2b, #3f3f3f);
+    color: white;
+    padding: 80px 20px;
+}
+
+.visit-our-store{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.home-branch-logo{
+    display: flex;
+    justify-content: center;
+}
+
+.home-branch-logo img{
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin: 25px 0;
+}
+
+
+
+.home-services{
+    padding: 80px 20px;
+    height: auto;
+    background: linear-gradient(to bottom, #f5f5f5, #e7e7e7);
+    text-align: center;
+}
+
+.home-services button{
+    padding: 15px 40px;
+    border-radius: 50px;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.home-services button:hover{
+    transform: translateY(-4px);
+    background: #222;
+}
+
+
+
 .footer{
     background: linear-gradient(to right, #000000, #111111);
     color: white;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-
     padding: 50px 8%;
     gap: 40px;
-
     border-top: 2px solid #222;
     margin-top: 0;
 }
@@ -87,11 +191,9 @@ h1, h2{
 .footer-center a{
     color: white;
     text-decoration: none;
-
     font-family: "Bangers", system-ui;
     font-size: 1.3rem;
     letter-spacing: 1px;
-
     transition: 0.3s ease;
 }
 
@@ -108,7 +210,6 @@ h1, h2{
 .social-media{
     color: white;
     font-size: 2rem;
-
     transition: 0.3s ease;
 }
 
@@ -120,9 +221,7 @@ h1, h2{
 .footer-bottom{
     background-color: #0a0a0a;
     color: #777;
-
     text-align: center;
-
     padding: 18px;
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -130,24 +229,77 @@ h1, h2{
 
 
 
-.home-services{
-    padding: 80px 20px;
-    height: auto;
-}
-
-@media (max-width: 900px) {
-    .nav ul {
-        display: none;
-    }
-
-    .nav-toggle {
-        display: block;
-    }
+@media (max-width: 900px){
+    .nav ul{ display: none; }
+    .nav-toggle{ display: block; }
 }
 
 
+
+.home-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+}
+
+.home-cards > div{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
 @media (max-width: 768px){
+
+    .home-cards{
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 16px;
+        gap: 16px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .home-cards > div{
+        min-width: 75vw;
+        width: 75vw;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+    }
+
+    .home-cards .home-text-feature{
+        width: 100%;
+        padding: 24px 16px;
+    }
+
+    .home-cards .home-text-feature img{
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin: 0 auto 12px auto;
+        display: block;
+    }
+
+    .home-cards .home-text-feature h2{
+        text-align: center;
+        margin: 0 0 10px 0;
+    }
+
+    .home-cards .home-text-feature p{
+        text-align: center;
+        margin: 0;
+        width: 100%;
+    }
+
+    .visit-our-store{
+        padding: 30px 20px;
+    }
 
     .footer{
         flex-direction: column;
@@ -155,26 +307,33 @@ h1, h2{
         padding: 40px 20px;
     }
 
-    .footer-center{
-        justify-content: center;
-    }
-
-    .footer-right{
-        justify-content: center;
-    }
-
-    div.container div{
-        width: 100%;
-    }
+    .footer-center{ justify-content: center; }
+    .footer-right{ justify-content: center; }
 
 }
 
+.home-services a{
+    display: inline-block;
+}
+
+.home-services button{
+    width: auto;
+}
 
 </style>
+</head>
 
 <body>
+
 <div class="nav">
-    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+
+    <img src="./images/companylogo.jpg"
+    alt="Auto Pro Logo"
+    height="100"
+    width="200"
+    style="border-radius: 100%"
+    class="companylogo">
+
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
@@ -182,11 +341,21 @@ h1, h2{
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+
+    <button class="nav-toggle"
+    id="navToggle"
+    aria-label="Open navigation menu">☰</button>
+
 </div>
+
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <aside class="sidebar" id="sidebar">
-    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+
+    <button class="sidebar-close"
+    id="sidebarClose"
+    aria-label="Close navigation menu">×</button>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -196,98 +365,175 @@ h1, h2{
             <li><a href="Contact.html">Contact</a></li>
         </ul>
     </nav>
+
 </aside>
-    
-    <div class="hero-image">
-        <img src="images/Hero_Section wallpaper.jpg" alt="Hero_Section" height="610" width="1513">
-        <div class="hero-text">
-        <h1 style="font-size: 3.125rem;">Welcome To Auto Pro</h1>
-        <p>We blend lifestyle, and adventure. Built for every journey you take.</p>
-       <a href="Products.html">
-        <button>
-         Shop Now
-        </button>
-       </a>
-        </div>
-    </div>
 
 
-    <div class="home-feature">
-        <h1 style="text-align: center;">Featured Products</h1>
-        <p style="text-align: center;">Explore our top premier products to enhance your ride
-            with performance, durability, and style. <br> Whether you're hitting the trail or the tarmac, 
-            we’ve got what you need.
+
+<div class="hero-image">
+
+    <img src="images/Hero_Section wallpaper.jpg"
+    alt="Hero_Section"
+    height="610"
+    width="1513">
+
+    <div class="hero-text">
+
+        <h1 style="font-size: 3.125rem;">
+            Welcome To Auto Pro
+        </h1>
+
+        <p>
+            We blend lifestyle, and adventure.
+            Built for every journey you take.
         </p>
-        
-        <div class="container">
 
-        <div class="home-text-feature"> 
-        <a href="wheels.html">
-            <img src="./images/home-wheels.jpg" alt="Wheels" height="200" width="200">
+        <a href="Products.html">
+            <button>Shop Now</button>
         </a>
-            <h2>Wheels</h2>
-            <p>Engineered for ultimate off-road capability, these wheels offer exceptional durability, enhanced control, 
-            and superior traction on any surface</p>
-        
-        </div>
 
-     
-        <div class="home-text-feature">
-            <a href="Tires.html">
-            <img src="./images/home-tires.jpg" alt="Tires" height="200" width="200">
-            </a>
-             <h2>Tires</h2>
-             <p>Upgrade to superior strength and aesthetic appeal with our high-quality tires.</p>
-        </div>
-
-        <div class="home-text-feature">
-            <a href="offroad.html">
-            <img src="./images/home-4x4.jpg" alt="4x4" height="200" width="200">
-            </a>
-             <h2>4x4 Gears</h2>
-             <p>Equip your vehicle for serious off-roading with durable 4x4 accessories built for demanding terrain</p>
-        </div>
-
-       </div>
     </div>
 
-
-    <div class="home-brand">
-     <h1>Brands We Offer</h1>
-     <p>We offer a carefully selected range of reliable, high-performance brands to meet all your off-road, 4x4, and automotive needs. <br>
-        Whether you're looking for durable tires, race-ready wheels, or advanced suspension systems, our partners are recognized for 
-        their quality and innovation.</p>
-        <div class="home-brand-logo">
-        <img src="./images/Brands.webp" alt="Brand Logos" height="500" width="1000">
-    </div>
 </div>
+
+
+
+<div class="home-feature">
+
+    <h1 style="text-align: center;">
+        Featured Products
+    </h1>
+
+    <p style="text-align: center;">
+        Explore our top premier products to enhance your ride
+        with performance, durability, and style. <br>
+        Whether you're hitting the trail or the tarmac,
+        we've got what you need.
+    </p>
+
+    
+    <div class="home-cards">
+
+        
+        <div class="home-text-feature">
+
+            <a href="wheels.html">
+                <img src="./images/home-wheels.jpg" alt="Wheels">
+            </a>
+
+            <h2>Wheels</h2>
+
+            <p>
+                Engineered for ultimate off-road capability,
+                these wheels offer exceptional durability,
+                enhanced control, and superior traction
+                on any surface.
+            </p>
+
+        </div>
+
+        
+        <div class="home-text-feature">
+
+            <a href="Tires.html">
+                <img src="./images/home-tires.jpg" alt="Tires">
+            </a>
+
+            <h2>Tires</h2>
+
+            <p>
+                Upgrade to superior strength and aesthetic appeal
+                with our high-quality tires.
+            </p>
+
+        </div>
+
+        
+        <div class="home-text-feature">
+
+            <a href="offroad.html">
+                <img src="./images/home-4x4.jpg" alt="4x4">
+            </a>
+
+            <h2>4x4 Gears</h2>
+
+            <p>
+                Equip your vehicle for serious off-roading
+                with durable 4x4 accessories built for
+                demanding terrain.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="home-brand">
+
+    <h1>Brands We Offer</h1>
+
+    <p>
+        We offer a carefully selected range of reliable,
+        high-performance brands to meet all your off-road,
+        4x4, and automotive needs.
+    </p>
+
+    <div class="home-brand-logo">
+        <img src="./images/Brands.webp" alt="Brand Logos">
+    </div>
+
+</div>
+
+
 
 <div class="home-branch">
-  <div class="visit-our-store">
-    <h1>Visit Our Store</h1>
-   <div class="home-branch-logo">
-    <img src="./images/autopro_branch_pic.jpg" alt="Auto Pro Branch" height="200" width="200">
-   </div>
-    <p>Explore premium auto accessories, professional service, and great value all in one place. 
-       Whether you're enhancing your vehicle or just browsing, our team is ready to assist every step of the way. <br>
-       Stop in and find out what sets us apart from the rest!</p>
+
+    <div class="visit-our-store">
+
+        <h1>Visit Our Store</h1>
+
+        <div class="home-branch-logo">
+            <img src="./images/autopro_branch_pic.jpg" alt="Auto Pro Branch">
+        </div>
+
+        <p>
+            Explore premium auto accessories,
+            professional service, and great value
+            all in one place.
+        </p>
+
     </div>
+
 </div>
+
+
 
 <div class="home-services">
+
     <h1>Book Your Appointment Here!</h1>
+
     <div class="home-services-logo">
-    <p>We offer expert installation and routine vehicle maintenance to keep every vehicle running at 
-     peak performance—whether you're on the road, off the trail, or at the campsite.</p>
-     </div>
-     <a href="Services.html">
-     <button>Book Now</button>
-     </a>
+
+        <p>
+            We offer expert installation and routine
+            vehicle maintenance to keep every vehicle
+            running at peak performance.
+        </p>
+
+    </div>
+
+    <a href="Services.html">
+        <button>Book Now</button>
+    </a>
+
 </div>
 
 
 
-  <footer class="footer">
+<footer class="footer">
 
     <div class="footer-left">
         <h2>AUTOPRO</h2>
@@ -303,15 +549,18 @@ h1, h2{
 
     <div class="footer-right">
 
-        <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
+        <a href="https://www.facebook.com/autoprolifestyle"
+        target="_blank" class="social-media">
             <i class="fa-brands fa-square-facebook"></i>
         </a>
 
-        <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
+        <a href="https://www.instagram.com/autopro_lifestyle/"
+        target="_blank" class="social-media">
             <i class="fa-brands fa-instagram"></i>
         </a>
 
-        <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
+        <a href="https://www.tiktok.com/@autoprolifestyle"
+        target="_blank" class="social-media">
             <i class="fa-brands fa-tiktok"></i>
         </a>
 
@@ -323,27 +572,29 @@ h1, h2{
     © 2024 AUTOPRO ALL TERRAIN & STREET LIFESTYLE
 </div>
 
-
 <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
 
 <script>
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const navToggle = document.getElementById('navToggle');
-    const sidebarClose = document.getElementById('sidebarClose');
 
-    function closeSidebar() {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-    }
+const sidebar = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const navToggle = document.getElementById('navToggle');
+const sidebarClose = document.getElementById('sidebarClose');
 
-    navToggle.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        sidebarOverlay.classList.add('active');
-    });
+function closeSidebar(){
+    sidebar.classList.remove('active');
+    sidebarOverlay.classList.remove('active');
+}
 
-    sidebarClose.addEventListener('click', closeSidebar);
-    sidebarOverlay.addEventListener('click', closeSidebar);
+navToggle.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    sidebarOverlay.classList.add('active');
+});
+
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
 </script>
+
 </body>
 </html>
