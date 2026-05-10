@@ -74,130 +74,85 @@ ul li {
 
 
 
-.footer{
-    background: linear-gradient(to right, #000000, #111111);
-    color: white;
-
+.footer {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-
+    background: linear-gradient(to right, #000000, #111111);
     padding: 50px 8%;
+    margin-top: 0;
+    color: white;
+    font-family: "Bungee", sans-serif;
     gap: 40px;
-
     border-top: 2px solid #222;
-    margin-top: 60px;
 }
 
-.footer-left h2{
+.footer-left h2 {
     font-size: 2rem;
     margin-bottom: 10px;
     letter-spacing: 2px;
-    font-family: "Bungee", sans-serif;
 }
 
-.footer-left p{
+.footer-left p {
     color: #999;
     font-size: 1rem;
 }
 
-.footer-center{
+.footer-center {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
 }
 
-.footer-center a{
+.footer-center a {
     color: white;
     text-decoration: none;
-
     font-family: "Bangers", system-ui;
     font-size: 1.3rem;
     letter-spacing: 1px;
-
     transition: 0.3s ease;
 }
 
-.footer-center a:hover{
+.footer-center a:hover {
     color: orange;
     transform: translateY(-3px);
 }
 
-.footer-right{
+.footer-right {
     display: flex;
     gap: 25px;
 }
 
-.social-media{
+.social-media {
     color: white;
     font-size: 2rem;
-
     transition: 0.3s ease;
 }
 
-.social-media:hover{
+.social-media:hover {
     color: orange;
     transform: scale(1.2) rotate(5deg);
 }
 
-.footer-bottom{
+.footer-bottom {
     background-color: #0a0a0a;
     color: #777;
-
     text-align: center;
-
     padding: 18px;
     font-size: 0.9rem;
     letter-spacing: 1px;
 }
 
-
-@media (max-width: 768px){
-
-    .footer{
+@media (max-width: 768px) {
+    .footer {
         flex-direction: column;
         text-align: center;
         padding: 40px 20px;
     }
-
-    .footer-center{
-        justify-content: center;
-    }
-
-    .footer-right{
-        justify-content: center;
-    }
-
-}
-
-@media (max-width: 1024px) {
-    .card {
-        width: 38%;
-    }
-}
-
-@media (max-width: 768px) {
-    .card {
-        width: 47%;
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        width: 70%;
-    }
-    .flex-product {
-        padding: 0.625rem;
-    }
-}
-@media (max-width: 900px) {
-    .nav ul {
-        display: none;
-    }
-    .nav-toggle {
-        display: block;
-    }
+    .footer-center { justify-content: center; }
+    .footer-right { justify-content: center; }
 }
 
 </style>
