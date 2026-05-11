@@ -243,12 +243,14 @@ textarea {
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="EMail" placeholder="Enter Email" size="30"/>
                 <span id="email-error" class="error_message"></span>
+                <span id="email-success" class="success_message"></span>
             </p>
 
             <p>
                 <label for="contact_num">Phone Number:</label>
                 <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30" inputmode="numeric" pattern="\d*" maxlength="11" oninput="filterNumberInput(event)"/>
                 <span id="contact_num-error" class="error_message"></span>
+                <span id="contact_num-success" class="success_message"></span>
             </p>
 
             <p>
@@ -330,6 +332,82 @@ textarea {
 
 
     <script>
+    const phonePattern = /^\d{11}$/;
+    function validatePhoneNumber() {
+        const contactNum = document.getElementById("contact_num").value;
+        const contactNumInput = document.getElementById("contact_num");
+        const contactNumERR = document.getElementById("contact_num-error");
+        const contactSuccess = document.getElementById("contact_num-success");
+        
+        contactNumERR.textContent = "";
+        contactSuccess.textContent = "";
+        contactNumInput.classList.remove("phone-valid", "phone-invalid");
+        
+        if (contactNum === "") {
+            return;
+        }
+      
+        if (phonePattern.test(contactNum)) {
+            contactNumInput.classList.add("phone-valid");
+            contactSuccess.textContent = "✓ Valid phone number";
+            contactNumInput.style.borderColor = "#4CAF50";
+        } else {
+            contactNumInput.classList.add("phone-invalid");
+            contactNumERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
+            contactNumInput.style.borderColor = "#f44336";
+        }
+        
+    }
+    function allowOnlyDigits(event) {
+        const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
+        if (allowedKeys.includes(event.key)) {
+            return true;
+        }
+        if (/^[0-9]$/.test(event.key)) {
+            return true;
+        }
+        event.preventDefault();
+        return false;
+    }
+    function filterPhonePaste(event) {
+        const pasteValue = (event.clipboardData || window.clipboardData).getData('text');
+        if (!/^\d*$/.test(pasteValue)) {
+            event.preventDefault();
+            const cleaned = pasteValue.replace(/\D/g, '');
+            const input = event.target;
+            const start = input.selectionStart;
+            const end = input.selectionEnd;
+            const newValue = input.value.slice(0, start) + cleaned + input.value.slice(end);
+            input.value = newValue.slice(0, input.maxLength);
+            validatePhoneNumber();
+        }
+    }
+    const emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    function validateEmail() {
+        const email = document.getElementById("email").value;
+        const emailInput = document.getElementById("email");
+        const emailERR = document.getElementById("email-error");
+        const emailSuccess = document.getElementById("email-success");
+        
+        emailERR.textContent = "";
+        emailSuccess.textContent = "";
+        emailInput.classList.remove("email-valid", "email-invalid");
+        
+        if (email === "") {
+            return;
+        }
+        
+        if (emailPattern.test(email)) {
+            emailInput.classList.add("email-valid");
+            emailSuccess.textContent = "✓ Valid email";
+            emailInput.style.borderColor = "#4CAF50";
+        } else {
+            emailInput.classList.add("email-invalid");
+            emailERR.textContent = "Please enter a valid email address (e.g., user@example.com)";
+            emailInput.style.borderColor = "#f44336";
+        }
+    }
+    
     function filterNameInput(event) {
         event.target.value = event.target.value.replace(/\d/g, '');
     }
@@ -370,20 +448,19 @@ textarea {
             inputValid = false;
         }
         if(email === "" || !email.includes("@") || !email.includes(".")) {
-            emailERR.textContent = "Please Enter Your Valid Email Address."
+            emailERR.textContent = "Please enter a valid email address (e.g., user@example.com).";
             inputValid = false;
         }
-        const phonePattern = /^\d{11}$/;
         if(contact_num === "" || !phonePattern.test(contact_num)) {
            contact_num_ERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
             inputValid = false;
         }
         if(subject === "") {
-            subjectERR.textContent = "Please Enter Your Subject";
+            subjectERR.textContent = "Please Enter Your Subject.";
             inputValid = false;
         }
         if(comment === "") {
-            commentERR.textContent = "Please Enter Your Message";
+            commentERR.textContent = "Please Enter Your Message.";
             inputValid = false;
         }
         if(inputValid) {
@@ -400,6 +477,8 @@ textarea {
         document.getElementById("contact_num-error").textContent = "";
         document.getElementById("subject-error").textContent = "";
         document.getElementById("comment-error").textContent = "";
+        document.getElementById("contact_num").classList.remove("phone-valid", "phone-invalid");
+        document.getElementById("email").classList.remove("email-valid", "email-invalid");
     }
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
