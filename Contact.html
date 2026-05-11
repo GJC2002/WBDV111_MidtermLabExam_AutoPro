@@ -241,14 +241,14 @@ textarea {
 
             <p>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="EMail" placeholder="Enter Email" size="30"/>
+                <input type="email" id="email" name="EMail" placeholder="Enter Email" size="30" oninput="validateEmail()"/>
                 <span id="email-error" class="error_message"></span>
                 <span id="email-success" class="success_message"></span>
             </p>
 
             <p>
                 <label for="contact_num">Phone Number:</label>
-                <input type="tel" id="contact_num" name="Contact_num" placeholder ="Enter Phone Number" size="30" inputmode="numeric" pattern="\d*" maxlength="11" oninput="filterNumberInput(event)"/>
+                <input type="tel" id="contact_num" class="phone-input" name="Contact_num" placeholder ="Enter Phone Number" size="30" inputmode="numeric" pattern="\d*" maxlength="11" onkeydown="return allowOnlyDigits(event)" oninput="filterNumberInput(event); validatePhoneNumber()" onpaste="filterPhonePaste(event)"/>
                 <span id="contact_num-error" class="error_message"></span>
                 <span id="contact_num-success" class="success_message"></span>
             </p>
