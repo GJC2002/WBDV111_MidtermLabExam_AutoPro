@@ -33,6 +33,15 @@ h3{
   display: flex;
   flex-direction: column;
 }
+
+        .card-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    flex:1;
+    padding:1rem;
+}
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0.5rem 1rem 0 rgba(23, 23, 193, 0.3);
@@ -48,15 +57,7 @@ h3{
 .card:hover img {
   transform: scale(1.05);
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  flex: 1;
-  padding: 0.5rem;
-  overflow-y: auto;
-}
+
 .card h3 {
   margin-top: auto;
   margin-bottom: 0.5rem;
@@ -201,7 +202,7 @@ ul li {
 
     <div class="card">
         <img src="./images/AMP Terrain Attack RT.webp" alt="AMP Terrain Attack RT" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('ampterrainattackrt')" onreset="resetoptions('ampterrainattackrt')">
+    <div class="card-container" onsubmit="return validateoption('ampterrainattackrt')" onreset="resetoptions('ampterrainattackrt')">
         <h2>AMP-TERRAIN ATTACK R/T</h2>
         <p>The AMP Terrain Attack R/T is designed to tackle the toughest terrain while maintaining on-road comfort.</p>
         <label for="size-ampterrainattackrt">Size:</label>
@@ -223,7 +224,7 @@ ul li {
 
     <div class="card">
         <img src="./images/AMP Terrain Pro AT eyy.webp" alt="AMP Terrain Attack AT A" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('ampterrainproata')" onreset="resetoptions('ampterrainproata')">
+    <div class="card-container" onsubmit="return validateoption('ampterrainproata')" onreset="resetoptions('ampterrainproata')">
         <h2>AMP-TERRAIN ATTACK A/T A</h2>
         <p>The AMP Terrain Pro A/T A is a rugged all-terrain tyre built for long tread life, superior off-road traction, and on-road comfort. </p>
             <label for="size-ampterrainproata">Size:</label>
@@ -249,7 +250,7 @@ ul li {
 
     <div class="card">
         <img src="./images/AMP Terrain Attack AT.webp" alt="Amp-Terrain Attack AT" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('ampterrainattackat')" onreset="resetoptions('ampterrainattackat')">
+    <div class="card-container" onsubmit="return validateoption('ampterrainattackat')" onreset="resetoptions('ampterrainattackat')">
         <h2>AMP - TERRAIN PRO A/T P</h2>
         <p>The AMP Terrain Pro A/T P is engineered for exceptional durability and performance in demanding off-road conditions. </p>
         <label for="size-ampterrainattackat">Size:</label>
@@ -282,7 +283,7 @@ ul li {
 
     <div class="card">
         <img src="./images/AMP Terrain Attack MTa.webp" alt="Amp-Terrain Attack Mta" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('ampterrainattackmta')" onreset="resetoptions('ampterrainattackmta')">
+    <div class="card-container" onsubmit="return validateoption('ampterrainattackmta')" onreset="resetoptions('ampterrainattackmta')">
         <h2>AMP - TERRAIN ATTACK M/T A P</h2>
         <p>The AMP Terrain Attack M/T A P is designed for aggressive off-road performance and confident on-road control. </p>
         <label for="size-ampterrainattackmta">Size:</label>
@@ -305,7 +306,7 @@ ul li {
 
     <div class="card">
         <img src="./images/SUMAXX - MAX RACING 86S.webp" alt="SUMAXX Max Racing 86s" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('sumaxxmaxracing86s')" onreset="resetoptions('sumaxxmaxracing86s')">
+    <div class="card-container" onsubmit="return validateoption('sumaxxmaxracing86s')" onreset="resetoptions('sumaxxmaxracing86s')">
         <h2>SUMAXX - MAX RACING 86S</h2>
         <p>The SUMAXX - MAX RACING 86S is engineered for confident handling in wet conditions,featuring a center tread pattern for traction. </p>
             <label for="size-sumaxxmaxracing86s">Size:</label>
@@ -330,7 +331,7 @@ ul li {
 
     <div class="card">
         <img src="./images/SUMAXX - MAX DRIFTING X.webp" alt="SUMAXX Max Drifting X" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('sumaxxmaxdriftingx')" onreset="resetoptions('sumaxxmaxdriftingx')">
+    <div class="card-container" onsubmit="return validateoption('sumaxxmaxdriftingx')" onreset="resetoptions('sumaxxmaxdriftingx')">
         <h2>SUMAXX - MAX DRIFTING X</h2>
         <p>The SUMAXX - MAX DRIFTING X is designed to deliver dynamic performance and visual appeal.</p>
         <label for="size-sumaxxmaxdriftingx">Size:</label>
@@ -364,7 +365,7 @@ ul li {
 
     <div class="card">
         <img src="./images/MAXTRECK - MUD TRAC.webp" alt="MAXTRECK Mud Trac" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('maxtreckmudtrac')" onreset="resetoptions('maxtreckmudtrac')">
+    <div class="card-container" onsubmit="return validateoption('maxtreckmudtrac')" onreset="resetoptions('maxtreckmudtrac')">
         <h2>MAXTREK - MUD TRAC</h2>
         <p>The MAXTREK - MUD TRAC is designed for superior traction in muddy and slippery conditions, featuring a robust tread pattern and durable construction.</p>
         <label for="size-maxtreckmudtrac">Size:</label>
@@ -385,7 +386,7 @@ ul li {
 
     <div class="card">
         <img src="./images/MAXTREK SU800 AT.webp" alt="MAXTRECK SU800 AT" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('maxtreksu800at')" onreset="resetoptions('maxtreksu800at')">
+    <div class="card-container" onsubmit="return validateoption('maxtreksu800at')" onreset="resetoptions('maxtreksu800at')">
         <h2>MAXTRECK SU800 AT</h2>
         <p>The MAXTREK SU800 is engineered for exceptional durability and performance in demanding off-road conditions.</p>
         <label for="size-maxtreksu800at">Size:</label>
@@ -409,7 +410,7 @@ ul li {
 
     <div class="card">
         <img src="./images/MAXTREK-Maximus M2.webp" alt="MAXTRECK Maximus M2" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('maxtrekmaximusm2')" onreset="resetoptions('maxtrekmaximusm2')">
+    <div class="card-container" onsubmit="return validateoption('maxtrekmaximusm2')" onreset="resetoptions('maxtrekmaximusm2')">
         <h2>MAXTREK - MAXIMUS M2</h2>
         <p>The MAXTREK - MAXIMUS M2 is a high-performance tire designed for luxury vehicles, offering a balance of comfort, performance, and durability.</p>
         <label for="size-maxtrekmaximusm2">Size:</label>
@@ -448,7 +449,7 @@ ul li {
 
     <div class="card">
         <img src="./images/MAXTREK SU-830.webp" alt="MAXTRECK SU 830" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('maxtreksu830')" onreset="resetoptions('maxtreksu830')">
+    <div class="card-container" onsubmit="return validateoption('maxtreksu830')" onreset="resetoptions('maxtreksu830')">
         <h2>MAXTREK SU-830</h2>
         <p>Optimized tyre design and wear-resistant formula to improve tyre life and reduce long-term cost. </p>
         <label for="size-maxtreksu830">Size:</label>
@@ -472,7 +473,7 @@ ul li {
 
     <div class="card">
         <img src="./images/MAXTREK FORTIS T5 HT .webp" alt="MAXTRECK Fortis T5 HT" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('maxtrekfortist5ht')" onreset="resetoptions('maxtrekfortist5ht')">
+    <div class="card-container" onsubmit="return validateoption('maxtrekfortist5ht')" onreset="resetoptions('maxtrekfortist5ht')">
         <h2>MAXTRECK Fortis T5 HT</h2>
         <p>the MAXTREK FORTIS T5 H/T delivers a smooth, quiet, and stable ride.</p>
         <label for="size-maxtrekfortist5ht">Size:</label>
@@ -499,7 +500,7 @@ ul li {
 
     <div class="card">
         <img src="./images/LENSO - FENIX.webp" alt="LENSO Fenix" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('lensofenix')" onreset="resetoptions('lensofenix')">
+    <div class="card-container" onsubmit="return validateoption('lensofenix')" onreset="resetoptions('lensofenix')">
         <h2>LENSO - FENIX</h2>
         <p>The LENSO - FENIX is a high-performance sport tire designed for family vehicles, offering a balance of comfort, performance, and durability.</p>
         <label for="size-lensofenix">Size:</label>
@@ -531,7 +532,7 @@ ul li {
 
     <div class="card">
         <img src="./images/MAXREK - SIERRA S6.webp" alt="MAXTRECK Sierra S6" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('maxtreksierras6')" onreset="resetoptions('maxtreksierras6')">
+    <div class="card-container" onsubmit="return validateoption('maxtreksierras6')" onreset="resetoptions('maxtreksierras6')">
         <h2>MAXREK - SIERRA S6</h2>
         <p>The MAXREK - SIERRA S6 is a high-performance tire designed for off-road enthusiasts, offering exceptional traction and durability in challenging terrain.</p>
         <label for="size-maxtreksierras6">Size:</label>
@@ -557,7 +558,7 @@ ul li {
 
     <div class="card">
         <img src="./images/SUMAXX - ALL-TERAIN AT.webp" alt="SUMAXX All Terrain AT" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('sumaxxallterrainat')" onreset="resetoptions('sumaxxallterrainat')">
+    <div class="card-container" onsubmit="return validateoption('sumaxxallterrainat')" onreset="resetoptions('sumaxxallterrainat')">
         <h2>SUMAXX ALL TERRAIN AT</h2>
         <p>The SUMAXX ALL TERRAIN AT is engineered for versatility, delivering reliable performance on both on-road and off-road surfaces.</p>
         <label for="size-sumaxxallterrainat">Size:</label>
@@ -582,7 +583,7 @@ ul li {
 
     <div class="card">
         <img src="./images/MAXTREK - MAXIMUS DS501.webp" alt="MAXTREK Maximus DS501" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('maxtrekmaximusds501')" onreset="resetoptions('maxtrekmaximusds501')">
+    <div class="card-container" onsubmit="return validateoption('maxtrekmaximusds501')" onreset="resetoptions('maxtrekmaximusds501')">
         <h2>MAXTREK - MAXIMUS DS501</h2>
         <p>Adopt special tire formula, contoured design and directional pattern design</p>
         <label for="size-maxtrekmaximusds501">Size:</label>
