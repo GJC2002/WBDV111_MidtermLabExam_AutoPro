@@ -55,15 +55,23 @@ h3{
     }
     
     .card input[type="number"]{
-      border-radius: 20px;
-      border: 1px solid black;
-        padding: 1px 3px;
-      background-color: white;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px 0;
+    background-color: white;
     color: black;
     text-align: center;
-    width: 15%;
-        appearance: textfield;
-    }
+    width: 60px;
+    appearance: textfield;
+}
+
+.card input[type="number"]::-webkit-outer-spin-button,
+.card input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
 
 
     .card:hover {
