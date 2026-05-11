@@ -37,6 +37,23 @@ h3{
   flex-direction: column;
     
 }
+
+    .card-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    flex:1;
+    padding:1rem;
+}
+
+.card h2{
+    min-height:60px;
+}
+
+.card p{
+    min-height:40px;
+}
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 0.5rem 1rem 0 rgba(23, 23, 193, 0.3);
@@ -234,7 +251,7 @@ ul li {
 
     <div class="card">
         <img src="./images/5w-40 lubricant.jpg" alt="5w-40" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('dubprolube5w40')" onreset="resetoptions('dubprolube5w40')">
+    <div class="card-container" onsubmit="return validateoption('dubprolube5w40')" onreset="resetoptions('dubprolube5w40')">
         <h2>Dub PRO LUBE - 5w 40</h2>
         <p>Fully Synthetic Oil 5W-40</p>
         <label for="quantity-dubprolube5w40">Quantity:</label>
@@ -248,7 +265,7 @@ ul li {
 
     <div class="card">
         <img src="./images/10W-40 lubricant.jpg" alt="10W-40" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('dubprolube10w40')" onreset="resetoptions('dubprolube10w40')">
+    <div class="card-container" onsubmit="return validateoption('dubprolube10w40')" onreset="resetoptions('dubprolube10w40')">
         <h2>Dub PRO LUBE - 10w 40</h2>
         <p>Semi Synthetic Oil 10W-40</p>
         <label for="quantity-dubprolube10w40">Quantity:</label>
@@ -262,7 +279,7 @@ ul li {
 
     <div class="card">
         <img src="./images/HKS - lubricant.jpg" alt="HKS" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('hks5w30')" onreset="resetoptions('hks5w30')">
+    <div class="card-container" onsubmit="return validateoption('hks5w30')" onreset="resetoptions('hks5w30')">
         <h2>HKS - 5W <br>30</h2>
         <p>5W-30 Super Oil</p>
         <label for="quantity-hks5w30">Quantity:</label>
