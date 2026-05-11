@@ -447,6 +447,8 @@ h1{
         document.getElementById("contact_num-error").textContent = "";
         document.getElementById("services-error").textContent = "";
         document.getElementById("schedule-error").textContent = "";
+        document.getElementById("contact_num").classList.remove("phone-valid", "phone-invalid");
+        document.getElementById("email").classList.remove("email-valid", "email-invalid");
     }
     function formatToLocalDateTime(value) {
         const year = value.getFullYear();
