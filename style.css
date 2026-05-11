@@ -468,13 +468,14 @@ img {
 
   display: flex;
 
-  justify-content: space-around;
+  justify-content: center;
 
   flex-wrap: wrap;
 
   padding: 0.625rem;
-
+ gap: 20px;
   width: 100%;
+  align-itms: stretch;
 
 }
 
