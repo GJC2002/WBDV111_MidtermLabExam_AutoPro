@@ -468,9 +468,7 @@ img {
 display: flex;
   justify-content: center;
  flex-wrap: wrap;
- padding: 0.625rem;
- gap: 20px;
-  width: 100%;
+  gap: 20px;
   allign-itms: stretch;
 
 }
