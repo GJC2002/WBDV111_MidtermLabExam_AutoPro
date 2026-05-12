@@ -72,19 +72,37 @@ h3{
 .card:hover img {
   transform: scale(1.05);
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  flex: 1;
-  padding: 0.5rem;
-  overflow-y: auto;
+card-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    flex:1;
+    padding: 0 !important;
 }
+
+    .card h2 {
+  height: 130px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card p {
+height: 60px;
+    font-size: 0.9rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;   
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .card h3 {
   margin-top: auto;
-  margin-bottom: 0.5rem;
 }
+
+
 .card button {
   display: inline-block;
     margin-bottom: 0.5rem;
@@ -228,7 +246,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Wedgetail.jpg" alt="TJM - SNORKEL AIRTECH WEDGE TAIL" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('tjmsnorkelairtechwedgetrail')" onreset="resetoptions('tjmsnorkelairtechwedgetrail')">    
+    <div class="card-container" onsubmit="return validateoption('tjmsnorkelairtechwedgetrail')" onreset="resetoptions('tjmsnorkelairtechwedgetrail')">    
         <h2>TJM - SNORKEL AIRTECH WEDGE TAIL</h2>
         <p>Custom-designed snorkel providing dust-free air intake and better fuel efficiency by drawing cooler air from roof level.</p>
 
@@ -254,7 +272,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Airtec.jpg" alt="TJM - SNORKEL AIRTEC AIR RAM" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('tjmsnorkelairtecairram')" onreset="resetoptions('tjmsnorkelairtecairram')">
+    <div class="card-container" onsubmit="return validateoption('tjmsnorkelairtecairram')" onreset="resetoptions('tjmsnorkelairtecairram')">
         <h2>TJM - SNORKEL AIRTEC AIR RAM</h2>
         <p>Custom-designed snorkel providing dust-free air intake and better fuel efficiency by drawing cooler air from roof level.</p>
 
@@ -284,7 +302,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Narva+Light1.jpg" alt="TJM - NARVA ULTIMA LED" height="100" width="200">
-    <div class="container" onsubmit="return validateoption('tjmnarvaultimaleed')" onreset="resetoptions('tjmnarvaultimaleed')">     
+    <div class="card-container" onsubmit="return validateoption('tjmnarvaultimaleed')" onreset="resetoptions('tjmnarvaultimaleed')">     
         <h2>TJM - NARVA ULTIMA LED</h2>
         <p>High-powered LED driving light with 16,500 lumens and 215mm diameter for exceptional beam penetration in 4WD driving.</p>
 
@@ -322,7 +340,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Leaf+Spring.jpg" alt="TJM - LEAF SPRING" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmleafspring')" onreset="resetoptions('tjmleafspring')">
+        <div class="card-container" onsubmit="return validateoption('tjmleafspring')" onreset="resetoptions('tjmleafspring')">
         <h2>TJM - LEAF SPRING</h2>
         <p> Enhances load capacity, towing safety, and ride comfort. Made from high-grade spring steel for superior off-road flexibility.</p>
 
@@ -345,7 +363,7 @@ ul li {
 
      <div class="card">
         <img src="./images/EXHAUST+2.jpg" alt="TJM - EXHAUST SYSTEM CATBACK" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmexhaustsystemcatback')" onreset="resetoptions('tjmexhaustsystemcatback')">
+        <div class="card-container" onsubmit="return validateoption('tjmexhaustsystemcatback')" onreset="resetoptions('tjmexhaustsystemcatback')">
         <h2>TJM - EXHAUST SYSTEM CATBACK</h2>
         <ul>
             <li>Yellow Carbon Fiber muffler tip</li>
@@ -374,7 +392,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+UVP.jpg" alt="TJM - UVP" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmuvp')" onreset="resetoptions('tjmuvp')">
+        <div class="card-container" onsubmit="return validateoption('tjmuvp')" onreset="resetoptions('tjmuvp')">
         <h2>TJM - UVP</h2>
         <p>Under-body guards with zinc phosphate and black powdercoat finish for corrosion resistance and durability.</p>
  <label for="model-tjmuvp">Car Model:</label>
@@ -405,7 +423,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Wedge+Tail+Head+B.jpg" alt="TJM - SNORKEL HEAD WEDGE TAIL" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmsnorkelheadwedgetrail')" onreset="resetoptions('tjmsnorkelheadwedgetrail')">
+        <div class="card-container" onsubmit="return validateoption('tjmsnorkelheadwedgetrail')" onreset="resetoptions('tjmsnorkelheadwedgetrail')">
         <h2>TJM - SNORKEL HEAD WEDGE TAIL</h2>
         <p>Australian-designed UV-resistant snorkel kit. Winner of Best Aftermarket Product Award in 4x4 Australia Magazine.</p>
 
@@ -431,7 +449,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Extention+Strap.jpg" alt="TJM - WINCH EXTENSION STRAP" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmwinchextensionstrap')" onreset="resetoptions('tjmwinchextensionstrap')">
+        <div class="card-container" onsubmit="return validateoption('tjmwinchextensionstrap')" onreset="resetoptions('tjmwinchextensionstrap')">
         <h2>TJM - WINCH EXTENSION STRAP</h2>
         <p>Extra winching length with reinforced eyelets, dual neoprene sleeves, and clear break-strength markings.</p>
 
@@ -446,7 +464,7 @@ ul li {
 
     <div class="card">  
         <img src="./images/TJM+XGS+Roamer.jpg" alt="XGS ROAMER" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('xgsroamer')" onreset="resetoptions('xgsroamer')">
+        <div class="card-container" onsubmit="return validateoption('xgsroamer')" onreset="resetoptions('xgsroamer')">
         <h2>XGS ROAMER</h2>
         <p>Heavy-duty nitrogen-charged twin-tube shock absorbers with multi-stage valving for superior terrain adaptability.</p>
 
@@ -485,7 +503,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+XGS+Rugged.jpg" alt="XGS RUGGED" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('xgsrugged')" onreset="resetoptions('xgsrugged')">
+        <div class="card-container" onsubmit="return validateoption('xgsrugged')" onreset="resetoptions('xgsrugged')">
         <h2>XGS RUGGED</h2>
         <p>Mono-tube shock absorbers delivering superior ride quality and performance for heavy loads on any terrain.</p>
 
@@ -517,7 +535,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Panhard.jpg" alt="TJM - PANHARD ROD" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmpanhardrod')" onreset="resetoptions('tjmpanhardrod')">
+        <div class="card-container" onsubmit="return validateoption('tjmpanhardrod')" onreset="resetoptions('tjmpanhardrod')">
         <h2>TJM - PANHARD ROD</h2>
         <p>Adjustable rods prevent axle shifting when lifting coil spring 4WD vehicles for precise suspension positioning.</p>
 
@@ -546,7 +564,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Mud+Guard.jpg" alt="TJM - MUD FLAP" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmmudflap')" onreset="resetoptions('tjmmudflap')">
+        <div class="card-container" onsubmit="return validateoption('tjmmudflap')" onreset="resetoptions('tjmmudflap')">
         <h2>TJM - MUD FLAP</h2>
         <p>High-quality mud flaps protecting your vehicle from mud and debris in harsh conditions.</p>
 
@@ -570,7 +588,7 @@ ul li {
 
     <div class="card">
        <img src="./images/TJM+New+shocks.jpg" alt="TJM - SILVER EDITION XGS SHOCKS" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmsilverelectionxgsshocks')" onreset="resetoptions('tjmsilverelectionxgsshocks')">
+        <div class="card-container" onsubmit="return validateoption('tjmsilverelectionxgsshocks')" onreset="resetoptions('tjmsilverelectionxgsshocks')">
         <h2>TJM - SILVER EDITION XGS SHOCKS</h2>
         <p>Complete Australian-engineered suspension upgrade enhancing both on-road comfort and off-road capability.</p>
 
@@ -597,7 +615,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Coil+Springs.jpg" alt="TJM - XGS Series 4000 COIL SPRING" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmcoilspring')" onreset="resetoptions('tjmcoilspring')">
+        <div class="card-container" onsubmit="return validateoption('tjmcoilspring')" onreset="resetoptions('tjmcoilspring')">
         <h2>TJM - XGS Series 4000 COIL SPRING</h2>
         <p>Twin-tube shock absorbers with multi-stage valving that adapt to terrain for long-lasting suspension performance.</p>
 
@@ -629,7 +647,7 @@ ul li {
 
     <div class="card">
         <img src="./images/TJM+Front+Bumper.jpg" alt="TJM - OUTBACK BULL BAR" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmoutbackbullbar')" onreset="resetoptions('tjmoutbackbullbar')">
+        <div class="card-container" onsubmit="return validateoption('tjmoutbackbullbar')" onreset="resetoptions('tjmoutbackbullbar')">
         <h2>TJM - OUTBACK BULL BAR</h2>
         <p>Full frontal protection with 63mm pipework, steel winch-mount, recovery points, and integrated light mounting. Pure Aussie toughness.</p>
 
@@ -668,7 +686,7 @@ ul li {
 
     <div class="card">
        <img src="./images/TJM+Awning.jpg" alt="TJM - AWNING" height="100" width="200">
-        <div class="container" onsubmit="return validateoption('tjmaxning')" onreset="resetoptions('tjmaxning')">
+        <div class="card-container" onsubmit="return validateoption('tjmaxning')" onreset="resetoptions('tjmaxning')">
         <h2>TJM - AWNING</h2>
         <p>Instant shelter from the elements. Sets up in under 30 seconds and packs away just as easily.</p> 
            
