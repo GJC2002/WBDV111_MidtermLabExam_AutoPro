@@ -2666,6 +2666,7 @@ min-height: 300px;
     display: flex;
 
     flex-direction: row;
+    flex-wrap: wrap; 
 
     align-items: center;
 
@@ -2677,7 +2678,7 @@ min-height: 300px;
 
   .card {
 
-    width: 30% !important;
+    width: 30%
 
     margin-bottom: 1rem;
 
