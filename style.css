@@ -1363,11 +1363,12 @@ a {
 
   .flex-product {
 
-    flex-direction: row;
+    flex-direction: column;
 
     align-items: center;
 
     padding: 0.5rem;
+    
 
   }
 
@@ -1385,9 +1386,9 @@ a {
 
   .card {
 
-    width: 30%;
+    width: 90% !important;
 
-    margin: 0.5rem 0;
+    margin: 0.5rem auto;
 
   }
 
