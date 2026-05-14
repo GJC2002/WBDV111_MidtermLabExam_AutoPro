@@ -298,6 +298,7 @@ h1::after{
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
 </div>
@@ -311,6 +312,7 @@ h1::after{
             <li><a href="Products.html">Products</a></li>
             <li><a href="Services.html">Services</a></li>
             <li><a href="Contact.html">Contact</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
     </nav>
 </aside>
@@ -376,6 +378,7 @@ Explore premium automotive upgrades built for both rugged off-road adventures an
         <a href="Products.html">Products</a>
         <a href="Services.html">Services</a>
         <a href="Contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
     </div>
 
     <div class="footer-right">
@@ -407,7 +410,19 @@ Explore premium automotive upgrades built for both rugged off-road adventures an
 
     <script>
     const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+    const badge = document.getElementById('cart-count');
+    if (!badge) return;
+    if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}
+updateCartBadge();
     const navToggle = document.getElementById('navToggle');
     const sidebarClose = document.getElementById('sidebarClose');
 

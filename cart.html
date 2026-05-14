@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Pro All Terrain & Street Lifestyle - Cart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+    <style>
+        .cart-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        .cart-item h3 {
+            margin-top: 0;
+        }
+        .cart-item p {
+            margin: 5px 0;
+        }
+        #cart-total {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(to right, #000000, #111111);
+    padding: 50px 8%;
+    margin-top: 0;
+    color: white;
+    font-family: "Bungee", sans-serif;
+    gap: 40px;
+    border-top: 2px solid #222;
+}
+
+.footer-left h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.footer-left p {
+    color: #999;
+    font-size: 1rem;
+}
+
+.footer-center {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-center a {
+    color: white;
+    text-decoration: none;
+    font-family: "Bangers", system-ui;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.footer-center a:hover {
+    color: orange;
+    transform: translateY(-3px);
+}
+
+.footer-right {
+    display: flex;
+    gap: 25px;
+}
+
+.social-media {
+    color: white;
+    font-size: 2rem;
+    transition: 0.3s ease;
+}
+
+.social-media:hover {
+    color: orange;
+    transform: scale(1.2) rotate(5deg);
+}
+
+.footer-bottom {
+    background-color: #0a0a0a;
+    color: #777;
+    text-align: center;
+    padding: 18px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .footer-center { justify-content: center; }
+    .footer-right { justify-content: center; }
+}
+    </style>
+
+    <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="nav">
+    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<br>
+<h1 style="text-align: center;">Your Shopping Cart</h1>
+<br>
+<br>
+
+<div id="cart-items">
+   
+</div>
+
+<div id="cart-total">
+    <h2>Total: PHP <span id="total-price">0.00</span></h2>
+</div>
+
+<button id="checkout-btn" type="button" style="display: block; margin: 20px auto; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Proceed to Checkout</button>
+
+<br>
+<br>
+<br>
+<br>
+
+<footer class="footer">
+    <div class="footer-left">
+        <h2>AUTOPRO</h2>
+        <p>All Terrain & Street Lifestyle</p>
+    </div>
+    <div class="footer-center">
+        <a href="index.html">Home</a>
+        <a href="Products.html">Products</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+    </div>
+    <div class="footer-right">
+        <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
+            <i class="fa-brands fa-square-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+    </div>
+</footer>
+
+<div class="footer-bottom">
+    © 2024 AUTOPRO ALL TERRAIN & STREET LIFESTYLE
+</div>
+
+<script>
+  
+    const products = {
+       
+        'hyogo': { name: 'HYOGO', price: 50000, category: 'Wheels' },
+        'evolution': { name: 'EVOLUTION', price: 52000, category: 'Wheels' },
+        'rega': { name: 'REGA', price: 52000, category: 'Wheels' },
+        'tokushima': { name: 'TOKUSHIMA', price: 50000, category: 'Wheels' },
+        'yagamata': { name: 'YAGAMATA', price: 50000, category: 'Wheels' },
+        'gr6': { name: 'GR 6', price: 52000, category: 'Wheels' },
+        'toyama': { name: 'TOYAMA', price: 52000, category: 'Wheels' },
+        'wakayama': { name: 'WAKAYAMA', price: 62000, category: 'Wheels' },
+        'swagg': { name: 'SWAGG', price: 76800, category: 'Wheels' },
+        'aomori': { name: 'AOMORI', price: 52000, category: 'Wheels' },
+        'akita': { name: 'AKITA', price: 52000, category: 'Wheels' },
+        'tanker': { name: 'TANKER', price: 50000, category: 'Wheels' },
+        'madness': { name: 'MADNESS', price: 52000, category: 'Wheels' },
+        'kyogo': { name: 'KYOGO', price: 50000, category: 'Wheels' },
+        'trek': { name: 'TREK', price: 50000, category: 'Wheels' },
+        'rs02': { name: 'RS02', price: 43500, category: 'Wheels' },
+        'theory9305': { name: 'THEORY 9305', price: 50000, category: 'Wheels' },
+        'axis8': { name: 'AXIS 8', price: 62000, category: 'Wheels' },
+        'roadkill': { name: 'ROADKILL BEADLOCK', price: 79000, category: 'Wheels' },
+        'ion189': { name: 'ION 189', price: 62000, category: 'Wheels' },
+
+        'ampterrainattackrt': { name: 'AMP-TERRAIN ATTACK R/T', price: 16800, category: 'Tires' },
+        'ampterrainproata': { name: 'AMP-TERRAIN ATTACK A/T A', price: 15000, category: 'Tires' },
+        'ampterrainattackat': { name: 'AMP - TERRAIN PRO A/T P', price: 14000, category: 'Tires' },
+        'ampterrainattackmta': { name: 'AMP - TERRAIN ATTACK M/T A P', price: 15400, category: 'Tires' },
+        'sumaxxmaxracing86s': { name: 'SUMAXX - MAX RACING 86S', price: 6300, category: 'Tires' },
+        'sumaxxmaxdriftingx': { name: 'SUMAXX - MAX DRIFTING X', price: 3250, category: 'Tires' },
+        'maxtreckmudtrac': { name: 'MAXTREK - MUD TRAC', price: 6000, category: 'Tires' },
+        'maxtreksu800at': { name: 'MAXTRECK SU800 AT', price: 5500, category: 'Tires' },
+        'maxtrekmaximusm2': { name: 'MAXTREK - MAXIMUS M2', price: 3950, category: 'Tires' },
+        'maxtreksu830': { name: 'MAXTRECK SU-830', price: 3050, category: 'Tires' },
+        'maxtrekfortist5ht': { name: 'MAXTRECK Fortis T5 HT', price: 6850, category: 'Tires' },
+        'lensofenix': { name: 'LENSO - FENIX', price: 6600, category: 'Tires' },
+        'maxtreksierras6': { name: 'MAXREK - SIERRA S6', price: 5600, category: 'Tires' },
+        'sumaxxallterrainat': { name: 'SUMAXX ALL TERRAIN AT', price: 6350, category: 'Tires' },
+        'maxtrekmaximusds501': { name: 'MAXTREK - MAXIMUS DS501', price: 6100, category: 'Tires' },
+
+     
+        'tjmsnorkelairtechwedgetrail': { name: 'TJM - SNORKEL AIRTECH WEDGE TAIL', price: 25000, category: 'Offroad Accessories' },
+        'tjmsnorkelairtecairram': { name: 'TJM - SNORKEL AIRTEC AIR RAM', price: 22500, category: 'Offroad Accessories' },
+        'tjmnarvaultimaleed': { name: 'TJM - NARVA ULTIMA LED', price: 68000, category: 'Offroad Accessories' },
+        'tjmleafspring': { name: 'TJM - LEAF SPRING', price: 40000, category: 'Offroad Accessories' },
+        'tjmexhaustsystemcatback': { name: 'TJM - EXHAUST SYSTEM CATBACK', price: 35000, category: 'Offroad Accessories' },
+        'tjmuvp': { name: 'TJM - UVP', price: 17000, category: 'Offroad Accessories' },
+        'tjmsnorkelheadwedgetrail': { name: 'TJM - SNORKEL HEAD WEDGE TAIL', price: 6500, category: 'Offroad Accessories' },
+        'tjmwinchextensionstrap': { name: 'TJM - WINCH EXTENSION STRAP', price: 8000, category: 'Offroad Accessories' },
+        'xgsroamer': { name: 'XGS ROAMER', price: 42000, category: 'Offroad Accessories' },
+        'xgsrugged': { name: 'XGS RUGGED', price: 64000, category: 'Offroad Accessories' },
+        'tjmpanhardrod': { name: 'TJM - PANHARD ROD', price: 20666.67, category: 'Offroad Accessories' },
+        'tjmmudflap': { name: 'TJM - MUD FLAP', price: 1500, category: 'Offroad Accessories' },
+        'tjmsilverelectionxgsshocks': { name: 'TJM - SILVER EDITION XGS SHOCKS', price: 40000, category: 'Offroad Accessories' },
+        'tjmcoilspring': { name: 'TJM - XGS Series 4000 COIL SPRING', price: 14000, category: 'Offroad Accessories' },
+        'tjmoutbackbullbar': { name: 'TJM - OUTBACK BULL BAR', price: 70000, category: 'Offroad Accessories' },
+        'tjmaxning': { name: 'TJM - AWNING', price: 15000, category: 'Offroad Accessories' },
+
+        
+        'foxwarnshirt': { name: 'FOX/WARN SHIRT', price: 450, category: 'Merchandises' },
+        'blackmambashirt': { name: 'BLACK MAMBA SHIRT', price: 450, category: 'Merchandises' },
+        'tjmshirt': { name: 'TJM SHIRT', price: 450, category: 'Merchandises' },
+        'explorershirt': { name: 'EXPLORER SHIRT', price: 450, category: 'Merchandises' },
+        'ampshirt': { name: 'AMP SHIRT', price: 450, category: 'Merchandises' },
+        'umbrella': { name: 'UMBRELLA', price: 350, category: 'Merchandises' },
+        'bodyarmor4x4': { name: 'BODY ARMOR 4X4 - TRUCKERS CAP', price: 300, category: 'Merchandises' },
+        'bulldogcap': { name: 'BULLDOG - TRUCKERS CAP', price: 300, category: 'Merchandises' },
+        'dirtylifecap': { name: 'DIRTY LIFE - TRUCKERS CAP', price: 300, category: 'Merchandises' },
+        'dpo cap': { name: 'DPO - TRUCKERS CAP', price: 300, category: 'Merchandises' },
+        'raffa cap': { name: 'RAFFA - TRUCKERS CAP', price: 300, category: 'Merchandises' },
+
+        
+        'dubprolube5w40': { name: 'Dub PRO LUBE - 5w 40', price: 625, category: 'Lubricants' },
+        'dubprolube10w40': { name: 'Dub PRO LUBE - 10w 40', price: 530, category: 'Lubricants' },
+        'hks5w30': { name: 'HKS - 5W 30', price: 2400, category: 'Lubricants' }
+    };
+
+    function loadCart() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const cartItemsDiv = document.getElementById('cart-items');
+        const totalPriceSpan = document.getElementById('total-price');
+        let total = 0;
+
+        cartItemsDiv.innerHTML = '';
+
+        if (Object.keys(cart).length === 0) {
+            cartItemsDiv.innerHTML = '<p style="text-align: center; font-size: 1.25rem;"> <strong>Your cart is empty.</strong></p> <br><br><br>';
+            totalPriceSpan.textContent = '0.00';
+            document.getElementById('checkout-btn').style.display = 'none';
+            updateCartBadge();
+            return;
+        }
+
+        for (const [productId, item] of Object.entries(cart)) {
+            const product = products[productId];
+            if (!product) continue;
+
+            const itemTotal = product.price * item.quantity;
+            total += itemTotal;
+
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'cart-item';
+            itemDiv.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>Category: ${product.category}</p>
+                <p>Price: PHP ${product.price.toLocaleString()}</p>
+                <p>Quantity: ${item.quantity}</p>
+                ${item.color ? `<p>Color: ${item.color}</p>` : ''}
+                ${item.size ? `<p>Size/Model: ${item.size}</p>` : ''}
+                ${item.model ? `<p>Car Model: ${item.model}</p>` : ''}
+                ${item.brand ? `<p>Brand: ${item.brand}</p>` : ''}
+                ${item.description ? `<p>Description: ${item.description}</p>` : ''}
+                ${item.area ? `<p>Area: ${item.area}</p>` : ''}
+                ${item.part ? `<p>Part: ${item.part}</p>` : ''}
+                <p>Subtotal: PHP ${itemTotal.toLocaleString()}</p>
+                <button onclick="removeFromCart('${productId}')">Remove</button>
+            `;
+            cartItemsDiv.appendChild(itemDiv);
+        }
+
+        totalPriceSpan.textContent = total.toLocaleString();
+        document.getElementById('checkout-btn').style.display = 'block';
+        updateCartBadge();
+    }
+
+    function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+        const badge = document.getElementById('cart-count');
+        if (!badge) return;
+        if (count > 0) {
+            badge.textContent = count;
+            badge.style.display = 'flex';
+        } else {
+            badge.style.display = 'none';
+        }
+    }
+
+    function removeFromCart(productId) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        delete cart[productId];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+    }
+
+    document.getElementById('checkout-btn').addEventListener('click', (event) => {
+        event.preventDefault();
+        const confirmed = confirm('Are you sure you want to proceed to checkout?');
+        if (!confirmed) {
+            return;
+        }
+        const emptyCart = {};
+        localStorage.setItem('cart', JSON.stringify(emptyCart));
+        loadCart();
+        alert('Thank you for your purchase! Your order has been processed.');
+    });
+
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const navToggle = document.getElementById('navToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    navToggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    });
+
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+
+   
+    loadCart();
+</script>
+
+</body>
+</html>

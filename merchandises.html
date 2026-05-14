@@ -220,6 +220,7 @@ ul li {
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
 </div>
@@ -233,6 +234,7 @@ ul li {
             <li><a href="Products.html">Products</a></li>
             <li><a href="Services.html">Services</a></li>
             <li><a href="Contact.html">Contact</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
     </nav>
 </aside>
@@ -262,7 +264,7 @@ ul li {
         <span id="quantity-error-foxwarnshirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="validateoption('foxwarnshirt')">Buy now</button>
+        <button type="button" onclick="validateoption('foxwarnshirt')">Add to Cart</button>
     </div>
     </div>
 
@@ -284,7 +286,7 @@ ul li {
         <span id="quantity-error-blackmambashirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="validateoption('blackmambashirt')">Buy now</button>
+        <button type="button" onclick="validateoption('blackmambashirt')">Add to Cart</button>
     </div>
     </div>
 
@@ -306,7 +308,7 @@ ul li {
         <span id="quantity-error-tjmshirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="validateoption('tjmshirt')">Buy now</button>
+        <button type="button" onclick="validateoption('tjmshirt')">Add to Cart</button>
     </div>
     </div>
 
@@ -328,7 +330,7 @@ ul li {
         <span id="quantity-error-explorershirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
-        <button type="button" onclick="validateoption('explorershirt')">Buy now</button>
+        <button type="button" onclick="validateoption('explorershirt')">Add to Cart</button>
     </div>
     </div>
 
@@ -359,7 +361,7 @@ ul li {
         <span id="quantity-error-ampshirt" class="error_message"></span>
         <br>
         <h3>PHP450.00</h3>
-        <button type="button" onclick="validateoption('ampshirt')">Buy now</button>
+        <button type="button" onclick="validateoption('ampshirt')">Add to Cart</button>
     </div>
     </div>
 
@@ -380,7 +382,7 @@ ul li {
         <span id="quantity-error-umbrella" class="error_message"></span>
         <br>
         <h3>PHP 350.00</h3>
-        <button type="button" onclick="validateoption('umbrella')">Buy now</button>
+        <button type="button" onclick="validateoption('umbrella')">Add to Cart</button>
     </div>
     </div>
 
@@ -393,7 +395,7 @@ ul li {
         <span id="quantity-error-bodyarmor4x4" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="validateoption('bodyarmor4x4')">Buy now</button>
+        <button type="button" onclick="validateoption('bodyarmor4x4')">Add to Cart</button>
     </div>
     </div>
 
@@ -406,7 +408,7 @@ ul li {
         <span id="quantity-error-bulldogcap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="validateoption('bulldogcap')">Buy now</button>
+        <button type="button" onclick="validateoption('bulldogcap')">Add to Cart</button>
     </div>
     </div>
 
@@ -428,7 +430,7 @@ ul li {
         <span id="quantity-error-dirtylifecap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="validateoption('dirtylifecap')">Buy now</button>
+        <button type="button" onclick="validateoption('dirtylifecap')">Add to Cart</button>
     </div>
     </div>
 
@@ -441,7 +443,7 @@ ul li {
         <span id="quantity-error-dpo cap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="validateoption('dpo cap')">Buy now</button>
+        <button type="button" onclick="validateoption('dpo cap')">Add to Cart</button>
     </div>
     </div>
 
@@ -454,7 +456,7 @@ ul li {
         <span id="quantity-error-raffa cap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
-        <button type="button" onclick="validateoption('raffa cap')">Buy now</button>
+        <button type="button" onclick="validateoption('raffa cap')">Add to Cart</button>
     </div>
     </div>
 
@@ -472,6 +474,7 @@ ul li {
         <a href="Products.html">Products</a>
         <a href="Services.html">Services</a>
         <a href="Contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
     </div>
 
     <div class="footer-right">
@@ -501,65 +504,124 @@ ul li {
 
 
 <script>
-  function validateoption(productID){
-   const sizeEl = document.getElementById(`size-${productID}`);
-   const sizeErr = document.getElementById(`size-error-${productID}`);
-   const quantityEl = document.getElementById(`quantity-${productID}`);
-   const brandEl = document.getElementById(`brand-${productID}`);
-   const brandErr = document.getElementById(`brand-error-${productID}`);
-   const quantityErr = document.getElementById(`quantity-error-${productID}`);
-   if (sizeErr) {
-    sizeErr.textContent = "";
-   }
-   if (brandErr) {
-    brandErr.textContent = "";
-   }
-   if (quantityErr) {
-    quantityErr.textContent = "";
-   }
+function showNotification(message) {
+    let notif = document.getElementById('cart-notification');
+    if (!notif) {
+        notif = document.createElement('div');
+        notif.id = 'cart-notification';
+        notif.style.position = 'fixed';
+        notif.style.top = '80px';
+        notif.style.right = '20px';
+        notif.style.padding = '12px 16px';
+        notif.style.backgroundColor = '#4CAF50';
+        notif.style.color = '#fff';
+        notif.style.borderRadius = '8px';
+        notif.style.boxShadow = '0 2px 10px rgba(0,0,0,0.15)';
+        notif.style.zIndex = '9999';
+        notif.style.opacity = '0';
+        notif.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        notif.style.transform = 'translateY(-10px)';
+        document.body.appendChild(notif);
+    }
+    notif.textContent = message;
+    notif.style.display = 'block';
+    requestAnimationFrame(() => {
+        notif.style.opacity = '1';
+        notif.style.transform = 'translateY(0)';
+    });
+    clearTimeout(window._cartNotificationTimeout);
+    window._cartNotificationTimeout = setTimeout(() => {
+        notif.style.opacity = '0';
+        notif.style.transform = 'translateY(-10px)';
+        setTimeout(() => notif.style.display = 'none', 250);
+    }, 2600);
+}
 
-  let optionValid = true;
-
-if(sizeEl && sizeErr) {
-    const size = sizeEl.value;
-    if(size ==="--select size--" || size.trim() === "") {
-        sizeErr.textContent = "Please select a size.";
-        optionValid = false;
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+    const badge = document.getElementById('cart-count');
+    if (!badge) return;
+    if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
     }
 }
 
-if(brandEl && brandErr) {
-    const brand = brandEl.value;
-    if(brand === "--select brand--" || brand.trim() === "") {
-        brandErr.textContent = "Please select a brand.";
-        optionValid = false;
+function validateoption(productID) {
+    const sizeEl = document.getElementById(`size-${productID}`);
+    const sizeErr = document.getElementById(`size-error-${productID}`);
+    const quantityEl = document.getElementById(`quantity-${productID}`);
+    const brandEl = document.getElementById(`brand-${productID}`);
+    const brandErr = document.getElementById(`brand-error-${productID}`);
+    const quantityErr = document.getElementById(`quantity-error-${productID}`);
+
+    if (sizeErr) {
+        sizeErr.textContent = "";
     }
+    if (brandErr) {
+        brandErr.textContent = "";
+    }
+    if (quantityErr) {
+        quantityErr.textContent = "";
+    }
+
+    let optionValid = true;
+
+    if (sizeEl && sizeErr) {
+        const size = sizeEl.value;
+        if (size === "--select size--" || size.trim() === "") {
+            sizeErr.textContent = "Please select a size.";
+            optionValid = false;
+        }
+    }
+
+    if (brandEl && brandErr) {
+        const brand = brandEl.value;
+        if (brand === "--select brand--" || brand.trim() === "") {
+            brandErr.textContent = "Please select a brand.";
+            optionValid = false;
+        }
+    }
+
+    if (quantityEl && quantityErr) {
+        const quantity = Number(quantityEl.value);
+        if (!Number.isInteger(quantity) || quantity < 1) {
+            quantityErr.textContent = "Quantity must be 1 or more.";
+            optionValid = false;
+        }
+    }
+
+    if (optionValid) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const item = {
+            quantity: Number(quantityEl.value),
+            color: null,
+            size: sizeEl ? sizeEl.value : null,
+            model: null,
+            brand: brandEl ? brandEl.value : null
+        };
+        cart[productID] = item;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartBadge();
+        showNotification("Item added to cart!");
+
+        if (sizeEl) {
+            sizeEl.value = "--select size--";
+        }
+        if (brandEl) {
+            brandEl.value = "--select brand--";
+        }
+        if (quantityEl) {
+            quantityEl.value = "0";
+        }
+        return true;
+    }
+    return false;
 }
 
-if(quantityEl && quantityErr) {
-    const quantity = Number(quantityEl.value);
-    if(!Number.isInteger(quantity) || quantity < 1) {
-        quantityErr.textContent = "Quantity must be 1 or more.";
-        optionValid = false;
-    }
-}
-
-if(optionValid) {
-    alert("We have processed your order! Thank you for shopping with us.");
-
-    if(sizeEl) {
-        sizeEl.value = "--select size--";
-    }
-    if(brandEl) {
-        brandEl.value = "--select brand--";
-    }
-    if(quantityEl) {
-        quantityEl.value = "0";
-    }
-    return true;
-}
-return false;
-}
 function resetoptions(productID) {
     const sizeErr = document.getElementById(`size-error-${productID}`);
     const brandErr = document.getElementById(`brand-error-${productID}`);
@@ -573,25 +635,27 @@ function resetoptions(productID) {
     if (quantityErr) {
         quantityErr.textContent = "";
     }
-
 }
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const navToggle = document.getElementById('navToggle');
-    const sidebarClose = document.getElementById('sidebarClose');
 
-    function closeSidebar() {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-    } 
+const sidebar = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const navToggle = document.getElementById('navToggle');
+const sidebarClose = document.getElementById('sidebarClose');
 
-    navToggle.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        sidebarOverlay.classList.add('active');
-    });
+function closeSidebar() {
+    sidebar.classList.remove('active');
+    sidebarOverlay.classList.remove('active');
+}
 
-    sidebarClose.addEventListener('click', closeSidebar);
-    sidebarOverlay.addEventListener('click', closeSidebar);
+navToggle.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    sidebarOverlay.classList.add('active');
+});
+
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+updateCartBadge();
 </script>
 
 

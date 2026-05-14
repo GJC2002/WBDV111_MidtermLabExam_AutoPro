@@ -211,6 +211,7 @@ ul li {
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
 </div>
@@ -224,6 +225,7 @@ ul li {
             <li><a href="Products.html">Products</a></li>
             <li><a href="Services.html">Services</a></li>
             <li><a href="Contact.html">Contact</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
     </nav>
 </aside>
@@ -258,7 +260,7 @@ ul li {
         <input type="number" id="quantity-hyogo" name="quantity" min="0" value="0">
         <span id="quantity-error-hyogo" class="error_message"></span>
           <h3>PHP 50,000</h3>
-          <button type="button" onclick="validateoption('hyogo')">Buy now</button>
+          <button type="button" onclick="validateoption('hyogo')">Add To Cart</button>
          </div>
     </div>
 
@@ -283,7 +285,7 @@ ul li {
             <input type="number" id="quantity-evolution" name="quantity" min="0" value="0">
             <span id="quantity-error-evolution" class="error_message"></span>
             <h3>PHP 52,000</h3>
-          <button type="button" onclick="validateoption('evolution')">Buy now</button>
+          <button type="button" onclick="validateoption('evolution')">Add To Cart</button>
         </div>
     </div>
 
@@ -310,7 +312,7 @@ ul li {
             <span id="quantity-error-rega" class="error_message"></span>
             <br>
             <h3>PHP 52,000</h3>
-            <button type="button" onclick="validateoption('rega')">Buy now</button>
+            <button type="button" onclick="validateoption('rega')">Add To Cart</button>
         </div>
     </div>
 
@@ -339,7 +341,7 @@ ul li {
             <span id="quantity-error-tokushima" class="error_message"></span>
             <br>
             <h3>PHP 50,000</h3>
-            <button type="button" onclick="validateoption('tokushima')">Buy now</button>
+            <button type="button" onclick="validateoption('tokushima')">Add To Cart</button>
         </div>
     </div>
 </div>
@@ -375,7 +377,7 @@ ul li {
                 <span id="quantity-error-yagamata" class="error_message"></span>
                 <br>
             <h3>PHP 50, 000</h3>
-            <button type="button" onclick="validateoption('yagamata')">Buy now</button> 
+            <button type="button" onclick="validateoption('yagamata')">Add To Cart</button> 
         </div>
     </div>
 
@@ -403,7 +405,7 @@ ul li {
             <span id="quantity-error-gr6" class="error_message"></span>
             <br>
             <h3>PHP 52,000</h3>
-            <button type="button" onclick="validateoption('gr6')">Buy now</button> 
+            <button type="button" onclick="validateoption('gr6')">Add To Cart</button> 
         </div>
     </div>
 
@@ -431,7 +433,7 @@ ul li {
                 <span id="quantity-error-toyama" class="error_message"></span>
                 <br>
             <h3>PHP 52,000</h3>
-            <button type="button" onclick="validateoption('toyama')">Buy now</button> 
+            <button type="button" onclick="validateoption('toyama')">Add To Cart</button> 
         </div>
     </div>
 
@@ -458,7 +460,7 @@ ul li {
             <span id="quantity-error-wakayama" class="error_message"></span>
             <br>
             <h3>PHP 62,000</h3>
-            <button type="button" onclick="validateoption('wakayama')">Buy now</button> 
+            <button type="button" onclick="validateoption('wakayama')">Add To Cart</button> 
         </div>
     </div>
 </div>
@@ -493,7 +495,7 @@ ul li {
             <span id="quantity-error-swagg" class="error_message"></span>
             <br>
             <h3>PHP 76,800</h3>
-            <button type="button" onclick="validateoption('swagg')">Buy now</button> 
+            <button type="button" onclick="validateoption('swagg')">Add To Cart</button> 
         </div>
     </div>
 
@@ -520,7 +522,7 @@ ul li {
             <span id="quantity-error-aomori" class="error_message"></span>
             <br>
             <h3>PHP 52,000</h3>
-            <button type="button" onclick="validateoption('aomori')">Buy now</button> 
+            <button type="button" onclick="validateoption('aomori')">Add To Cart</button> 
         </div>
     </div>
 
@@ -539,7 +541,7 @@ ul li {
             <span id="quantity-error-akita" class="error_message"></span>
             <br>
             <h3>PHP 52,000</h3>
-            <button type="button" onclick="validateoption('akita')">Buy now</button> 
+            <button type="button" onclick="validateoption('akita')">Add To Cart</button> 
         </div>
     </div>
  
@@ -566,7 +568,7 @@ ul li {
             <span id="quantity-error-tanker" class="error_message"></span>
             <br>
             <h3>PHP 50,000</h3>
-            <button type="button" onclick="validateoption('tanker')">Buy now</button> 
+            <button type="button" onclick="validateoption('tanker')">Add To Cart</button> 
         </div>
     </div>
 </div>
@@ -593,7 +595,7 @@ ul li {
               <span id="quantity-error-madness" class="error_message"></span>
               <br>
           <h3>PHP 52,000</h3>
-          <button type="button" onclick="validateoption('madness')">Buy now</button> 
+          <button type="button" onclick="validateoption('madness')">Add To Cart</button> 
     </div>
   </div>
 
@@ -612,7 +614,7 @@ ul li {
               <span id="quantity-error-kyogo" class="error_message"></span>
               <br>
           <h3>PHP 50,000</h3>
-          <button type="button" onclick="validateoption('kyogo')">Buy now</button> 
+          <button type="button" onclick="validateoption('kyogo')">Add To Cart</button> 
     </div>
   </div>
 
@@ -639,7 +641,7 @@ ul li {
             <span id="quantity-error-trek" class="error_message"></span>
             <br>
           <h3>PHP 50,000</h3>
-          <button type="button" onclick="validateoption('trek')">Buy now</button> 
+          <button type="button" onclick="validateoption('trek')">Add To Cart</button> 
     </div>
   </div>
 
@@ -665,7 +667,7 @@ ul li {
                 <span id="quantity-error-rs02" class="error_message"></span>
                 <br>
           <h3>PHP 43,500</h3>
-          <button type="button" onclick="validateoption('rs02')">Buy now</button> 
+          <button type="button" onclick="validateoption('rs02')">Add To Cart</button> 
     </div>
   </div>
 </div>
@@ -699,7 +701,7 @@ ul li {
             <span id="quantity-error-theory9305" class="error_message"></span>
             <br>
           <h3>PHP 50,000</h3>
-          <button type="button" onclick="validateoption('theory9305')">Buy now</button> 
+          <button type="button" onclick="validateoption('theory9305')">Add To Cart</button> 
     </div>
   </div>
 
@@ -718,7 +720,7 @@ ul li {
           <span id="quantity-error-axis8" class="error_message"></span>
           <br>
           <h3>PHP 62,000</h3>
-          <button type="button" onclick="validateoption('axis8')">Buy now</button> 
+          <button type="button" onclick="validateoption('axis8')">Add To Cart</button> 
     </div>
   </div>
 
@@ -744,7 +746,7 @@ ul li {
                 <span id="quantity-error-roadkillbeadlock" class="error_message"></span>
           <br>
           <h3>PHP 79,000</h3>
-          <button type="button" onclick="validateoption('roadkill')">Buy now</button> 
+          <button type="button" onclick="validateoption('roadkill')">Add To Cart</button> 
     </div>
   </div>
 
@@ -763,7 +765,7 @@ ul li {
           <span id="quantity-error-ion189" class="error_message"></span>
           <br>
           <h3>PHP 62,000</h3>
-          <button type="button" onclick="validateoption('ion189')">Buy now</button> 
+          <button type="button" onclick="validateoption('ion189')">Add To Cart</button> 
     </div>
    </div>
    </div>
@@ -781,6 +783,7 @@ ul li {
         <a href="Products.html">Products</a>
         <a href="Services.html">Services</a>
         <a href="Contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
     </div>
 
     <div class="footer-right">
@@ -809,6 +812,52 @@ ul li {
 <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
 
 <script>
+function showNotification(message) {
+    let notif = document.getElementById('cart-notification');
+    if (!notif) {
+        notif = document.createElement('div');
+        notif.id = 'cart-notification';
+        notif.style.position = 'fixed';
+        notif.style.top = '80px';
+        notif.style.right = '20px';
+        notif.style.padding = '12px 16px';
+        notif.style.backgroundColor = '#4CAF50';
+        notif.style.color = '#fff';
+        notif.style.borderRadius = '8px';
+        notif.style.boxShadow = '0 2px 10px rgba(0,0,0,0.15)';
+        notif.style.zIndex = '9999';
+        notif.style.opacity = '0';
+        notif.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        notif.style.transform = 'translateY(-10px)';
+        document.body.appendChild(notif);
+    }
+    notif.textContent = message;
+    notif.style.display = 'block';
+    requestAnimationFrame(() => {
+        notif.style.opacity = '1';
+        notif.style.transform = 'translateY(0)';
+    });
+    clearTimeout(window._cartNotificationTimeout);
+    window._cartNotificationTimeout = setTimeout(() => {
+        notif.style.opacity = '0';
+        notif.style.transform = 'translateY(-10px)';
+        setTimeout(() => notif.style.display = 'none', 250);
+    }, 2600);
+}
+
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+    const badge = document.getElementById('cart-count');
+    if (!badge) return;
+    if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}
+
 function validateoption(productId) {
     const colorEl = document.getElementById(`colors-${productId}`);
     const colorErr = document.getElementById(`color-error-${productId}`);
@@ -841,16 +890,28 @@ function validateoption(productId) {
     }
 
     if (optionValid) {
-        alert("We have processed your order! Thank you for shopping with us.");
+       
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const item = {
+            quantity: Number(quantityEl.value),
+            color: colorEl ? colorEl.value : null,
+            size: null,
+            model: null
+        };
+        cart[productId] = item;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartBadge();
+
+        showNotification("Item added to cart!");
+
         
-      
         if (colorEl) {
             colorEl.value = "--select a color--";
         }
         if (quantityEl) {
             quantityEl.value = "0";
         }
-        
+
         return true;
     }
     return false;
@@ -869,6 +930,7 @@ function resetoptions(productId) {
 }
    
     const sidebar = document.getElementById('sidebar');
+    updateCartBadge();
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     const navToggle = document.getElementById('navToggle');
     const sidebarClose = document.getElementById('sidebarClose');

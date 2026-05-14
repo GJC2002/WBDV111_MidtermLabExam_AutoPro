@@ -230,6 +230,7 @@ ul li {
         <li><a href="Products.html">Products</a></li>
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
 </div>
@@ -243,6 +244,7 @@ ul li {
             <li><a href="Products.html">Products</a></li>
             <li><a href="Services.html">Services</a></li>
             <li><a href="Contact.html">Contact</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
     </nav>
 </aside>
@@ -273,7 +275,7 @@ ul li {
         <span id="quantity-error-ampterrainattackrt" class="error_message"></span>
         <br>
         <h3>PHP 16,800.00</h3>
-        <button type="button" onclick="validateoption('ampterrainattackrt')">Buy now</button>
+        <button type="button" onclick="validateoption('ampterrainattackrt')">Add to Cart</button>
     </div>
     </div>
 
@@ -299,7 +301,7 @@ ul li {
         <span id="quantity-error-ampterrainproata" class="error_message"></span>
         <br>
         <h3>PHP 15,000.00</h3>
-        <button type="button" onclick="validateoption('ampterrainproata')">Buy now</button>
+        <button type="button" onclick="validateoption('ampterrainproata')">Add to Cart</button>
     </div>
     </div>
 
@@ -324,7 +326,7 @@ ul li {
         <span id="quantity-error-ampterrainattackat" class="error_message"></span>
         <br>
         <h3>PHP 14,000.00</h3>
-        <button type="button" onclick="validateoption('ampterrainattackat')">Buy now</button>
+        <button type="button" onclick="validateoption('ampterrainattackat')">Add to Cart</button>
     </div>
     </div>
 
@@ -357,7 +359,7 @@ ul li {
         <span id="quantity-error-ampterrainattackmta" class="error_message"></span>
         <br>
         <h3>PHP 15,400.00</h3>
-        <button type="button" onclick="validateoption('ampterrainattackmta')">Buy now</button>
+        <button type="button" onclick="validateoption('ampterrainattackmta')">Add to Cart</button>
     </div>
     </div>
 
@@ -382,7 +384,7 @@ ul li {
         <span id="quantity-error-sumaxxmaxracing86s" class="error_message"></span>
         <br>
         <h3>PHP 6,300.00</h3>
-        <button type="button" onclick="validateoption('sumaxxmaxracing86s')">Buy now</button>
+        <button type="button" onclick="validateoption('sumaxxmaxracing86s')">Add to Cart</button>
     </div>
     </div>
 
@@ -407,7 +409,7 @@ ul li {
         <span id="quantity-error-sumaxxmaxdriftingx" class="error_message"></span>
         <br>
         <h3>PHP 3,250.00</h3>
-        <button type="button" onclick="validateoption('sumaxxmaxdriftingx')">Buy now</button>
+        <button type="button" onclick="validateoption('sumaxxmaxdriftingx')">Add to Cart</button>
     </div>
     </div>
     
@@ -438,7 +440,7 @@ ul li {
         <span id="quantity-error-maxtreckmudtrac" class="error_message"></span>
         <br>
         <h3>PHP 6,000.00</h3>
-        <button type="button" onclick="validateoption('maxtreckmudtrac')">Buy now</button>
+        <button type="button" onclick="validateoption('maxtreckmudtrac')">Add to Cart</button>
     </div>
     </div>
 
@@ -463,7 +465,7 @@ ul li {
         <span id="quantity-error-maxtreksu800at" class="error_message"></span>
         <br>
         <h3>PHP 5,500.00</h3>
-        <button type="button" onclick="validateoption('maxtreksu800at')">Buy now</button>
+        <button type="button" onclick="validateoption('maxtreksu800at')">Add to Cart</button>
     </div>
     </div>
 
@@ -494,7 +496,7 @@ ul li {
         <span id="quantity-error-maxtrekmaximusm2" class="error_message"></span>
         <br>
         <h3>PHP 3,950.00</h3>
-        <button type="button" onclick="validateoption('maxtrekmaximusm2')">Buy now</button>
+        <button type="button" onclick="validateoption('maxtrekmaximusm2')">Add to Cart</button>
     </div>
     </div>
     
@@ -528,7 +530,7 @@ ul li {
         <span id="quantity-error-maxtreksu830" class="error_message"></span>
         <br>
         <h3>PHP 3,050.00</h3>
-        <button type="button" onclick="validateoption('maxtreksu830')">Buy now</button>
+        <button type="button" onclick="validateoption('maxtreksu830')">Add to Cart</button>
     </div>
     </div>
 
@@ -556,7 +558,7 @@ ul li {
         <span id="quantity-error-maxtrekfortist5ht" class="error_message"></span>
         <br>
         <h3>PHP 6,850.00</h3>
-        <button type="button" onclick="validateoption('maxtrekfortist5ht')">Buy now</button>
+        <button type="button" onclick="validateoption('maxtrekfortist5ht')">Add to Cart</button>
     </div>
     </div>
 
@@ -580,7 +582,7 @@ ul li {
         <span id="quantity-error-lensofenix" class="error_message"></span>
         <br>
         <h3>PHP 6,600.00</h3>
-        <button type="button" onclick="validateoption('lensofenix')">Buy now</button>
+        <button type="button" onclick="validateoption('lensofenix')">Add to Cart</button>
     </div>
     </div>
     
@@ -616,7 +618,7 @@ ul li {
         <span id="quantity-error-maxtreksierras6" class="error_message"></span>
         <br>
         <h3>PHP 5,600.00</h3>
-        <button type="button" onclick="validateoption('maxtreksierras6')">Buy now</button>
+        <button type="button" onclick="validateoption('maxtreksierras6')">Add to Cart</button>
     </div>
     </div>
 
@@ -642,7 +644,7 @@ ul li {
         <span id="quantity-error-sumaxxallterrainat" class="error_message"></span>
         <br>
         <h3>PHP 6,350.00</h3>
-        <button type="button" onclick="validateoption('sumaxxallterrainat')">Buy now</button>
+        <button type="button" onclick="validateoption('sumaxxallterrainat')">Add to Cart</button>
     </div>
     </div>
 
@@ -663,7 +665,7 @@ ul li {
         <span id="quantity-error-maxtrekmaximusds501" class="error_message"></span>
         <br>
         <h3>PHP 6,100.00</h3>
-        <button type="button" onclick="validateoption('maxtrekmaximusds501')">Buy now</button>
+        <button type="button" onclick="validateoption('maxtrekmaximusds501')">Add to Cart</button>
     </div>
     </div>
     
@@ -682,6 +684,7 @@ ul li {
         <a href="Products.html">Products</a>
         <a href="Services.html">Services</a>
         <a href="Contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
     </div>
 
     <div class="footer-right">
@@ -711,6 +714,52 @@ ul li {
 
 
     <script>
+   function showNotification(message) {
+        let notif = document.getElementById('cart-notification');
+        if (!notif) {
+            notif = document.createElement('div');
+            notif.id = 'cart-notification';
+            notif.style.position = 'fixed';
+            notif.style.top = '80px';
+            notif.style.right = '20px';
+            notif.style.padding = '12px 16px';
+            notif.style.backgroundColor = '#4CAF50';
+            notif.style.color = '#fff';
+            notif.style.borderRadius = '8px';
+            notif.style.boxShadow = '0 2px 10px rgba(0,0,0,0.15)';
+            notif.style.zIndex = '9999';
+            notif.style.opacity = '0';
+            notif.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+            notif.style.transform = 'translateY(-10px)';
+            document.body.appendChild(notif);
+        }
+        notif.textContent = message;
+        notif.style.display = 'block';
+        requestAnimationFrame(() => {
+            notif.style.opacity = '1';
+            notif.style.transform = 'translateY(0)';
+        });
+        clearTimeout(window._cartNotificationTimeout);
+        window._cartNotificationTimeout = setTimeout(() => {
+            notif.style.opacity = '0';
+            notif.style.transform = 'translateY(-10px)';
+            setTimeout(() => notif.style.display = 'none', 250);
+        }, 2600);
+    }
+
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+    const badge = document.getElementById('cart-count');
+    if (!badge) return;
+    if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}
+
    function validateoption(productID){
    const sizeEl = document.getElementById(`size-${productID}`);
    const sizeErr = document.getElementById(`size-error-${productID}`);
@@ -741,7 +790,19 @@ if(quantityEl && quantityErr) {
     }
 }
 if(optionValid) {
-    alert("We have processed your order! Thank you for shopping with us.");
+    // Add to cart
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const item = {
+        quantity: Number(quantityEl.value),
+        color: null,
+        size: sizeEl ? sizeEl.value : null,
+        model: null
+    };
+    cart[productID] = item;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartBadge();
+
+    showNotification("Item added to cart!");
 
     if(sizeEl) {
         sizeEl.value = "--select size--";
@@ -778,6 +839,7 @@ function resetoptions(productID) {
         });
         sidebarClose.addEventListener('click', closeSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
+    updateCartBadge();
     </script>
    
 </body>
