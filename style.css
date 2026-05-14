@@ -506,10 +506,13 @@ img {
 
 .flex-product {
 display: flex;
-  justify-content: center;
- flex-wrap: wrap;
-  gap: 20px;
-  align-items: stretch;
+    flex-wrap: wrap;         
+    justify-content: center; 
+    gap: 20px;             
+    width: 100%;            
+    max-width: 1400px;       
+    margin: 0 auto;         
+    padding: 20px;
 
 }
 
@@ -526,14 +529,17 @@ display: flex;
 
 
   .card {
-  box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
-  text-align: center;
-  background-color: ghostwhite;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 0.5rem;
-  flex: 1 1 280px;
-  max-width: 380px;
-  min-width: 250px;
+background-color: ghostwhite;
+    box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
+    border-radius: 12px;
+      flex: 1 1 300px;    
+    max-width: 380px;   
+    min-width: 280px;   
+     display: flex;
+    flex-direction: column;
+    align-self: stretch; 
+    transition: transform 0.3s ease;
+    padding: 15px;
 
   }
 
@@ -1385,9 +1391,8 @@ a {
 
   .card {
 
-    width: 90%;
-
-    margin: 0.5rem auto;
+    flex: 1 1 100%; 
+        margin: 0;
 
   }
 
@@ -1605,7 +1610,7 @@ a {
     max-width: 100px;
 
   }
-
+}
 
  
 
