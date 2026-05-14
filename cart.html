@@ -229,7 +229,17 @@
     <h2>Total: PHP <span id="total-price">0.00</span></h2>
 </div>
 
-<button id="checkout-btn" type="button" style="display: block; margin: 20px auto; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Proceed to Checkout</button>
+<div id="payment-section" style="max-width: 400px; margin: 0 auto 20px auto; text-align: left;">
+    <label for="payment-method" style="display: block; margin-bottom: 8px; font-weight: bold;">Mode of Payment</label>
+    <select id="payment-method" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        <option value="">Select payment method</option>
+        <option value="cash">Cash</option>
+        <option value="gcash">Gcash</option>
+        <option value="credit_card">Credit Card</option>
+    </select>
+</div>
+
+<button id="checkout-btn" type="button" style="display: block; margin: 0 auto 20px auto; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Proceed to Checkout</button>
 
 <br>
 <br>
@@ -357,6 +367,7 @@
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
         const cartItemsDiv = document.getElementById('cart-items');
         const totalPriceSpan = document.getElementById('total-price');
+        const paymentSection = document.getElementById('payment-section');
         let total = 0;
 
         cartItemsDiv.innerHTML = '';
@@ -365,9 +376,12 @@
             cartItemsDiv.innerHTML = '<p style="text-align: center; font-size: 1.25rem;"> <strong>Your cart is empty.</strong></p> <br><br><br>';
             totalPriceSpan.textContent = '0.00';
             document.getElementById('checkout-btn').style.display = 'none';
+            if (paymentSection) paymentSection.style.display = 'none';
             updateCartBadge();
             return;
         }
+
+        if (paymentSection) paymentSection.style.display = 'block';
 
         for (const [productId, item] of Object.entries(cart)) {
             const product = products[productId];
@@ -421,16 +435,35 @@
         loadCart();
     }
 
+    const paymentMethodSelect = document.getElementById('payment-method');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    function updateCheckoutButtonState() {
+        checkoutBtn.disabled = paymentMethodSelect.value === '';
+        checkoutBtn.style.opacity = checkoutBtn.disabled ? '0.6' : '1';
+        checkoutBtn.style.cursor = checkoutBtn.disabled ? 'not-allowed' : 'pointer';
+    }
+
+    paymentMethodSelect.addEventListener('change', updateCheckoutButtonState);
+    updateCheckoutButtonState();
+
     document.getElementById('checkout-btn').addEventListener('click', (event) => {
         event.preventDefault();
-        const confirmed = confirm('Are you sure you want to proceed to checkout?');
+        if (paymentMethodSelect.value === '') {
+            alert('Please select a mode of payment before proceeding to checkout.');
+            paymentMethodSelect.focus();
+            return;
+        }
+
+        const paymentLabel = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
+        const confirmed = confirm(`Proceed to checkout using ${paymentLabel}?`);
         if (!confirmed) {
             return;
         }
         const emptyCart = {};
         localStorage.setItem('cart', JSON.stringify(emptyCart));
         loadCart();
-        alert('Thank you for your purchase! Your order has been processed.');
+        alert(`Thank you for your purchase! Your order has been processed with ${paymentLabel}.`);
     });
 
     const sidebar = document.getElementById('sidebar');
