@@ -2409,8 +2409,8 @@ min-height: 300px;
 }
 
 .home-text-feature:hover {
-  transform: translateY(-10px); /* lifts upward */
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* shadow for floating effect */
+  transform: translateY(-10px); 
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3); 
 }
 
 .home-brand{
@@ -2833,7 +2833,7 @@ min-height: 300px;
 
   }
 
- 
+
 
  
 
