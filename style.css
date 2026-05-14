@@ -1385,7 +1385,7 @@ a {
 
   .card {
 
-    width: 100%;
+    width: 30%;
 
     margin: 0.5rem 0;
 
@@ -2666,7 +2666,7 @@ min-height: 300px;
 
     display: flex;
 
-    flex-direction: column;
+    flex-direction: row;
 
     align-items: center;
 
@@ -2678,7 +2678,7 @@ min-height: 300px;
 
   .card {
 
-    width: 100% !important;
+    width: 30% !important;
 
     margin-bottom: 1rem;
 
