@@ -506,12 +506,12 @@ img {
 
 .flex-product {
 display: flex;
-    flex-direction: row; 
-    flex-wrap: wrap;    
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-
+    flex-wrap: wrap;       
+    flex-direction: row;  
+    justify-content: center; 
+    gap: 30px;            
+    padding: 40px;       
+    width: 100%;
 }
 
  
@@ -527,6 +527,7 @@ display: flex;
 
 
   .card {
+  
     box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
     flex: 0 1 300px;     
     display: flex;
