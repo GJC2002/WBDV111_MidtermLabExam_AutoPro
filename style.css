@@ -534,6 +534,7 @@ display: flex;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   border-radius: 0.5rem;
+  width: 30%;
 
 }
 
@@ -1362,7 +1363,7 @@ a {
 
   .flex-product {
 
-    flex-direction: column;
+    flex-direction: row;
 
     align-items: center;
 
