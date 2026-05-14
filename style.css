@@ -506,11 +506,11 @@ img {
 
 .flex-product {
 display: flex;
-    flex-wrap: wrap;         
-    justify-content: center; 
-    gap: 20px;               
+    flex-direction: row; 
+    flex-wrap: wrap;    
+    justify-content: center;
+    gap: 20px;
     padding: 20px;
-    width: 100%;
 
 }
 
@@ -527,16 +527,14 @@ display: flex;
 
 
   .card {
-flex: 0 1 calc(33.333% - 40px); 
-    min-width: 300px; 
-    background-color: ghostwhite;
-    border-radius: 12px;
     box-shadow: 0 0.25rem 0.50rem 0 rgba(23, 23, 193, 0.2);
+    flex: 0 1 300px;     
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
+    background-color: ghostwhite;
+    border-radius: 10px;
+    
+    
 
   }
 
