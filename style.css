@@ -2663,7 +2663,6 @@ min-height: 300px;
 
   .flex-product {
 
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -2674,9 +2673,8 @@ min-height: 300px;
 
   .card {
 
-    width: 30% !important;
-    margin: 0.25rem;
-
+    flex: 0 1 calc(50% - 1rem);
+    margin: 0.5rem;
   }
 
  
