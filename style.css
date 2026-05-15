@@ -1702,12 +1702,9 @@ a {
  
 
   .card {
-
-    width: 48%;
-
-    margin: 1%;
-
-  }
+    width: calc(50% - 1rem) !important;
+    margin: 0.5rem;
+}
 
  
 
