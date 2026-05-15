@@ -31,6 +31,62 @@
             font-size: 1.5em;
             margin: 20px 0;
         }
+        .cart-item-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+            align-items: center;
+        }
+        .cart-item-control {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .cart-item-control label {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .cart-item-control input,
+        .cart-item-control select {
+            padding: 5px 10px;
+            border: 1px solid #999;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        .cart-item-control input[type="number"] {
+            width: 80px;
+        }
+        .cart-item-control input[type="text"],
+        .cart-item-control select {
+            min-width: 150px;
+        }
+        .cart-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .cart-actions button {
+            padding: 8px 15px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        .cart-actions .remove-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .cart-actions .remove-btn:hover {
+            background-color: #da190b;
+        }
+        .update-status {
+            color: #4CAF50;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
         .footer {
     display: flex;
     flex-direction: row;
@@ -363,6 +419,108 @@
         'hks5w30': { name: 'HKS - 5W 30', price: 2400, category: 'Lubricants' }
     };
 
+    function getColorOptions() {
+        return ['Black', 'White', 'Silver', 'Gunmetal', 'Dark Gunmetal', 'Hyper Silver', 'Matt Gold', 'Matt Black', 'Machine Face'];
+    }
+
+    function getSizeOptions() {
+        return ['XS', 'S', 'M', 'L', 'XL', 'XXL', '17x8.5', '17x9', '18x8.5', '20x8.5', '20x9'];
+    }
+
+    function getBrandOptions() {
+        return ['TJM', 'FOX', 'WARN', 'AMP', 'Body Armor 4x4', 'Bulldog', 'Dirty Life', 'DPO', 'Raffa'];
+    }
+
+    function getModelOptions() {
+        return ['Toyota', 'Ford', 'Chevrolet', 'Nissan', 'Dodge', 'GMC', 'Jeep', 'Isuzu', 'Mitsubishi', 'Other'];
+    }
+
+    function getAreaOptions() {
+        return ['Front', 'Rear', 'Both', 'Left', 'Right', 'Center', 'Full', 'N/A'];
+    }
+
+    function getPartOptions() {
+        return ['Bumper', 'Suspension', 'Exhaust', 'Lighting', 'Protection', 'Interior', 'Exterior', 'Drivetrain', 'N/A'];
+    }
+
+    function getDescriptionOptions() {
+        return ['Standard', 'Heavy Duty', 'Custom Fit', 'Performance', 'OEM', 'Aftermarket', 'N/A'];
+    }
+
+    function createSelectOptions(value, optionsArray) {
+        const normalizedValue = value ? value.toLowerCase() : '';
+        const selectedOption = optionsArray.find(opt => opt.toLowerCase() === normalizedValue);
+        const remainingOptions = optionsArray.filter(opt => !selectedOption || opt.toLowerCase() !== normalizedValue);
+        const options = [];
+        if (selectedOption) {
+            options.push(`<option value="${selectedOption}" selected>${selectedOption}</option>`);
+        } else if (value) {
+            options.push(`<option value="${value}" selected>${value}</option>`);
+        }
+        remainingOptions.forEach(opt => options.push(`<option value="${opt}">${opt}</option>`));
+        return options.join('');
+    }
+
+    function getProductOptionList(item, fieldName, fallback) {
+        if (item && Array.isArray(item[`${fieldName}Options`]) && item[`${fieldName}Options`].length > 0) {
+            return item[`${fieldName}Options`];
+        }
+        return fallback();
+    }
+
+    function createSelectElement(fieldId, value, optionsArray) {
+        const options = createSelectOptions(value, optionsArray);
+        return `
+            <select id="${fieldId}" onchange="autoUpdateCartItem('${fieldId}')">
+                <option value="">-- Select --</option>
+                ${options}
+            </select>
+        `;
+    }
+
+    function autoUpdateCartItem(fieldId) {
+        const dashIndex = fieldId.indexOf('-');
+        const cartKey = dashIndex === -1 ? fieldId : fieldId.slice(dashIndex + 1);
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const item = cart[cartKey];
+        
+        if (!item) return;
+        
+        const fieldType = dashIndex === -1 ? fieldId : fieldId.slice(0, dashIndex);
+        const value = document.getElementById(fieldId).value;
+        
+        if (fieldType === 'qty') {
+            if (parseInt(value) < 1) {
+                alert('Quantity must be at least 1');
+                document.getElementById(fieldId).value = item.quantity;
+                return;
+            }
+            item.quantity = parseInt(value);
+            cart[cartKey] = item;
+        } else {
+            const optionField = fieldType === 'desc' ? 'description' : fieldType;
+            if (['color', 'size', 'model', 'brand', 'description', 'area', 'part'].includes(optionField)) {
+                item[optionField] = value;
+                const newKey = generateCartKey(item.productId, item);
+                delete cart[cartKey];
+                if (cart[newKey]) {
+                    cart[newKey].quantity += item.quantity;
+                    const optionKeys = ['colorOptions', 'sizeOptions', 'modelOptions', 'brandOptions', 'descriptionOptions', 'areaOptions', 'partOptions'];
+                    optionKeys.forEach(key => {
+                        if (!cart[newKey][key] && item[key]) {
+                            cart[newKey][key] = item[key];
+                        }
+                    });
+                } else {
+                    cart[newKey] = item;
+                }
+            }
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart();
+    }
+
     function loadCart() {
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
         const cartItemsDiv = document.getElementById('cart-items');
@@ -383,8 +541,7 @@
 
         if (paymentSection) paymentSection.style.display = 'block';
 
-        for (const [productId, item] of Object.entries(cart)) {
-            const product = products[productId];
+        for (const [cartKey, item] of Object.entries(cart)) {const productId = item.productId || cartKey.split('_')[0];const product = products[productId];
             if (!product) continue;
 
             const itemTotal = product.price * item.quantity;
@@ -392,20 +549,93 @@
 
             const itemDiv = document.createElement('div');
             itemDiv.className = 'cart-item';
+            
+            let controlsHTML = `
+                <div class="cart-item-controls">
+                    <div class="cart-item-control">
+                        <label for="qty-${cartKey}">Quantity:</label>
+                        <input type="number" id="qty-${cartKey}" min="1" value="${item.quantity}" onchange="autoUpdateCartItem(this.id)">
+                    </div>
+            `;
+            
+            if (item.color !== null && item.color !== undefined) {
+                controlsHTML += `
+                    <div class="cart-item-control">
+                        <label for="color-${cartKey}">Color:</label>
+                        ${createSelectElement(`color-${cartKey}`, item.color, getProductOptionList(item, 'color', getColorOptions))}
+                    </div>
+                `;
+            }
+            
+            if (item.size !== null && item.size !== undefined) {
+                controlsHTML += `
+                    <div class="cart-item-control">
+                        <label for="size-${cartKey}">Size/Model:</label>
+                        ${createSelectElement(`size-${cartKey}`, item.size, getProductOptionList(item, 'size', getSizeOptions))}
+                    </div>
+                `;
+            }
+            
+            if (item.model !== null && item.model !== undefined) {
+                controlsHTML += `
+                    <div class="cart-item-control">
+                        <label for="model-${cartKey}">Car Model:</label>
+                        ${createSelectElement(`model-${cartKey}`, item.model, getProductOptionList(item, 'model', getModelOptions))}
+                    </div>
+                `;
+            }
+            
+            if (item.brand !== null && item.brand !== undefined) {
+                controlsHTML += `
+                    <div class="cart-item-control">
+                        <label for="brand-${cartKey}">Brand:</label>
+                        ${createSelectElement(`brand-${cartKey}`, item.brand, getProductOptionList(item, 'brand', getBrandOptions))}
+                    </div>
+                `;
+            }
+            
+            if (item.description !== null && item.description !== undefined) {
+                controlsHTML += `
+                    <div class="cart-item-control">
+                        <label for="desc-${cartKey}">Description:</label>
+                        ${createSelectElement(`desc-${cartKey}`, item.description, getProductOptionList(item, 'description', getDescriptionOptions))}
+                    </div>
+                `;
+            }
+            
+            if (item.area !== null && item.area !== undefined) {
+                controlsHTML += `
+                    <div class="cart-item-control">
+                        <label for="area-${cartKey}">Area:</label>
+                        ${createSelectElement(`area-${cartKey}`, item.area, getProductOptionList(item, 'area', getAreaOptions))}
+                    </div>
+                `;
+            }
+            
+            if (item.part !== null && item.part !== undefined) {
+                controlsHTML += `
+                    <div class="cart-item-control">
+                        <label for="part-${cartKey}">Part:</label>
+                        ${createSelectElement(`part-${cartKey}`, item.part, getProductOptionList(item, 'part', getPartOptions))}
+                    </div>
+                `;
+            }
+            
+            controlsHTML += '</div>';
+            
             itemDiv.innerHTML = `
                 <h3>${product.name}</h3>
                 <p>Category: ${product.category}</p>
                 <p>Price: PHP ${product.price.toLocaleString()}</p>
-                <p>Quantity: ${item.quantity}</p>
-                ${item.color ? `<p>Color: ${item.color}</p>` : ''}
-                ${item.size ? `<p>Size/Model: ${item.size}</p>` : ''}
-                ${item.model ? `<p>Car Model: ${item.model}</p>` : ''}
-                ${item.brand ? `<p>Brand: ${item.brand}</p>` : ''}
-                ${item.description ? `<p>Description: ${item.description}</p>` : ''}
-                ${item.area ? `<p>Area: ${item.area}</p>` : ''}
-                ${item.part ? `<p>Part: ${item.part}</p>` : ''}
-                <p>Subtotal: PHP ${itemTotal.toLocaleString()}</p>
-                <button onclick="removeFromCart('${productId}')">Remove</button>
+                
+                ${controlsHTML}
+                
+                <p>Subtotal: PHP <span class="item-subtotal" data-cartkey="${cartKey}" data-price="${product.price}">${itemTotal.toLocaleString()}</span></p>
+                <div class="update-status" id="status-${cartKey}" style="display:none;">✓ Auto-saved</div>
+                
+                <div class="cart-actions">
+                    <button class="remove-btn" onclick="removeFromCart('${cartKey}')">Remove</button>
+                </div>
             `;
             cartItemsDiv.appendChild(itemDiv);
         }
@@ -428,9 +658,9 @@
         }
     }
 
-    function removeFromCart(productId) {
+    function removeFromCart(cartKey) {
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
-        delete cart[productId];
+        delete cart[cartKey];
         localStorage.setItem('cart', JSON.stringify(cart));
         loadCart();
     }

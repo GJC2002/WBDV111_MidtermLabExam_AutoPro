@@ -380,6 +380,18 @@ function updateCartBadge() {
         badge.style.display = 'none';
     }
 }
+    function generateCartKey(productId, options) {
+        let key = productId;
+        if (options.color) key += '_' + options.color.replace(/\s+/g, '_');
+        if (options.size) key += '_' + options.size.replace(/\s+/g, '_');
+        if (options.model) key += '_' + options.model.replace(/\s+/g, '_');
+        if (options.brand) key += '_' + options.brand.replace(/\s+/g, '_');
+        if (options.description) key += '_' + options.description.replace(/\s+/g, '_');
+        if (options.area) key += '_' + options.area.replace(/\s+/g, '_');
+        if (options.part) key += '_' + options.part.replace(/\s+/g, '_');
+        return key;
+    }
+
     function validateoption(productId) {
     const quantityEl = document.getElementById(`quantity-${productId}`);
     const quantityErr = document.getElementById(`quantity-error-${productId}`);
@@ -401,13 +413,24 @@ function updateCartBadge() {
     if (optionValid) {
         // Add to cart
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const options = {};
+        const cartKey = generateCartKey(productId, options);
         const item = {
+            productId: productId,
             quantity: Number(quantityEl.value),
             color: null,
             size: null,
-            model: null
+            model: null,
+            brand: null,
+            description: null,
+            area: null,
+            part: null
         };
-        cart[productId] = item;
+        if (cart[cartKey]) {
+            cart[cartKey].quantity += item.quantity;
+        } else {
+            cart[cartKey] = item;
+        }
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartBadge();
 

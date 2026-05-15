@@ -552,6 +552,25 @@ function updateCartBadge() {
     }
 }
 
+function generateCartKey(productId, options) {
+    let key = productId;
+    if (options.color) key += '_' + options.color.replace(/\s+/g, '_');
+    if (options.size) key += '_' + options.size.replace(/\s+/g, '_');
+    if (options.model) key += '_' + options.model.replace(/\s+/g, '_');
+    if (options.brand) key += '_' + options.brand.replace(/\s+/g, '_');
+    if (options.description) key += '_' + options.description.replace(/\s+/g, '_');
+    if (options.area) key += '_' + options.area.replace(/\s+/g, '_');
+    if (options.part) key += '_' + options.part.replace(/\s+/g, '_');
+    return key;
+}
+
+function getSelectValues(selectEl, ignoreValues = []) {
+    if (!selectEl) return null;
+    return Array.from(selectEl.options)
+        .map(option => option.value)
+        .filter(value => value && !ignoreValues.includes(value));
+}
+
 function validateoption(productID) {
     const sizeEl = document.getElementById(`size-${productID}`);
     const sizeErr = document.getElementById(`size-error-${productID}`);
@@ -598,14 +617,34 @@ function validateoption(productID) {
 
     if (optionValid) {
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const options = {
+            size: sizeEl ? sizeEl.value : null,
+            brand: brandEl ? brandEl.value : null
+        };
+        const cartKey = generateCartKey(productID, options);
         const item = {
+            productId: productID,
             quantity: Number(quantityEl.value),
             color: null,
             size: sizeEl ? sizeEl.value : null,
             model: null,
-            brand: brandEl ? brandEl.value : null
+            brand: brandEl ? brandEl.value : null,
+            description: null,
+            area: null,
+            part: null,
+            colorOptions: null,
+            sizeOptions: getSelectValues(sizeEl, ['--select size--']),
+            modelOptions: null,
+            brandOptions: getSelectValues(brandEl, ['--select brand--']),
+            descriptionOptions: null,
+            areaOptions: null,
+            partOptions: null
         };
-        cart[productID] = item;
+        if (cart[cartKey]) {
+            cart[cartKey].quantity += item.quantity;
+        } else {
+            cart[cartKey] = item;
+        }
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartBadge();
         showNotification("Item added to cart!");
