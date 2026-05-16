@@ -205,6 +205,52 @@ ul li {
     font-size: 0.9rem;
     letter-spacing: 1px;
 }
+.search-container {
+    width: min(720px, 100%);
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.search-container label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #111;
+    min-width: 120px;
+}
+
+.search-container input[type="search"] {
+    flex: 1 1 260px;
+    min-width: 220px;
+    padding: 0.85rem 1rem;
+    border: 2px solid #111;
+    border-radius: 999px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-container input[type="search"]:focus {
+    border-color: #ff8c00;
+    box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.12);
+}
+
+.no-results-message {
+    width: min(720px, 100%);
+    margin: 0 auto 1rem auto;
+    padding: 1rem 1.25rem;
+    background: #fff4e5;
+    color: #663c00;
+    border: 1px solid #ffb648;
+    border-radius: 12px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
 
 @media (max-width: 768px) {
     .footer {
@@ -247,6 +293,11 @@ ul li {
     
       <br>
       <h1 style="text-align: center;">Offroad Accessories</h1>
+      <div class="search-container">
+          <label for="wheel-search">Search offroad accessories:</label>
+          <input type="search" id="wheel-search" name="wheel-search" placeholder="Search by accessory name or feature" aria-label="Search offroad accessories products">
+      </div>
+      <div id="no-results-message" class="no-results-message" hidden>No offroad accessories found matching your search.</div>
       <br>
       <br>
 
@@ -1006,6 +1057,30 @@ function resetoptions(ProductID) {
 
         const sidebar = document.getElementById('sidebar');
         updateCartBadge();
+        const searchInput = document.getElementById('wheel-search');
+
+        function filterProducts() {
+            const query = (searchInput?.value || '').trim().toLowerCase();
+            const cards = document.querySelectorAll('.flex-product .card');
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
+                const details = (card.querySelector('ul')?.textContent || card.querySelector('p')?.textContent || '').toLowerCase();
+                const visible = !query || title.includes(query) || details.includes(query);
+                card.style.display = visible ? '' : 'none';
+                if (visible) visibleCount += 1;
+            });
+            const noResults = document.getElementById('no-results-message');
+            if (noResults) {
+                noResults.hidden = visibleCount > 0;
+            }
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterProducts);
+            filterProducts();
+        }
+
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const navToggle = document.getElementById('navToggle');
         const sidebarClose = document.getElementById('sidebarClose');
