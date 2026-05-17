@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Pro All Terrain & Street Lifestyle - FAQ</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+
+    <style>
+h1{
+    text-align: center;
+    font-family: "Bungee", sans-serif;
+}       
+p{
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ul,li{
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 2.0;
+}
+
+.page-main {
+    max-width: 800px;
+    margin: 3rem auto 2rem;
+    padding: 40px 8%;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    color: #111;
+}
+
+.page-main h1 {
+    margin-bottom: 1.5rem;
+    font-family: "Bungee", sans-serif;
+    font-size: 2.75rem;
+    letter-spacing: 1px;
+}
+
+.page-main p,
+.page-main ul,
+.page-main li {
+    text-align: left;
+}
+
+.page-main ul {
+    padding-left: 1.4rem;
+    margin: 0 0 1.5rem;
+}
+
+.page-main li {
+    margin-bottom: 0.85rem;
+}
+
+.page-main strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 960px) {
+    .page-main {
+        padding: 32px 6%;
+        margin: 2rem auto 1.5rem;
+    }
+
+    .page-main h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 912px) {
+    .footer-left p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-main {
+        width: 80%;
+        max-width: 80%;
+        padding: 22px 4%;
+        margin: 1rem auto;
+        border-radius: 18px;
+    }
+
+    .page-main h1 {
+        font-size: 1.75rem;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .page-main p,
+    .page-main li {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .page-main ul {
+        padding-left: 1rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-main {
+        width: 80%;
+        max-width: 80%;
+        padding: 22px 4%;
+        margin: 1rem auto;
+        border-radius: 18px;
+    }
+
+    .page-main h1 {
+        font-size: 1.75rem;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .page-main p,
+    .page-main li {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .page-main ul {
+        padding-left: 1rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(to right, #000000, #111111);
+    padding: 50px 8%;
+    margin-top: 0;
+    color: white;
+    font-family: "Bungee", sans-serif;
+    gap: 40px;
+    border-top: 2px solid #222;
+}
+
+.footer-left h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.footer-left p {
+    color: #999;
+    font-size: 1rem;
+}
+
+.footer-center {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-center a {
+    color: white;
+    text-decoration: none;
+    font-family: "Bangers", system-ui;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.footer-center a:hover {
+    color: orange;
+    transform: translateY(-3px);
+}
+
+.footer-right {
+    display: flex;
+    gap: 25px;
+}
+
+.social-media {
+    color: white;
+    font-size: 2rem;
+    transition: 0.3s ease;
+}
+
+.social-media:hover {
+    color: orange;
+    transform: scale(1.2) rotate(5deg);
+}
+
+.footer-bottom {
+    background-color: #0a0a0a;
+    color: #777;
+    text-align: center;
+    padding: 18px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Mobile (max 768px) */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+    .footer-center { 
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer-left p{
+        text-align: center;
+    }
+    .footer-right { 
+        justify-content: center;
+    }
+    .footer-center a {
+        font-size: 1.1rem;
+    }
+    .social-media {
+        font-size: 1.6rem;
+    }
+}
+
+/* iPad Pro Portrait (834px - 900px) */
+@media (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 45px 32px;
+        gap: 32px;
+    }
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        width: 100%;
+        justify-content: center;
+    }
+    .footer-left h2 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+    .footer-left p {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+    .footer-center {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+    .footer-center a {
+        font-size: 1.2rem;
+    }
+    .footer-right {
+        flex-direction: row;
+        gap: 28px;
+    }
+    .social-media {
+        font-size: 1.8rem;
+    }
+    .footer-bottom {
+        padding: 18px;
+        font-size: 0.95rem;
+    }
+}
+
+/* iPad Pro Landscape (1024px+) */
+@media (min-width: 1024px) and (orientation: landscape) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 6%;
+        gap: 50px;
+    }
+    .footer-left h2 {
+        font-size: 1.9rem;
+    }
+    .footer-left p {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+    .footer-center {
+        gap: 28px;
+        flex: 1;
+    }
+    .footer-center a {
+        font-size: 1.3rem;
+    }
+    .footer-right {
+        gap: 28px;
+    }
+    .social-media {
+        font-size: 1.9rem;
+    }
+}
+
+/* Tablet/iPad Portrait (769px - 1023px) */
+@media (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 45px 32px;
+        gap: 32px;
+    }
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        width: 100%;
+        justify-content: center;
+    }
+    .footer-left h2 {
+        font-size: 1.8rem;
+    }
+    .footer-center {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+    .footer-center a {
+        font-size: 1.2rem;
+    }
+    .footer-right {
+        flex-direction: row;
+        gap: 28px;
+    }
+    .social-media {
+        font-size: 1.8rem;
+    }
+}
+
+    </style>
+
+    <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="nav">
+
+    <img src="./images/companylogo.jpg"
+    alt="Auto Pro Logo"
+    height="100"
+    width="200"
+    style="border-radius: 100%"
+    class="companylogo">
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
+    </ul>
+
+    <button class="nav-toggle"
+    id="navToggle"
+    aria-label="Open navigation menu">☰</button>
+
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+
+    <button class="sidebar-close"
+    id="sidebarClose"
+    aria-label="Close navigation menu">×</button>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+    </nav>
+
+</aside>
+
+<main class="page-main">
+
+<h1>Frequently Asked Questions</h1>
+
+<div>
+<p><strong>What are my payment options?</strong></p>
+
+<ul>
+    <li>Cash</li>
+    <li>All major Credit Cards</li>
+    <li>G-Cash</li>
+</ul>
+
+<p><strong>How do I get my purchase?</strong></p>
+
+<ul>
+    <li>Free delivery for all orders over P5,000. A delivery fee of P300 for orders below P5,000 within Metro Manila. 
+        Shipping charges may vary for deliveries outside Metro Manila.</li>
+    <li>Store pick-up with free installation. Stores are open from Mondays to Saturdays - 10am to 6pm.</li>
+</ul>
+
+<p><strong>When do I receive my purchase?</strong></p>
+
+<ul>
+    <li>Orders are processed and shipped within 24 to 48 hours from your order confirmation date, unless otherwise specified. 
+        Deliveries may vary for orders outside Metro Manila. </li>
+</ul>
+
+<p><strong>What if I change my mind about my purchase?</strong></p>
+
+<ul>
+    <li>You may contact us directly for concerns regarding change of item. 
+    Generally, it is possible to change given that the items have not been used or mounted. 
+   </li>
+</ul>
+
+<p><strong>What if I order the wrong item that won’t fit my car?</strong></p>
+
+<ul>
+    <li>Prior to completing your order, you will be asked to type your car make and model. This will be reviewed when processing your order before shipment. 
+    In certain cases, we may require a photo of your car to assure that the item/s will fit. </li>
+</ul>
+
+<p><strong>What is your Warranty Policy?</strong></p>
+
+<ul>
+    <li>All products have a warranty of 180 days from the date the product was received by the customer. 
+        The warranty only covers a replacement for a defective part unless such a replacement cannot be obtained. 
+        For such cases, a full refund will be issued to the customer. 
+    </li>
+</ul>
+</div>
+</main>
+
+<footer class="footer">
+    <div class="footer-left">
+        <h2>AUTOPRO</h2>
+        <p>All Terrain & Street Lifestyle</p>
+    </div>
+    <div class="footer-center">
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Products.html">Products</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+    </div>
+    <div class="footer-right" style="display:flex; flex-direction:row !important; justify-content:center; gap:25px; align-items:center;">
+        <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
+            <i class="fa-brands fa-square-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+    </div>
+</footer>
+
+<div class="footer-bottom">
+    © 2024 AUTOPRO ALL TERRAIN & STREET LIFESTYLE
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+    const badge = document.getElementById('cart-count');
+    if (!badge) return;
+    if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}
+updateCartBadge();
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const navToggle = document.getElementById('navToggle');
+const sidebarClose = document.getElementById('sidebarClose');
+
+function closeSidebar(){
+    sidebar.classList.remove('active');
+    sidebarOverlay.classList.remove('active');
+}
+
+navToggle.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    sidebarOverlay.classList.add('active');
+});
+
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+</script>
+
+</body>
+</html>
+
