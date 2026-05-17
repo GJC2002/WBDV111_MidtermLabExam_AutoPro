@@ -5,515 +5,734 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Pro All Terrain & Street Lifestyle - Contact</title>
     <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-<style>
-    h1{
-        font-family: "Vollkorn", serif;
-    }
+    <style>
+        
+        .contact-page {
+            padding: 3rem 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
 
-.row {
-  display: flex;
-}
-.column {
-  flex: 50%;
-  padding: 0.625rem;
-  min-height: 18.75rem;
-}
-form {
-   max-width: 31.25rem;
-   margin: 0 auto;
-   padding: 1.25rem;
-   background-color: whitesmoke;
-   border-radius: 0.50rem;
-   box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
-   line-height: 2.0;
-   margin-left: 0.625rem;
-}
-textarea {
-    width: 80%;
-    padding: 1.25rem;
-    margin: 0.3125rem 0;
-    border: 0.0625rem solid #ccc;
-    border-radius: 0.3125rem;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-.error_message{
-   color: red;
-   margin-top: 0.3125rem;
-}
-    
-.footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background: linear-gradient(to right, #000000, #111111);
-    padding: 50px 8%;
-    margin-top: 0;
-    color: white;
-    font-family: "Bungee", sans-serif;
-    gap: 40px;
-    border-top: 2px solid #222;
-}
+        
+        .contact-page-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
 
-.footer-left h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-}
+        .contact-page-title {
+            font-family: "Vollkorn", serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            text-align: center;
+            color: #111;
+            margin: 0;
+            letter-spacing: 2px;
+        }
 
-.footer-left p {
-    color: #999;
-    font-size: 1rem;
-}
+        .contact-title-underline {
+            height: 4px;
+            width: 180px;
+            background: orange;
+            border-radius: 2px;
+        }
 
-.footer-center {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: stretch;
+        }
 
-.footer-center a {
-    color: white;
-    text-decoration: none;
-    font-family: "Bangers", system-ui;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    transition: 0.3s ease;
-}
+        
+        .contact-left {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 1.5rem;
+        }
 
-.footer-center a:hover {
-    color: orange;
-    transform: translateY(-3px);
-}
+        .contact-info-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
 
-.footer-right {
-    display: flex;
-    gap: 25px;
-}
+        .contact-info-card h2 {
+            font-family: "Vollkorn", serif;
+            font-size: 1.3rem;
+            margin: 0 0 0.75rem 0;
+            color: #111;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-bottom: 3px solid #aaa;
+            padding-bottom: 0.4rem;
+        }
 
-.social-media {
-    color: white;
-    font-size: 2rem;
-    transition: 0.3s ease;
-}
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
 
-.social-media:hover {
-    color: orange;
-    transform: scale(1.2) rotate(5deg);
-}
+        .contact-info-item i {
+            color: orange;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
 
-.footer-bottom {
-    background-color: #0a0a0a;
-    color: #777;
-    text-align: center;
-    padding: 18px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
+        .contact-info-item a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-@media (max-width: 768px) {
-    .footer {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 20px;
-    }
-    .footer-center { justify-content: center; }
-    .footer-right { justify-content: center; }
-}
+        .contact-info-item a:hover {
+            color: orange;
+        }
 
+        
+        .contact-form-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
 
-@media (max-width: 900px) {
+        .contact-form-card h2 {
+            font-family: "Vollkorn", serif;
+            font-size: 1.3rem;
+            margin: 0 0 1.25rem 0;
+            color: #111;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-bottom: 3px solid #aaa;
+            padding-bottom: 0.4rem;
+        }
 
-    .row {
-        flex-direction: column;
-    }
+        .contact-form-card form {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            line-height: 1.6;
+        }
 
-    .column {
-        width: 100%;
-        padding: 1rem;
-        box-sizing: border-box;
-    }
+        .contact-form-card form p {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 1rem 0;
+        }
 
-    h1,
-    p {
-        white-space: normal !important;
-        text-align: center;
-    }
+        .contact-form-card form label {
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    form {
-        width: 100%;
-        max-width: 100%;
-        margin: auto;
-        padding: 1rem;
-        box-sizing: border-box;
-    }
+        .contact-form-card form input[type="text"],
+        .contact-form-card form input[type="email"],
+        .contact-form-card form input[type="tel"] {
+            padding: 0.65rem 0.85rem;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
 
-    input,
-    textarea {
-        width: 100%;
-        box-sizing: border-box;
-    }
+        .contact-form-card form input:focus {
+            outline: none;
+            border-color: orange;
+            box-shadow: 0 0 0 3px rgba(255,165,0,0.15);
+        }
 
-    textarea {
-        min-height: 150px;
-    }
+        .contact-form-card textarea {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: Arial, sans-serif;
+            resize: vertical;
+            min-height: 120px;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
 
-    .mapouter,
-    .gmap_canvas,
-    .gmap_iframe {
-        width: 100% !important;
-        height: 300px !important;
-    }
+        .contact-form-card textarea:focus {
+            outline: none;
+            border-color: orange;
+            box-shadow: 0 0 0 3px rgba(255,165,0,0.15);
+        }
 
-    .footer {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
+        .contact-form-card input[type="submit"] {
+            background: #111;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: "Vollkorn", serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            margin-top: 0.5rem;
+        }
 
-    .footer-item {
-        margin: 0;
-    }
+        .contact-form-card input[type="submit"]:hover {
+            background: orange;
+            color: #111;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,165,0,0.4);
+        }
 
-    .social-media img {
-        width: 35px;
-        height: 35px;
-    }
-}
+        
+        .contact-right {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 1.5rem;
+        }
 
-</style>
+        .store-info-card {
+            background: transparent;
+            border-radius: 0;
+            padding: 1.5rem 1.75rem;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .store-info-card h2 {
+            font-family: "Vollkorn", serif;
+            font-size: 1.3rem;
+            margin: 0 0 0.75rem 0;
+            color: #111;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-bottom: 3px solid #aaa;
+            padding-bottom: 0.4rem;
+        }
+
+        .store-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: #333;
+            font-family: "Vollkorn", serif;
+            line-height: 1.5;
+        }
+
+        .store-info-item i {
+            color: orange;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .store-map-wrapper {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .store-info-card {
+            padding: 1.5rem 1.75rem 1.25rem 1.75rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .map-card {
+            border-radius: 8px;
+            overflow: hidden;
+            line-height: 0;
+            margin: 0 20px 20px;
+        }
+
+        .map-card iframe {
+            width: 100%;
+            height: 320px;
+            border: none;
+            display: block;
+        }
+
+        .map-card iframe {
+            width: 100%;
+            height: 320px;
+            border: none;
+            display: block;
+        }
+
+        
+        .contact-form-card {
+            flex: 1;
+        }
+
+        
+        .error_message {
+            color: #e53e3e;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .success_message {
+            color: #38a169;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .email-valid, .phone-valid { border-color: #38a169 !important; }
+        .email-invalid, .phone-invalid { border-color: #e53e3e !important; }
+
+        
+        .footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background: linear-gradient(to right, #000000, #111111);
+            padding: 50px 8%;
+            margin-top: 0;
+            color: white;
+            font-family: "Vollkorn", serif;
+            gap: 40px;
+            border-top: 2px solid #222;
+        }
+
+        .footer-left h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .footer-left p { color: #999; font-size: 1rem; }
+
+        .footer-center { display: flex; gap: 30px; flex-wrap: wrap; }
+
+        .footer-center a {
+            color: white;
+            text-decoration: none;
+            font-family: "Bangers", system-ui;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .footer-center a:hover { color: orange; transform: translateY(-3px); }
+
+        .footer-right { display: flex; gap: 25px; }
+
+        .social-media { color: white; font-size: 2rem; transition: 0.3s ease; }
+
+        .social-media:hover { color: orange; transform: scale(1.2) rotate(5deg); }
+
+        .footer-bottom {
+            background-color: #0a0a0a;
+            color: #777;
+            text-align: center;
+            padding: 18px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+       
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-page {
+                padding: 2rem 4%;
+            }
+
+            .map-card iframe {
+            width: 100%;
+            height: 320px;
+            border: none;
+            display: block;
+        }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .footer-center { justify-content: center; }
+            .footer-right { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .contact-page {
+                padding: 1.5rem 4%;
+                gap: 1.5rem;
+            }
+
+            .contact-info-card,
+            .contact-form-card,
+            .store-info-card {
+                padding: 1.25rem;
+            }
+
+            .map-card iframe {
+            width: 100%;
+            height: 320px;
+            border: none;
+            display: block;
+        }
+        }
+    </style>
 </head>
-    
+
 <body>
-     <div class="nav">
-    <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="About.html">About</a></li>
-        <li><a href="Products.html">Products</a></li>
-        <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html">Contact</a></li>
-        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
-</div>
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<aside class="sidebar" id="sidebar">
-    <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
-    <nav>
+    <div class="nav">
+        <img src="./images/companylogo.jpg" alt="Auto Pro Logo" height="100" width="200" style="border-radius: 100%" class="companylogo">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="About.html">About</a></li>
             <li><a href="Products.html">Products</a></li>
             <li><a href="Services.html">Services</a></li>
             <li><a href="Contact.html">Contact</a></li>
-            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count" style="font-family: Arial, Helvetica, sans-serif;">0</span></a></li>
         </ul>
-    </nav>
-</aside>
-    
-    <div class="row">
-      <div class="column">
-        <h1 style="white-space: pre-wrap;">  Contact Us</h1>
-        <p style="white-space: pre-wrap;"> <strong>    Telephone: <a href="tel:+6309150615024" style="text-decoration: none; color: inherit;">+6309150615024</a> / <a href="tel:+630917673052" style="text-decoration: none; color: inherit;">+630917673052</a></strong></p>        
-        <p style="white-space: pre-wrap;"> <strong><a href="mailto:tri_rodrigo@yahoo.com" style="text-decoration: none; color: inherit;">    Email: tri_rodrigo@yahoo.com</a></strong></p><br>
-        
-        
-         <form name="RegForm" onsubmit="return validateform()" onreset="resetErrors()">
-            <p>
-                <label for="fname">First Name:</label>
-                <input type="text" id="fname" name="First Name" placeholder="Enter First Name" size="30" oninput="filterNameInput(event)"/>
-                <span id="fname-error" class="error_message"></span>
-            </p>
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">☰</button>
+    </div>
 
-            <p>
-                <label for="lname">Last Name:</label>
-                <input type="text" name="Last Name" id="lname" placeholder="Enter Last Name" size="30" oninput="filterNameInput(event)"/>
-                <span id="lname-error" class="error_message"></span>
-            </p>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">×</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-            <p>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="EMail" placeholder="Enter Email" size="30" oninput="validateEmail()"/>
-                <span id="email-error" class="error_message"></span>
-                <span id="email-success" class="success_message"></span>
-            </p>
+    <div class="contact-page">
 
-            <p>
-                <label for="contact_num">Phone Number:</label>
-                <input type="tel" id="contact_num" class="phone-input" name="Contact_num" placeholder ="Enter Phone Number" size="30" inputmode="numeric" pattern="\d*" maxlength="11" onkeydown="return allowOnlyDigits(event)" oninput="filterNumberInput(event); validatePhoneNumber()" onpaste="filterPhonePaste(event)"/>
-                <span id="contact_num-error" class="error_message"></span>
-                <span id="contact_num-success" class="success_message"></span>
-            </p>
-
-            <p>
-                <label for="subject">Subject:</label>
-                <input type="text" name="Subject" id="subject" placeholder="Enter Subject" size="30">
-                <span id="subject-error" class="error_message"></span>
-            </p>
-
-            <p>
-               <label for="comment">Message:</label>
-               <br>
-               <textarea name="Comment" id="comment"></textarea>
-               <span id="comment-error" class="error_message"></span>
-            </p>
-
-            <p>
-                <input type="submit" value="Send" name="Submit"/>
-            </p>
-
-        </form>
+        <div class="contact-page-title-wrapper">
+            <h1 class="contact-page-title">Get In Touch</h1>
+            <span class="contact-title-underline"></span>
         </div>
-        
-   
-        <div class="column">
-            <h1 style="white-space: pre-wrap;">Our Store</h1>
-            <p style="white-space: pre-wrap;"><strong>Location:  Lot 3 Felix Avenue, Cainta, Philippines, 1900</strong></p>
-            <p style="white-space: pre-wrap;"><strong>Business Hours:  10:00 AM - 6:00 PM (Monday - Saturday)</strong></p>
-            <br>
-            <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=AUTOPRO All Terrain & Street Lifestyle&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://embed-googlemap.com">embed google map</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style>
+
+        <div class="contact-grid">
+
+           
+            <div class="contact-left">
+
+                <div class="contact-info-card">
+                    <div><h2>Contact Us</h2></div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>
+                            <a href="tel:+6309150615024">+6309150615024</a> /
+                            <a href="tel:+630917673052">+630917673052</a>
+                        </span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:tri_rodrigo@yahoo.com">tri_rodrigo@yahoo.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <div><h2>Send a Message</h2></div>
+                    <form name="RegForm" onsubmit="return validateform()" onreset="resetErrors()">
+                        <p>
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="First Name" placeholder="Enter First Name" oninput="filterNameInput(event)"/>
+                            <span id="fname-error" class="error_message"></span>
+                        </p>
+                        <p>
+                            <label for="lname">Last Name</label>
+                            <input type="text" name="Last Name" id="lname" placeholder="Enter Last Name" oninput="filterNameInput(event)"/>
+                            <span id="lname-error" class="error_message"></span>
+                        </p>
+                        <p>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="EMail" placeholder="Enter Email" oninput="validateEmail()"/>
+                            <span id="email-error" class="error_message"></span>
+                            <span id="email-success" class="success_message"></span>
+                        </p>
+                        <p>
+                            <label for="contact_num">Phone Number</label>
+                            <input type="tel" id="contact_num" class="phone-input" name="Contact_num" placeholder="Enter Phone Number" inputmode="numeric" pattern="\d*" maxlength="11" onkeydown="return allowOnlyDigits(event)" oninput="filterNumberInput(event); validatePhoneNumber()" onpaste="filterPhonePaste(event)"/>
+                            <span id="contact_num-error" class="error_message"></span>
+                            <span id="contact_num-success" class="success_message"></span>
+                        </p>
+                        <p>
+                            <label for="subject">Subject</label>
+                            <input type="text" name="Subject" id="subject" placeholder="Enter Subject">
+                            <span id="subject-error" class="error_message"></span>
+                        </p>
+                        <p>
+                            <label for="comment">Message</label>
+                            <textarea name="Comment" id="comment" placeholder="Type your message here..."></textarea>
+                            <span id="comment-error" class="error_message"></span>
+                        </p>
+                        <p>
+                            <input type="submit" value="Send Message" name="Submit"/>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            
+            <div class="contact-right">
+
+                <div class="store-map-wrapper">
+                <div class="store-info-card">
+                    <div><h2>Our Store</h2></div>
+                    <div class="store-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Lot 3 Felix Avenue, Cainta, Philippines, 1900</span>
+                    </div>
+                    <div class="store-info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>10:00 AM – 6:00 PM (Monday – Saturday)</span>
+                    </div>
+                </div>
+
+                <div class="map-wrapper">
+                <div class="map-card">
+                    <iframe
+                        src="https://maps.google.com/maps?width=600&height=400&hl=en&q=AUTOPRO+All+Terrain+%26+Street+Lifestyle&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                </div>
+                </div>
+
+            </div>
         </div>
-     </div>
-    </div>
-  
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-   
-        
-        <footer class="footer">
-
-    <div class="footer-left">
-        <h2>AUTOPRO</h2>
-        <p>All Terrain & Street Lifestyle</p>
     </div>
 
-    <div class="footer-center">
-        <a href="index.html">Home</a>
-        <a href="About.html">About</a>
-        <a href="Products.html">Products</a>
-        <a href="Services.html">Services</a>
-        <a href="Contact.html">Contact</a>
-        <a href="cart.html">Cart</a>
-        <a href="faq.html">FAQ</a>
+    <footer class="footer">
+        <div class="footer-left">
+            <h2>AUTOPRO</h2>
+            <p>All Terrain & Street Lifestyle</p>
+        </div>
+        <div class="footer-center">
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="Products.html">Products</a>
+            <a href="Services.html">Services</a>
+            <a href="Contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+            <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-right" style="display:flex; flex-direction:row !important; justify-content:center; gap:25px; align-items:center;">
+            <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
+                <i class="fa-brands fa-square-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        © 2024 AUTOPRO ALL TERRAIN & STREET LIFESTYLE
     </div>
 
-    <div class="footer-right" style="display:flex; flex-direction:row !important; justify-content:center; gap:25px; align-items:center;">
-
-        <a href="https://www.facebook.com/autoprolifestyle" target="_blank" class="social-media">
-            <i class="fa-brands fa-square-facebook"></i>
-        </a>
-
-        <a href="https://www.instagram.com/autopro_lifestyle/" target="_blank" class="social-media">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="https://www.tiktok.com/@autoprolifestyle" target="_blank" class="social-media">
-            <i class="fa-brands fa-tiktok"></i>
-        </a>
-
-    </div>
-
-</footer>
-
-<div class="footer-bottom">
-    © 2024 AUTOPRO ALL TERRAIN & STREET LIFESTYLE
-</div>
-
-
-<script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
 
     <script>
-    const phonePattern = /^\d{11}$/;
-    function validatePhoneNumber() {
-        const contactNum = document.getElementById("contact_num").value;
-        const contactNumInput = document.getElementById("contact_num");
-        const contactNumERR = document.getElementById("contact_num-error");
-        const contactSuccess = document.getElementById("contact_num-success");
-        
-        contactNumERR.textContent = "";
-        contactSuccess.textContent = "";
-        contactNumInput.classList.remove("phone-valid", "phone-invalid");
-        
-        if (contactNum === "") {
-            return;
+        const phonePattern = /^\d{11}$/;
+
+        function validatePhoneNumber() {
+            const contactNum = document.getElementById("contact_num").value;
+            const contactNumInput = document.getElementById("contact_num");
+            const contactNumERR = document.getElementById("contact_num-error");
+            const contactSuccess = document.getElementById("contact_num-success");
+            contactNumERR.textContent = "";
+            contactSuccess.textContent = "";
+            contactNumInput.classList.remove("phone-valid", "phone-invalid");
+            if (contactNum === "") return;
+            if (phonePattern.test(contactNum)) {
+                contactNumInput.classList.add("phone-valid");
+                contactSuccess.textContent = "✓ Valid phone number";
+            } else {
+                contactNumInput.classList.add("phone-invalid");
+                contactNumERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
+            }
         }
-      
-        if (phonePattern.test(contactNum)) {
-            contactNumInput.classList.add("phone-valid");
-            contactSuccess.textContent = "✓ Valid phone number";
-            contactNumInput.style.borderColor = "#4CAF50";
-        } else {
-            contactNumInput.classList.add("phone-invalid");
-            contactNumERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
-            contactNumInput.style.borderColor = "#f44336";
-        }
-        
-    }
-    function allowOnlyDigits(event) {
-        const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
-        if (allowedKeys.includes(event.key)) {
-            return true;
-        }
-        if (/^[0-9]$/.test(event.key)) {
-            return true;
-        }
-        event.preventDefault();
-        return false;
-    }
-    function filterPhonePaste(event) {
-        const pasteValue = (event.clipboardData || window.clipboardData).getData('text');
-        if (!/^\d*$/.test(pasteValue)) {
+
+        function allowOnlyDigits(event) {
+            const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
+            if (allowedKeys.includes(event.key)) return true;
+            if (/^[0-9]$/.test(event.key)) return true;
             event.preventDefault();
-            const cleaned = pasteValue.replace(/\D/g, '');
-            const input = event.target;
-            const start = input.selectionStart;
-            const end = input.selectionEnd;
-            const newValue = input.value.slice(0, start) + cleaned + input.value.slice(end);
-            input.value = newValue.slice(0, input.maxLength);
-            validatePhoneNumber();
-        }
-    }
-    const emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    function validateEmail() {
-        const email = document.getElementById("email").value;
-        const emailInput = document.getElementById("email");
-        const emailERR = document.getElementById("email-error");
-        const emailSuccess = document.getElementById("email-success");
-        
-        emailERR.textContent = "";
-        emailSuccess.textContent = "";
-        emailInput.classList.remove("email-valid", "email-invalid");
-        
-        if (email === "") {
-            return;
-        }
-        
-        if (emailPattern.test(email)) {
-            emailInput.classList.add("email-valid");
-            emailSuccess.textContent = "✓ Valid email";
-            emailInput.style.borderColor = "#4CAF50";
-        } else {
-            emailInput.classList.add("email-invalid");
-            emailERR.textContent = "Please enter a valid email address (e.g., user@example.com)";
-            emailInput.style.borderColor = "#f44336";
-        }
-    }
-    
-    function filterNameInput(event) {
-        event.target.value = event.target.value.replace(/\d/g, '');
-    }
-    function filterNumberInput(event) {
-        event.target.value = event.target.value.replace(/[^0-9]/g, '');
-    }
-   function validateform (){
-        const fname = document.getElementById("fname").value;
-        const lname = document.getElementById("lname").value;
-        const email = document.getElementById("email").value;
-        const contact_num = document.getElementById("contact_num").value;
-        const subject = document.getElementById("subject").value;
-        const comment = document.getElementById("comment").value;
-       
-
-        const fnameERR = document.getElementById("fname-error");
-        const lnameERR = document.getElementById("lname-error");
-        const emailERR = document.getElementById("email-error");
-        const contact_num_ERR = document.getElementById("contact_num-error");
-        const subjectERR = document.getElementById("subject-error");
-        const commentERR = document.getElementById("comment-error");
-
-
-        fnameERR.textContent = "";
-        lnameERR.textContent = "";
-        emailERR.textContent = "";
-        contact_num_ERR.textContent = "";
-        subjectERR.textContent = "";
-        commentERR.textContent = "";
-
-        let inputValid = true;
-
-        if(fname === "" || /\d/.test(fname)) {
-            fnameERR.textContent = "Please Enter Your First Name.";
-        }
-        if(lname === "" || /\d/.test(lname)) {
-            lnameERR.textContent = "Please Enter Your Last Name.";
-            inputValid = false;
-        }
-        if(email === "" || !email.includes("@") || !email.includes(".")) {
-            emailERR.textContent = "Please enter a valid email address (e.g., user@example.com).";
-            inputValid = false;
-        }
-        if(contact_num === "" || !phonePattern.test(contact_num)) {
-           contact_num_ERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
-            inputValid = false;
-        }
-        if(subject === "") {
-            subjectERR.textContent = "Please Enter Your Subject.";
-            inputValid = false;
-        }
-        if(comment === "") {
-            commentERR.textContent = "Please Enter Your Message.";
-            inputValid = false;
-        }
-        if(inputValid) {
-            alert("We are processing your request. We will notify you in your email.");
-            return true;
-        } else {
             return false;
         }
-    }
-    function resetErrors() {
-        document.getElementById("fname-error").textContent = "";
-        document.getElementById("lname-error").textContent = "";
-        document.getElementById("email-error").textContent = "";
-        document.getElementById("contact_num-error").textContent = "";
-        document.getElementById("subject-error").textContent = "";
-        document.getElementById("comment-error").textContent = "";
-        document.getElementById("contact_num").classList.remove("phone-valid", "phone-invalid");
-        document.getElementById("email").classList.remove("email-valid", "email-invalid");
-    }
-    const sidebar = document.getElementById('sidebar');
-function updateCartBadge() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
-    const badge = document.getElementById('cart-count');
-    if (!badge) return;
-    if (count > 0) {
-        badge.textContent = count;
-        badge.style.display = 'flex';
-    } else {
-        badge.style.display = 'none';
-    }
-}
-updateCartBadge();
-    const navToggle = document.getElementById('navToggle');
-    const sidebarClose = document.getElementById('sidebarClose');
 
-    function closeSidebar() {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-    }
+        function filterPhonePaste(event) {
+            const pasteValue = (event.clipboardData || window.clipboardData).getData('text');
+            if (!/^\d*$/.test(pasteValue)) {
+                event.preventDefault();
+                const cleaned = pasteValue.replace(/\D/g, '');
+                const input = event.target;
+                const start = input.selectionStart;
+                const end = input.selectionEnd;
+                const newValue = input.value.slice(0, start) + cleaned + input.value.slice(end);
+                input.value = newValue.slice(0, input.maxLength);
+                validatePhoneNumber();
+            }
+        }
 
-    navToggle.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        sidebarOverlay.classList.add('active');
-    });
+        const emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    sidebarClose.addEventListener('click', closeSidebar);
-    sidebarOverlay.addEventListener('click', closeSidebar);
-</script>
-    
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            const emailInput = document.getElementById("email");
+            const emailERR = document.getElementById("email-error");
+            const emailSuccess = document.getElementById("email-success");
+            emailERR.textContent = "";
+            emailSuccess.textContent = "";
+            emailInput.classList.remove("email-valid", "email-invalid");
+            if (email === "") return;
+            if (emailPattern.test(email)) {
+                emailInput.classList.add("email-valid");
+                emailSuccess.textContent = "✓ Valid email";
+            } else {
+                emailInput.classList.add("email-invalid");
+                emailERR.textContent = "Please enter a valid email address (e.g., user@example.com)";
+            }
+        }
+
+        function filterNameInput(event) {
+            event.target.value = event.target.value.replace(/\d/g, '');
+        }
+
+        function filterNumberInput(event) {
+            event.target.value = event.target.value.replace(/[^0-9]/g, '');
+        }
+
+        function validateform() {
+            const fname = document.getElementById("fname").value;
+            const lname = document.getElementById("lname").value;
+            const email = document.getElementById("email").value;
+            const contact_num = document.getElementById("contact_num").value;
+            const subject = document.getElementById("subject").value;
+            const comment = document.getElementById("comment").value;
+
+            const fnameERR = document.getElementById("fname-error");
+            const lnameERR = document.getElementById("lname-error");
+            const emailERR = document.getElementById("email-error");
+            const contact_num_ERR = document.getElementById("contact_num-error");
+            const subjectERR = document.getElementById("subject-error");
+            const commentERR = document.getElementById("comment-error");
+
+            fnameERR.textContent = "";
+            lnameERR.textContent = "";
+            emailERR.textContent = "";
+            contact_num_ERR.textContent = "";
+            subjectERR.textContent = "";
+            commentERR.textContent = "";
+
+            let inputValid = true;
+
+            if (fname === "" || /\d/.test(fname)) { fnameERR.textContent = "Please enter your first name."; inputValid = false; }
+            if (lname === "" || /\d/.test(lname)) { lnameERR.textContent = "Please enter your last name."; inputValid = false; }
+            if (email === "" || !emailPattern.test(email)) { emailERR.textContent = "Please enter a valid email address (e.g., user@example.com)."; inputValid = false; }
+            if (contact_num === "" || !phonePattern.test(contact_num)) { contact_num_ERR.textContent = "Please enter a valid 11-digit phone number (numbers only)."; inputValid = false; }
+            if (subject === "") { subjectERR.textContent = "Please enter your subject."; inputValid = false; }
+            if (comment === "") { commentERR.textContent = "Please enter your message."; inputValid = false; }
+
+            if (inputValid) {
+                alert("We are processing your request. We will notify you in your email.");
+                return true;
+            }
+            return false;
+        }
+
+        function resetErrors() {
+            ["fname","lname","email","contact_num","subject","comment"].forEach(id => {
+                const err = document.getElementById(`${id}-error`);
+                if (err) err.textContent = "";
+            });
+            const emailSuccess = document.getElementById("email-success");
+            const phoneSuccess = document.getElementById("contact_num-success");
+            if (emailSuccess) emailSuccess.textContent = "";
+            if (phoneSuccess) phoneSuccess.textContent = "";
+            document.getElementById("contact_num").classList.remove("phone-valid","phone-invalid");
+            document.getElementById("email").classList.remove("email-valid","email-invalid");
+        }
+
+        
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const count = Object.values(cart).reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+            const badge = document.getElementById('cart-count');
+            if (!badge) return;
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'flex' : 'none';
+        }
+        updateCartBadge();
+
+        
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const navToggle = document.getElementById('navToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        navToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            sidebarOverlay.classList.add('active');
+        });
+
+        sidebarClose.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    </script>
 </body>
 </html>
