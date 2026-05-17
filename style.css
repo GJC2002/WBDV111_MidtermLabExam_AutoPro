@@ -529,7 +529,7 @@ a {
   padding: 1rem;
   margin-top: 3rem;
   color: white;
-  font-family: "Bungee", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   gap: 1rem;
 }
 
@@ -547,11 +547,13 @@ a {
 .footer-left h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  font-family: "Red Hat Display", sans-serif;
 }
 
 .footer-left p {
   color: #999;
   font-size: 0.9rem;
+  font-family: "Red Hat Display", sans-serif;
 }
 
 .footer-center {
@@ -566,7 +568,7 @@ a {
 .footer-center a {
   color: white;
   text-decoration: none;
-  font-family: "Bangers", system-ui;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 1.2rem;
   letter-spacing: 1px;
   transition: 0.3s ease;
