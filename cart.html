@@ -60,6 +60,97 @@
         .cart-item-control select {
             min-width: 150px;
         }
+
+        .contact-form-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            margin: 0 auto 20px auto;
+        }
+
+        .contact-form-card h2 {
+            font-family: "Vollkorn", serif;
+            font-size: 1.3rem;
+            margin: 0 0 1.25rem 0;
+            color: #111;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-bottom: 3px solid #aaa;
+            padding-bottom: 0.4rem;
+        }
+
+        .contact-form-card form {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            line-height: 1.6;
+        }
+
+        .contact-form-card form p {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 1rem 0;
+        }
+
+        .contact-form-card form label {
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-form-card form input[type="text"],
+        .contact-form-card form input[type="email"],
+        .contact-form-card form input[type="tel"],
+        .contact-form-card form select,
+        .contact-form-card form textarea {
+            padding: 0.65rem 0.85rem;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-form-card form input:focus,
+        .contact-form-card form select:focus,
+        .contact-form-card form textarea:focus {
+            outline: none;
+            border-color: orange;
+            box-shadow: 0 0 0 3px rgba(255,165,0,0.15);
+        }
+
+        .contact-form-card input[type="submit"],
+        .checkout-button {
+            background: #111;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: "Vollkorn", serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .contact-form-card input[type="submit"]:hover,
+        .checkout-button:hover {
+            background: orange;
+            color: #111;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,165,0,0.4);
+        }
+
         .cart-actions {
             display: flex;
             gap: 10px;
@@ -235,6 +326,36 @@
     }
 }
 
+@media (max-width: 600px) {
+    #order-form-section.contact-form-card,
+    #payment-section.contact-form-card {
+        max-width: 100%;
+        margin: 0 0.8rem 20px;
+        padding: 1.1rem;
+    }
+
+    .contact-form-card h2 {
+        font-size: 1.15rem;
+    }
+
+    .cart-item-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cart-item-control input,
+    .cart-item-control select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .checkout-button {
+        width: calc(100% - 1.6rem);
+        max-width: 100%;
+        margin: 0 auto 20px;
+    }
+}
+
     </style>
 
     <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
@@ -289,9 +410,12 @@
     <h2>Total: PHP <span id="total-price">0.00</span></h2>
 </div>
 
-<div id="order-form-section" style="max-width: 400px; margin: 0 auto 20px auto; text-align: left;">
-    <h2 style="text-align: center; margin-bottom: 12px;">Order Information</h2>
-    <form id="order-form" class="form" novalidate>
+<br>
+<br>
+
+<div id="order-form-section" class="contact-form-card" style="max-width: 520px;">
+    <h2>Order Information</h2>
+    <form id="order-form" novalidate>
         <p>
             <label for="order-name">Full Name:</label>
             <input type="text" id="order-name" name="order-name" placeholder="Enter your full name" required>
@@ -346,20 +470,18 @@
                 <input type="text" id="order-postal" name="order-postal" placeholder="Enter postal code" inputmode="numeric" pattern="\d*" disabled>
             </p>
         </div>
+        <p>
+            <label for="payment-method">Mode of Payment:</label>
+            <select id="payment-method" name="payment-method" required>
+                <option value="">Select payment method</option>
+                <option value="cash">Cash</option>
+                <option value="gcash">Gcash</option>
+                <option value="credit_card">Credit Card</option>
+            </select>
+        </p>
+        <button id="checkout-btn" type="submit" class="checkout-button">Proceed to Checkout</button>
     </form>
 </div>
-
-<div id="payment-section" style="max-width: 300px; margin: 0 auto 20px auto; text-align: left;">
-    <label for="payment-method" style="display: block; margin-bottom: 8px; font-weight: bold;">Mode of Payment:</label>
-    <select id="payment-method" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
-        <option value="">Select payment method</option>
-        <option value="cash">Cash</option>
-        <option value="gcash">Gcash</option>
-        <option value="credit_card">Credit Card</option>
-    </select>
-</div>
-
-<button id="checkout-btn" type="button" style="display: block; margin: 0 auto 20px auto; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Proceed to Checkout</button>
 
 <br>
 <br>
@@ -1091,6 +1213,16 @@
     updateAddressRequirement();
     paymentMethodSelect.addEventListener('change', updateCheckoutButtonState);
     updateCheckoutButtonState();
+
+    if (orderForm) {
+        orderForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const checkoutBtnElement = document.getElementById('checkout-btn');
+            if (checkoutBtnElement) {
+                checkoutBtnElement.click();
+            }
+        });
+    }
 
     document.getElementById('checkout-btn').addEventListener('click', (event) => {
         event.preventDefault();
