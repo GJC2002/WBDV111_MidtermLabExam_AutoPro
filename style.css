@@ -95,7 +95,7 @@ a {
   text-decoration: none;
   color: #fff;
   display: inline-block;
-  font-family: "Red Hat Display", sans-serif; !important;
+  font-family: "Red Hat Display", sans-serif !important;
   padding: 0.5rem 0.5rem;
   font-size: 1.4rem;
   letter-spacing: 1.5px;
@@ -212,7 +212,7 @@ a {
 
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/Hero_Section\ wallpaper.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/Hero_Section wallpaper.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -529,7 +529,7 @@ a {
   padding: 1rem;
   margin-top: 3rem;
   color: white;
-  font-family: "Red Hat Display", sans-serif; !important;
+  font-family: "Red Hat Display", sans-serif !important;
   gap: 1rem;
 }
 
@@ -547,13 +547,13 @@ a {
 .footer-left h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  font-family: "Red Hat Display", sans-serif; !important;
+  font-family: "Red Hat Display", sans-serif !important;
 }
 
 .footer-left p {
   color: #999;
   font-size: 0.9rem;
-  font-family: "Red Hat Display", sans-serif; !important;
+  font-family: "Red Hat Display", sans-serif !important;
 }
 
 .footer-center {
@@ -568,11 +568,12 @@ a {
 .footer-center a {
   color: white;
   text-decoration: none;
-  font-family: "Red Hat Display", sans-serif; !important;
+  font-family: "Red Hat Display", sans-serif !important;
   font-size: 1.2rem;
   letter-spacing: 1px;
   transition: 0.3s ease;
 }
+
 
 .footer-right {
   display: flex !important;
