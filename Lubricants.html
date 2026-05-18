@@ -467,7 +467,7 @@ function updateCartBadge() {
     }
 
     if (optionValid) {
-        // Add to cart
+        
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
         const options = {};
         const cartKey = generateCartKey(productId, options);
