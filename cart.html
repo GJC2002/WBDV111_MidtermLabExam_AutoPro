@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <style>
-        /* ── CENTERED WRAPPER ── */
+        
         .cart-wrapper {
             max-width: 860px;
             margin: 0 auto;
@@ -416,7 +416,7 @@
 <br>
 <br>
 
-<!-- ── CENTERED WRAPPER START ── -->
+
 <div class="cart-wrapper">
 
     <div id="cart-items"></div>
@@ -504,7 +504,7 @@
     </div>
 
 </div>
-<!-- ── CENTERED WRAPPER END ── -->
+
 
 <br>
 <br>
@@ -1157,7 +1157,7 @@
 
     function updateCheckoutButtonState() {
         const formValid = isOrderFormValid();
-        // debug trace
+        
         try {
             console.debug('updateCheckoutButtonState', {
                 orderOption: orderOption ? orderOption.value : null,
@@ -1170,16 +1170,16 @@
         } catch (e) {}
         if (!checkoutBtn) return;
         const pmEmpty = !paymentMethodSelect || paymentMethodSelect.value === '';
-        // build reasons for disabled state
+        
         const reasons = [];
         if (pmEmpty) reasons.push('Select a mode of payment');
         if (!formValid) {
-            // collect invalid fields messages
+            
             if (orderForm && orderFormFields && orderFormFields.length) {
                 orderFormFields.forEach(field => {
                     if (!field) return;
                     if (field.disabled) return;
-                    // skip hidden elements (e.g., delivery fields when pickup)
+                    
                     try {
                         if (field.offsetParent === null) return;
                     } catch (e) {}
@@ -1291,7 +1291,7 @@
     if (orderForm) {
         orderForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            // call the checkout processor directly to avoid relying on a click of a possibly disabled button
+           
             if (typeof processCheckout === 'function') {
                 processCheckout();
             } else {
@@ -1303,7 +1303,7 @@
         });
     }
 
-    // Attach guarded click handler and expose processCheckout for reuse
+    
     (function attachCheckoutHandler() {
         const checkoutBtnElement = document.getElementById('checkout-btn');
         if (!checkoutBtnElement) return;
@@ -1329,7 +1329,7 @@
             alert(`Thank you for your purchase! Your order has been processed with ${paymentLabel}. We will shortly notify your order via email.`);
         }
 
-        // expose to other scopes
+       
         window.processCheckout = processCheckout;
     })();
 
