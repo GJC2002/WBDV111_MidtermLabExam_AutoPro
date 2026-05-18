@@ -13,35 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <style>
-      
- .cart-item-control label {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #222;
-    text-transform: uppercase;
-}
-
-
-.cart-actions .remove-btn {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 6px; 
-    padding: 10px 20px;
-}
-
-
-#cart-total h2 {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    color: #111;
-}
-h1 {
-font-family: "Vollkorn", sans-serif;
-}
         .cart-item {
             border: 1px solid #ddd;
             padding: 15px;
@@ -50,8 +21,6 @@ font-family: "Vollkorn", sans-serif;
         }
         .cart-item h3 {
             margin-top: 0;
-            font-family: "Vollkorn", sans-serif; 
-    
         }
         .cart-item p {
             margin: 5px 0;
@@ -59,7 +28,10 @@ font-family: "Vollkorn", sans-serif;
         #cart-total {
             text-align: center;
             font-size: 1.5em;
-            margin: 20px 0;
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .cart-item-controls {
             display: flex;
@@ -497,6 +469,10 @@ font-family: "Vollkorn", sans-serif;
                 </select>
             </p>
             <p>
+                <label for="order-address">Address:</label>
+                <input type="text" id="order-address" name="order-address" placeholder="Enter your address" required>
+            </p>
+            <p>
                 <label for="order-postal">Postal Code:</label>
                 <input type="text" id="order-postal" name="order-postal" placeholder="Enter postal code" inputmode="numeric" pattern="\d*" disabled>
             </p>
@@ -511,6 +487,7 @@ font-family: "Vollkorn", sans-serif;
             </select>
         </p>
         <button id="checkout-btn" type="submit" class="checkout-button">Proceed to Checkout</button>
+        <span id="checkout-status" class="error_message" style="display:block; margin-top:8px;"></span>
     </form>
 </div>
 
@@ -721,12 +698,18 @@ font-family: "Vollkorn", sans-serif;
         const value = document.getElementById(fieldId).value;
         
         if (fieldType === 'qty') {
-            if (parseInt(value) < 1) {
+            const parsedValue = parseInt(value);
+            if (parsedValue < 1) {
                 alert('Quantity must be at least 1');
                 document.getElementById(fieldId).value = item.quantity;
                 return;
             }
-            item.quantity = parseInt(value);
+            if (parsedValue > 50) {
+                alert('Maximum Order per prodcuct is 50 pcs only. For Bulk Orders, please proceed to contact page.');
+                document.getElementById(fieldId).value = item.quantity;
+                return;
+            }
+            item.quantity = parsedValue;
             cart[cartKey] = item;
         } else {
             const optionField = fieldType === 'desc' ? 'description' : fieldType;
@@ -789,7 +772,7 @@ font-family: "Vollkorn", sans-serif;
                 <div class="cart-item-controls">
                     <div class="cart-item-control">
                         <label for="qty-${cartKey}">Quantity:</label>
-                        <input type="number" id="qty-${cartKey}" min="1" value="${item.quantity}" onchange="autoUpdateCartItem(this.id)">
+                        <input type="number" id="qty-${cartKey}" min="1" max="50" value="${item.quantity}" onchange="autoUpdateCartItem(this.id)">
                     </div>
             `;
             
@@ -911,6 +894,7 @@ font-family: "Vollkorn", sans-serif;
     const orderProvince = document.getElementById('order-province');
     const orderCity = document.getElementById('order-city');
     const orderBarangay = document.getElementById('order-barangay');
+    const orderAddress = document.getElementById('order-address');
     const orderPostal = document.getElementById('order-postal');
     const deliveryDetails = document.getElementById('delivery-details');
     const orderFormFields = orderForm ? Array.from(orderForm.querySelectorAll('input, textarea, select')) : [];
@@ -1048,11 +1032,14 @@ font-family: "Vollkorn", sans-serif;
         if (!deliveryDetails || !orderOption) return;
         const delivery = orderOption.value === 'delivery';
         deliveryDetails.style.display = delivery ? 'block' : 'none';
-        [orderRegion, orderProvince, orderCity, orderBarangay, orderPostal].forEach(field => {
+        [orderRegion, orderProvince, orderCity, orderBarangay, orderAddress, orderPostal].forEach(field => {
             if (!field) return;
             field.required = delivery;
             field.disabled = !delivery;
-            if (!delivery) field.value = '';
+            if (!delivery) {
+                field.value = '';
+                try { field.setCustomValidity(''); } catch (e) { /* ignore */ }
+            }
         });
         if (delivery) {
             populateRegionOptions();
@@ -1098,7 +1085,7 @@ font-family: "Vollkorn", sans-serif;
         }
     }
 
-    const phonePattern = /^\d{11}$/;
+    const phonePattern = /^09\d{9}$/;
 
     function validatePhoneNumber() {
         if (!orderPhone) return;
@@ -1130,9 +1117,23 @@ font-family: "Vollkorn", sans-serif;
             orderPhone.setCustomValidity('');
         } else {
             orderPhone.classList.add('phone-invalid');
-            if (phoneError) phoneError.textContent = 'Please enter a valid 11-digit phone number (numbers only).';
+            if (phoneError) phoneError.textContent = 'Please enter a valid 11-digit phone number starting with 09.';
             orderPhone.style.borderColor = '#f44336';
-            orderPhone.setCustomValidity('Please enter a valid 11-digit phone number (numbers only).');
+            orderPhone.setCustomValidity('Please enter a valid 11-digit phone number starting with 09.');
+        }
+    }
+
+    function validateOrderAddress() {
+        if (!orderAddress) return;
+        const deliverySelected = orderOption && orderOption.value === 'delivery';
+        if (!deliverySelected) {
+            orderAddress.setCustomValidity('');
+            return;
+        }
+        if (orderAddress.value.trim() === '') {
+            orderAddress.setCustomValidity('Please enter your address for delivery.');
+        } else {
+            orderAddress.setCustomValidity('');
         }
     }
 
@@ -1142,6 +1143,7 @@ font-family: "Vollkorn", sans-serif;
         validateOrderName();
         validateEmail();
         validatePhoneNumber();
+        validateOrderAddress();
         if (orderOption && orderOption.value === 'delivery') {
             [orderRegion, orderProvince, orderCity, orderBarangay, orderPostal].forEach(field => {
                 if (field && field.value.trim() === '') {
@@ -1160,9 +1162,55 @@ font-family: "Vollkorn", sans-serif;
 
     function updateCheckoutButtonState() {
         const formValid = isOrderFormValid();
-        checkoutBtn.disabled = paymentMethodSelect.value === '' || !formValid;
-        checkoutBtn.style.opacity = checkoutBtn.disabled ? '0.6' : '1';
-        checkoutBtn.style.cursor = checkoutBtn.disabled ? 'not-allowed' : 'pointer';
+        // debug trace
+        try {
+            console.debug('updateCheckoutButtonState', {
+                orderOption: orderOption ? orderOption.value : null,
+                orderAddressRequired: orderAddress ? orderAddress.required : null,
+                orderAddressDisabled: orderAddress ? orderAddress.disabled : null,
+                orderAddressValidationMessage: orderAddress ? orderAddress.validationMessage : null,
+                paymentMethod: paymentMethodSelect ? paymentMethodSelect.value : null,
+                formValid
+            });
+        } catch (e) {}
+        if (!checkoutBtn) return;
+        const pmEmpty = !paymentMethodSelect || paymentMethodSelect.value === '';
+        // build reasons for disabled state
+        const reasons = [];
+        if (pmEmpty) reasons.push('Select a mode of payment');
+        if (!formValid) {
+            // collect invalid fields messages
+            if (orderForm && orderFormFields && orderFormFields.length) {
+                orderFormFields.forEach(field => {
+                    if (!field) return;
+                    if (field.disabled) return;
+                    // skip hidden elements (e.g., delivery fields when pickup)
+                    try {
+                        if (field.offsetParent === null) return;
+                    } catch (e) {}
+                    if (!field.checkValidity()) {
+                        const labelEl = field.id ? document.querySelector(`label[for="${field.id}"]`) : null;
+                        const labelText = labelEl ? labelEl.textContent.replace(/\s*:\s*$/, '') : (field.name || field.id || 'Field');
+                        const msg = `${labelText}: ${field.validationMessage || 'is invalid'}`;
+                        if (msg && !reasons.includes(msg)) reasons.push(msg);
+                    }
+                });
+            } else {
+                reasons.push('Please complete required order information');
+            }
+        }
+        const statusEl = document.getElementById('checkout-status');
+        checkoutBtn.style.opacity = reasons.length > 0 ? '0.6' : '1';
+        checkoutBtn.style.cursor = 'pointer';
+        if (statusEl) {
+            if (reasons.length > 0) {
+                statusEl.style.display = 'block';
+                statusEl.textContent = 'Cannot checkout: ' + reasons.join('; ');
+            } else {
+                statusEl.textContent = '';
+                statusEl.style.display = 'none';
+            }
+        }
     }
 
     if (orderForm) {
@@ -1248,36 +1296,47 @@ font-family: "Vollkorn", sans-serif;
     if (orderForm) {
         orderForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            const checkoutBtnElement = document.getElementById('checkout-btn');
-            if (checkoutBtnElement) {
-                checkoutBtnElement.click();
+            // call the checkout processor directly to avoid relying on a click of a possibly disabled button
+            if (typeof processCheckout === 'function') {
+                processCheckout();
+            } else {
+                const checkoutBtnElement = document.getElementById('checkout-btn');
+                if (checkoutBtnElement) {
+                    checkoutBtnElement.click();
+                }
             }
         });
     }
 
-    document.getElementById('checkout-btn').addEventListener('click', (event) => {
-        event.preventDefault();
-        if (orderForm && !orderForm.checkValidity()) {
-            orderForm.reportValidity();
-            return;
+    // Attach guarded click handler and expose processCheckout for reuse
+    (function attachCheckoutHandler() {
+        const checkoutBtnElement = document.getElementById('checkout-btn');
+        if (!checkoutBtnElement) return;
+
+        function processCheckout(event) {
+            console.debug('processCheckout invoked', { eventType: event && event.type, disabled: checkoutBtn ? checkoutBtn.disabled : null });
+            if (event && event.preventDefault) event.preventDefault();
+            if (orderForm && !orderForm.checkValidity()) {
+                orderForm.reportValidity();
+                return;
+            }
+            if (!paymentMethodSelect || paymentMethodSelect.value === '') {
+                alert('Please select a mode of payment before proceeding to checkout.');
+                if (paymentMethodSelect) paymentMethodSelect.focus();
+                return;
+            }
+            const paymentLabel = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
+            const confirmed = confirm(`Proceed to checkout using ${paymentLabel}?`);
+            if (!confirmed) return;
+            const emptyCart = {};
+            localStorage.setItem('cart', JSON.stringify(emptyCart));
+            loadCart();
+            alert(`Thank you for your purchase! Your order has been processed with ${paymentLabel}. We will shortly notify your order via email.`);
         }
 
-        if (paymentMethodSelect.value === '') {
-            alert('Please select a mode of payment before proceeding to checkout.');
-            paymentMethodSelect.focus();
-            return;
-        }
-
-        const paymentLabel = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
-        const confirmed = confirm(`Proceed to checkout using ${paymentLabel}?`);
-        if (!confirmed) {
-            return;
-        }
-        const emptyCart = {};
-        localStorage.setItem('cart', JSON.stringify(emptyCart));
-        loadCart();
-        alert(`Thank you for your purchase! Your order has been processed with ${paymentLabel}. We will shortly notify your order via email.`);
-    });
+        // expose to other scopes
+        window.processCheckout = processCheckout;
+    })();
 
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');

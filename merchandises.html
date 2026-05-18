@@ -317,7 +317,7 @@ ul li {
         </select>
         <span id="size-error-foxwarnshirt" class="error_message"></span>
         <label for="quantity-foxwarnshirt">Quantity:</label>
-        <input type="number" id="quantity-foxwarnshirt" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-foxwarnshirt" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-foxwarnshirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
@@ -339,7 +339,7 @@ ul li {
             </select>
         <span id="size-error-blackmambashirt" class="error_message"></span>
         <label for="quantity-blackmambashirt">Quantity:</label>
-        <input type="number" id="quantity-blackmambashirt" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-blackmambashirt" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-blackmambashirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
@@ -361,7 +361,7 @@ ul li {
         </select>
         <span id="size-error-tjmshirt" class="error_message"></span>
         <label for="quantity-tjmshirt">Quantity:</label>
-        <input type="number" id="quantity-tjmshirt" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-tjmshirt" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-tjmshirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
@@ -383,7 +383,7 @@ ul li {
         </select>
         <span id="size-error-explorershirt" class="error_message"></span>
         <label for="quantity-explorershirt">Quantity:</label>
-        <input type="number" id="quantity-explorershirt" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-explorershirt" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-explorershirt" class="error_message"></span>
         <br>
         <h3>₱450.00</h3>
@@ -414,7 +414,7 @@ ul li {
         </select>
         <span id="size-error-ampshirt" class="error_message"></span>
         <label for="quantity-ampshirt">Quantity:</label>
-        <input type="number" id="quantity-ampshirt" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-ampshirt" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-ampshirt" class="error_message"></span>
         <br>
         <h3>PHP450.00</h3>
@@ -435,7 +435,7 @@ ul li {
         </select>
         <span id="brand-error-umbrella" class="error_message"></span>
         <label for="quantity-umbrella">Quantity:</label>
-        <input type="number" id="quantity-umbrella" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-umbrella" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-umbrella" class="error_message"></span>
         <br>
         <h3>PHP 350.00</h3>
@@ -448,7 +448,7 @@ ul li {
         <div class="container" onsubmit="return validateoption('bodyarmor4x4')" onreset="resetoptions('bodyarmor4x4')">
         <h2>BODY ARMOR 4X4 - TRUCKERS CAP</h2>
         <label for="quantity-bodyarmor4x4">Quantity:</label>
-        <input type="number" id="quantity-bodyarmor4x4" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-bodyarmor4x4" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-bodyarmor4x4" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
@@ -461,7 +461,7 @@ ul li {
         <div class="container" onsubmit="return validateoption('bulldogcap')" onreset="resetoptions('bulldogcap')">
         <h2>BULLDOG - TRUCKERS CAP</h2>
         <label for="quantity-bulldogcap">Quantity:</label>
-        <input type="number" id="quantity-bulldogcap" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-bulldogcap" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-bulldogcap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
@@ -483,7 +483,7 @@ ul li {
         <div class="container" onsubmit="return validateoption('dirtylifecap')" onreset="resetoptions('dirtylifecap')">
         <h2>DIRTY LIFE - TRUCKERS CAP</h2>
         <label for="quantity-dirtylifecap">Quantity:</label>
-        <input type="number" id="quantity-dirtylifecap" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-dirtylifecap" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-dirtylifecap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
@@ -496,7 +496,7 @@ ul li {
         <div class="container" onsubmit="return validateoption('dpo cap')" onreset="resetoptions('dpo cap')">
         <h2>DPO - TRUCKERS CAP</h2>
         <label for="quantity-dpo cap">Quantity:</label>
-        <input type="number" id="quantity-dpo cap" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-dpo cap" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-dpo cap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
@@ -509,7 +509,7 @@ ul li {
         <div class="container" onsubmit="return validateoption('raffa cap')" onreset="resetoptions('raffa cap')">
         <h2>RAFFA - TRUCKERS CAP</h2>
         <label for="quantity-raffa cap">Quantity:</label>
-        <input type="number" id="quantity-raffa cap" name="quantity" min="0" value="0">
+        <input type="number" id="quantity-raffa cap" name="quantity" min="1" max="50" value="0">
         <span id="quantity-error-raffa cap" class="error_message"></span>
         <br>
         <h3>PHP 300.00</h3>
@@ -669,6 +669,9 @@ function validateoption(productID) {
         if (!Number.isInteger(quantity) || quantity < 1) {
             quantityErr.textContent = "Quantity must be 1 or more.";
             optionValid = false;
+        } else if (quantity > 50) {
+            quantityErr.textContent = "Maximum Order per prodcuct is 50 pcs only. For Bulk Orders, please proceed to contact page.";
+            optionValid = false;
         }
     }
 
@@ -782,3 +785,4 @@ if (searchInput) {
 
 </body>
 </html>
+
