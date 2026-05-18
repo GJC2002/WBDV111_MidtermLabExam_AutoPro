@@ -13,6 +13,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <style>
+      
+ .cart-item-control label {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #222;
+    text-transform: uppercase;
+}
+
+
+.cart-actions .remove-btn {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px; 
+    padding: 10px 20px;
+}
+
+
+#cart-total h2 {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #111;
+}
+h1 {
+font-family: "Vollkorn", sans-serif;
+}
         .cart-item {
             border: 1px solid #ddd;
             padding: 15px;
@@ -21,6 +50,8 @@
         }
         .cart-item h3 {
             margin-top: 0;
+            font-family: "Vollkorn", sans-serif; 
+    
         }
         .cart-item p {
             margin: 5px 0;
@@ -28,10 +59,7 @@
         #cart-total {
             text-align: center;
             font-size: 1.5em;
-            margin: 30px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 20px 0;
         }
         .cart-item-controls {
             display: flex;
@@ -469,10 +497,6 @@
                 </select>
             </p>
             <p>
-                <label for="order-address">Address:</label>
-                <input type="text" id="order-address" name="order-address" placeholder="Enter your address" required>
-            </p>
-            <p>
                 <label for="order-postal">Postal Code:</label>
                 <input type="text" id="order-postal" name="order-postal" placeholder="Enter postal code" inputmode="numeric" pattern="\d*" disabled>
             </p>
@@ -887,7 +911,6 @@
     const orderProvince = document.getElementById('order-province');
     const orderCity = document.getElementById('order-city');
     const orderBarangay = document.getElementById('order-barangay');
-    const orderAddress = document.getElementById('order-address');
     const orderPostal = document.getElementById('order-postal');
     const deliveryDetails = document.getElementById('delivery-details');
     const orderFormFields = orderForm ? Array.from(orderForm.querySelectorAll('input, textarea, select')) : [];
@@ -1075,7 +1098,7 @@
         }
     }
 
-    const phonePattern = /^09\d{9}$/;
+    const phonePattern = /^\d{11}$/;
 
     function validatePhoneNumber() {
         if (!orderPhone) return;
@@ -1107,18 +1130,9 @@
             orderPhone.setCustomValidity('');
         } else {
             orderPhone.classList.add('phone-invalid');
-            if (phoneError) phoneError.textContent = 'Please enter a valid 11-digit phone number starting with 09.';
+            if (phoneError) phoneError.textContent = 'Please enter a valid 11-digit phone number (numbers only).';
             orderPhone.style.borderColor = '#f44336';
-            orderPhone.setCustomValidity('Please enter a valid 11-digit phone number starting with 09.');
-        }
-    }
-
-    function validateOrderAddress() {
-        if (!orderAddress) return;
-        if (orderAddress.value.trim() === '') {
-            orderAddress.setCustomValidity('Please enter your address for delivery.');
-        } else {
-            orderAddress.setCustomValidity('');
+            orderPhone.setCustomValidity('Please enter a valid 11-digit phone number (numbers only).');
         }
     }
 
@@ -1128,7 +1142,6 @@
         validateOrderName();
         validateEmail();
         validatePhoneNumber();
-        validateOrderAddress();
         if (orderOption && orderOption.value === 'delivery') {
             [orderRegion, orderProvince, orderCity, orderBarangay, orderPostal].forEach(field => {
                 if (field && field.value.trim() === '') {
