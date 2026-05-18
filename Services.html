@@ -326,6 +326,33 @@
     .footer-center { justify-content: center; }
     .footer-right { justify-content: center; }
 }
+
+@media (max-width: 768px) {
+  .services-cards {
+    display: flex;             
+    overflow-x: auto;           /* enable horizontal scroll */
+    gap: 1rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory; 
+  }
+
+  .service-card {
+    flex: 0 0 200px;            
+    height: auto;               
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    flex: 0 0 180px;            /* slightly narrower on very small screens */
+  }
+}
+
+
+
+
+
     </style>
 </head>
 
