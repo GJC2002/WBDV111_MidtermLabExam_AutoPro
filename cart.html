@@ -13,11 +13,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <style>
+        /* ── CENTERED WRAPPER ── */
+        .cart-wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 16px;
+            box-sizing: border-box;
+        }
+
         .cart-item {
             border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 10px;
+            padding: 20px;
+            margin-bottom: 12px;
             background-color: #f9f9f9;
+            box-sizing: border-box;
+            border-radius: 12px;
+            text-align: center;
         }
         .cart-item h3 {
             margin-top: 0;
@@ -39,6 +50,7 @@
             gap: 10px;
             margin: 10px 0;
             align-items: center;
+            justify-content: center;
         }
         .cart-item-control {
             display: flex;
@@ -158,6 +170,7 @@
             display: flex;
             gap: 10px;
             margin-top: 10px;
+            justify-content: center;
         }
         .cart-actions button {
             padding: 8px 15px;
@@ -403,114 +416,96 @@
 <br>
 <br>
 
+<!-- ── CENTERED WRAPPER START ── -->
+<div class="cart-wrapper">
 
+    <div id="cart-items"></div>
 
-<div id="cart-items">
-   
+    <div id="cart-total">
+        <h2>Total: PHP <span id="total-price">0.00</span></h2>
+    </div>
+
+    <br>
+    <br>
+
+    <div id="order-form-section" class="contact-form-card" style="max-width: 520px;">
+        <h2>Order Information</h2>
+        <form id="order-form" novalidate>
+            <p>
+                <label for="order-name">Full Name:</label>
+                <input type="text" id="order-name" name="order-name" placeholder="Enter your full name" required>
+            </p>
+            <p>
+                <label for="order-email">Email Address:</label>
+                <input type="email" id="order-email" name="order-email" placeholder="Enter your email" required>
+                <span id="order-email-error" class="error_message"></span>
+                <span id="order-email-success" class="success_message"></span>
+            </p>
+            <p>
+                <label for="order-option">Delivery Option:</label>
+                <select id="order-option" name="order-option" required>
+                    <option value="">Select option</option>
+                    <option value="pickup">Pickup at Store</option>
+                    <option value="delivery">Delivery</option>
+                </select>
+            </p>
+            <p>
+                <label for="order-phone">Phone Number:</label>
+                <input type="tel" id="order-phone" name="order-phone" class="phone-input" placeholder="09XXXXXXXXX" inputmode="numeric" pattern="09[0-9]{9}" maxlength="11" required>
+                <span id="order-phone-error" class="error_message"></span>
+                <span id="order-phone-success" class="success_message"></span>
+            </p>
+            <div id="delivery-details" style="display: none;">
+                <p>
+                    <label for="order-region">Region:</label>
+                    <select id="order-region" name="order-region">
+                        <option value="">Select region</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="order-province">Province:</label>
+                    <select id="order-province" name="order-province" disabled>
+                        <option value="">Select province</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="order-city">City / Municipality:</label>
+                    <select id="order-city" name="order-city" disabled>
+                        <option value="">Select city</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="order-barangay">Barangay:</label>
+                    <select id="order-barangay" name="order-barangay" disabled>
+                        <option value="">Select barangay</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="order-address">Address:</label>
+                    <input type="text" id="order-address" name="order-address" placeholder="Enter your address" required>
+                </p>
+                <p>
+                    <label for="order-postal">Postal Code:</label>
+                    <input type="text" id="order-postal" name="order-postal" placeholder="Enter postal code" inputmode="numeric" pattern="\d*" disabled>
+                </p>
+            </div>
+            <p>
+                <label for="payment-method">Mode of Payment:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">Select payment method</option>
+                    <option value="cash">Cash</option>
+                    <option value="gcash">Gcash</option>
+                    <option value="credit_card">Credit Card</option>
+                </select>
+            </p>
+            <button id="checkout-btn" type="submit" class="checkout-button">Proceed to Checkout</button>
+            <span id="checkout-status" class="error_message" style="display:block; margin-top:8px;"></span>
+        </form>
+    </div>
+
 </div>
+<!-- ── CENTERED WRAPPER END ── -->
 
-<div id="cart-total">
-    <h2>Total: PHP <span id="total-price">0.00</span></h2>
-</div>
-
-<br>
-<br>
-
-<div id="order-form-section" class="contact-form-card" style="max-width: 520px;">
-    <h2>Order Information</h2>
-    <form id="order-form" novalidate>
-        <p>
-            <label for="order-name">Full Name:</label>
-            <input type="text" id="order-name" name="order-name" placeholder="Enter your full name" required>
-        </p>
-        <p>
-            <label for="order-email">Email Address:</label>
-            <input type="email" id="order-email" name="order-email" placeholder="Enter your email" required>
-            <span id="order-email-error" class="error_message"></span>
-            <span id="order-email-success" class="success_message"></span>
-        </p>
-        <p>
-            <label for="order-option">Delivery Option:</label>
-            <select id="order-option" name="order-option" required>
-                <option value="">Select option</option>
-                <option value="pickup">Pickup at Store</option>
-                <option value="delivery">Delivery</option>
-            </select>
-        </p>
-        <p>
-            <label for="order-phone">Phone Number:</label>
-            <input type="tel" id="order-phone" name="order-phone" class="phone-input" placeholder="09XXXXXXXXX" inputmode="numeric" pattern="09[0-9]{9}" maxlength="11" required>
-            <span id="order-phone-error" class="error_message"></span>
-            <span id="order-phone-success" class="success_message"></span>
-        </p>
-        <div id="delivery-details" style="display: none;">
-            <p>
-                <label for="order-region">Region:</label>
-                <select id="order-region" name="order-region">
-                    <option value="">Select region</option>
-                </select>
-            </p>
-            <p>
-                <label for="order-province">Province:</label>
-                <select id="order-province" name="order-province" disabled>
-                    <option value="">Select province</option>
-                </select>
-            </p>
-            <p>
-                <label for="order-city">City / Municipality:</label>
-                <select id="order-city" name="order-city" disabled>
-                    <option value="">Select city</option>
-                </select>
-            </p>
-            <p>
-                <label for="order-barangay">Barangay:</label>
-                <select id="order-barangay" name="order-barangay" disabled>
-                    <option value="">Select barangay</option>
-                </select>
-            </p>
-            <p>
-                <label for="order-address">Address:</label>
-                <input type="text" id="order-address" name="order-address" placeholder="Enter your address" required>
-            </p>
-            <p>
-                <label for="order-postal">Postal Code:</label>
-                <input type="text" id="order-postal" name="order-postal" placeholder="Enter postal code" inputmode="numeric" pattern="\d*" disabled>
-            </p>
-        </div>
-        <p>
-            <label for="payment-method">Mode of Payment:</label>
-            <select id="payment-method" name="payment-method" required>
-                <option value="">Select payment method</option>
-                <option value="cash">Cash</option>
-                <option value="gcash">Gcash</option>
-                <option value="credit_card">Credit Card</option>
-            </select>
-        </p>
-        <button id="checkout-btn" type="submit" class="checkout-button">Proceed to Checkout</button>
-        <span id="checkout-status" class="error_message" style="display:block; margin-top:8px;"></span>
-    </form>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
