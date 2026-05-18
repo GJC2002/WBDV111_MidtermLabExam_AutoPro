@@ -89,7 +89,7 @@ a {
   border-radius: 50%;
 }
 
-/* Desktop Links Stylings */
+
 .nav a {
   position: relative;
   text-decoration: none;
@@ -679,7 +679,7 @@ input[type="submit"]:hover {
 
 
 
-/* Tablet & Universal Mobile Switch Breakpoint (Below 960px) */
+
 @media (max-width: 960px) {
   .nav ul {
     display: none !important; 
