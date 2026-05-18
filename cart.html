@@ -13,49 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <style>
-      
- .cart-item-control label {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #222;
-    text-transform: uppercase;
-}
-
-
-.cart-actions .remove-btn {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 6px; 
-    padding: 10px 20px;
-}
-
-
-#cart-total h2 {
-    font-family: "Red Hat Display", sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    color: #111;
-}
-h1 {
-font-family: "Vollkorn", sans-serif;
-}
         .cart-item {
             border: 1px solid #ddd;
-            padding: 25px;
-            margin: 0 auto 20px auto;
+            padding: 15px;
+            margin-bottom: 10px;
             background-color: #f9f9f9;
-            max-width: 520px;        
-            border-radius: 12px;       
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            text-align: center;       
         }
         .cart-item h3 {
             margin-top: 0;
-            font-family: "Vollkorn", sans-serif; 
-    
         }
         .cart-item p {
             margin: 5px 0;
@@ -63,7 +28,7 @@ font-family: "Vollkorn", sans-serif;
         #cart-total {
             text-align: center;
             font-size: 1.5em;
-            margin: 30px auto;
+            margin: 30px 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -74,13 +39,11 @@ font-family: "Vollkorn", sans-serif;
             gap: 10px;
             margin: 10px 0;
             align-items: center;
-            justify-content: center;
         }
         .cart-item-control {
             display: flex;
             flex-direction: column;
             gap: 5px;
-            align-items: center;
         }
         .cart-item-control label {
             font-weight: bold;
@@ -92,7 +55,6 @@ font-family: "Vollkorn", sans-serif;
             border: 1px solid #999;
             border-radius: 4px;
             font-size: 0.95em;
-            text-align: center;
         }
         .cart-item-control input[type="number"] {
             width: 80px;
@@ -196,7 +158,6 @@ font-family: "Vollkorn", sans-serif;
             display: flex;
             gap: 10px;
             margin-top: 10px;
-            justify-content: center;
         }
         .cart-actions button {
             padding: 8px 15px;
@@ -506,6 +467,10 @@ font-family: "Vollkorn", sans-serif;
                 <select id="order-barangay" name="order-barangay" disabled>
                     <option value="">Select barangay</option>
                 </select>
+            </p>
+            <p>
+                <label for="order-address">Address:</label>
+                <input type="text" id="order-address" name="order-address" placeholder="Enter your address" required>
             </p>
             <p>
                 <label for="order-postal">Postal Code:</label>
@@ -922,6 +887,7 @@ font-family: "Vollkorn", sans-serif;
     const orderProvince = document.getElementById('order-province');
     const orderCity = document.getElementById('order-city');
     const orderBarangay = document.getElementById('order-barangay');
+    const orderAddress = document.getElementById('order-address');
     const orderPostal = document.getElementById('order-postal');
     const deliveryDetails = document.getElementById('delivery-details');
     const orderFormFields = orderForm ? Array.from(orderForm.querySelectorAll('input, textarea, select')) : [];
@@ -1109,7 +1075,7 @@ font-family: "Vollkorn", sans-serif;
         }
     }
 
-    const phonePattern = /^\d{11}$/;
+    const phonePattern = /^09\d{9}$/;
 
     function validatePhoneNumber() {
         if (!orderPhone) return;
@@ -1141,9 +1107,18 @@ font-family: "Vollkorn", sans-serif;
             orderPhone.setCustomValidity('');
         } else {
             orderPhone.classList.add('phone-invalid');
-            if (phoneError) phoneError.textContent = 'Please enter a valid 11-digit phone number (numbers only).';
+            if (phoneError) phoneError.textContent = 'Please enter a valid 11-digit phone number starting with 09.';
             orderPhone.style.borderColor = '#f44336';
-            orderPhone.setCustomValidity('Please enter a valid 11-digit phone number (numbers only).');
+            orderPhone.setCustomValidity('Please enter a valid 11-digit phone number starting with 09.');
+        }
+    }
+
+    function validateOrderAddress() {
+        if (!orderAddress) return;
+        if (orderAddress.value.trim() === '') {
+            orderAddress.setCustomValidity('Please enter your address for delivery.');
+        } else {
+            orderAddress.setCustomValidity('');
         }
     }
 
@@ -1153,6 +1128,7 @@ font-family: "Vollkorn", sans-serif;
         validateOrderName();
         validateEmail();
         validatePhoneNumber();
+        validateOrderAddress();
         if (orderOption && orderOption.value === 'delivery') {
             [orderRegion, orderProvince, orderCity, orderBarangay, orderPostal].forEach(field => {
                 if (field && field.value.trim() === '') {
