@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -977,7 +977,7 @@ function validateoption(ProductID) {
     }
 
     if(optionValid) {
-        // Add to cart
+        
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
         const options = {
             model: modelEl ? modelEl.value : null,
