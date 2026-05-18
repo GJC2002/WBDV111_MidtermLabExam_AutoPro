@@ -439,7 +439,7 @@
                 </p>
                 <p>
                     <label for="contact_num">Phone Number</label>
-                    <input type="tel" id="contact_num" class="phone-input" name="Contact_num" placeholder="Enter Phone Number" inputmode="numeric" pattern="\d*" maxlength="11" onkeydown="return allowOnlyDigits(event)" oninput="filterNumberInput(event); validatePhoneNumber()" onpaste="filterPhonePaste(event)"/>
+                    <input type="tel" id="contact_num" class="phone-input" name="Contact_num" placeholder="09XXXXXXXXX" inputmode="numeric" pattern="09[0-9]{9}" maxlength="11" onkeydown="return allowOnlyDigits(event)" oninput="filterNumberInput(event); validatePhoneNumber()" onpaste="filterPhonePaste(event)"/>
                     <span id="contact_num-error" class="error_message"></span>
                     <span id="contact_num-success" class="success_message"></span>
                 </p>
@@ -512,7 +512,7 @@
     <script src="https://kit.fontawesome.com/f50125bc94.js" crossorigin="anonymous"></script>
 
     <script>
-        const phonePattern = /^\d{11}$/;
+        const phonePattern = /^09\d{9}$/;
 
         function validatePhoneNumber() {
             const contactNum = document.getElementById("contact_num").value;
@@ -529,7 +529,7 @@
                 contactNumInput.style.borderColor = "#4CAF50";
             } else {
                 contactNumInput.classList.add("phone-invalid");
-                contactNumERR.textContent = "Please enter a valid 11-digit phone number (numbers only).";
+                contactNumERR.textContent = "Please enter a valid 11-digit phone number starting with 09.";
                 contactNumInput.style.borderColor = "#f44336";
             }
         }
@@ -605,7 +605,7 @@
             if (fname === "" || /\d/.test(fname)) { fnameERR.textContent = "Please Enter Your First Name."; inputValid = false; }
             if (lname === "" || /\d/.test(lname)) { lnameERR.textContent = "Please Enter Your Last Name."; inputValid = false; }
             if (email === "" || !email.includes("@") || !email.includes(".")) { emailERR.textContent = "Please enter a valid email address."; inputValid = false; }
-            if (contact_num === "" || !phonePattern.test(contact_num)) { contact_num_ERR.textContent = "Please enter a valid 11-digit phone number."; inputValid = false; }
+            if (contact_num === "" || !phonePattern.test(contact_num)) { contact_num_ERR.textContent = "Please enter a valid 11-digit phone number starting with 09."; inputValid = false; }
             if (services.length === 0) { servicesERR.textContent = "Please select at least one service."; inputValid = false; }
             else if (othersCheckbox.checked && othersText.value.trim() === "") { servicesERR.textContent = "Please specify the 'others' service."; inputValid = false; }
             if (schedule === "" || !validateScheduleValue(schedule)) { scheduleERR.textContent = "Please select a valid schedule between 10:00 AM and 05:30 PM."; inputValid = false; }
